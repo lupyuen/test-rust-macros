@@ -3,25 +3,30 @@
 
 /// Let's make some soup based on a recipe...
 macro_rules! bad_soup {
-    // The caller shall pass in a recipe for the soup, say `salt + 88`
+    // The caller shall pass in a recipe for the soup, 
+    // say `salt + 88`
     ($recipe:expr) => {
         {
             // We use our own salt, say Table Salt.
             let salt = 1;
-            // We try to use our salt, but the recipe actually requires 
-            // a different salt, like Sea Salt.
+            // We try to use our salt, but the recipe 
+            // actually requires a different salt, 
+            // like Sea Salt.
             $recipe
-            // At this point, the Rust Compiler fails due to a Hygiene Error.
+            // Rust Compiler fails with a Hygiene Error.
         }
     }
 }
 
 /// Let's make soup the right way...
 macro_rules! good_soup {
-    // The caller shall pass in 2 things: Which salt to use, and the recipe (like `salt + 88`)
+    // The caller shall pass in 2 things: 
+    // Which salt to use
+    // and the recipe (like `salt + 88`)
     ($salt:ident, $recipe:expr) => {
         {
-            // We use whatever salt the caller passes in. Hence we use `$salt` instead of `salt`.
+            // We use whatever salt the caller passes in. 
+            // Hence we use `$salt` instead of `salt`.
             let $salt = 1;
             // Then we use the same salt inside the recipe.
             $recipe
@@ -33,9 +38,9 @@ macro_rules! good_soup {
 /// Make an Unhygienic soup...
 fn make_bad_soup() -> Result<i32, ()> {
     let soup = bad_soup!(
-        // We try to tell the macro how to make the soup with our salt...
+        // We try to make soup with our salt and recipe...
         88 + salt
-        // But the salt above isn't the same salt inside the recipe.  
+        // But the salt isn't the same inside the recipe.  
         // Rust Compiler fails with Hygiene Error:
         // `salt` not found in this scope.
     );
