@@ -12,13 +12,24 @@ macro_rules! add_88 {
     }
 }
 
+///  Macro to dump all tokens received as a literal string, e.g.
+///  `d!(a b c)` returns `"a b c"`
+macro_rules! d {
+  //  This rule matches zero or more tokens.
+  ($($token:tt)*) => {
+    //  For all matched tokens, convert into a string.
+    stringify!($($token)*)
+  };
+}
+
 macro_rules! parse {
-  // Parse the `key: value` entry from JSON. The entry should be followed by a trailing comma.
+  // Helper macro to parse a JSON `key: value` entry. The entry should be followed by a trailing comma.
+  // For example: When parsing the JSON code `{ "device": "010203" , (omitted) }`, the macro will be called like this:
   // ```
-  // parse! (@json @object context "device" "010203" , (...omitted...) )
+  // parse!( @json @object context ["device"] ("010203") , (omitted) )
   // ```
   (@$enc:ident @object $obj:ident [$($key:tt)+] ($value:expr) , $($rest:tt)*) => {
-    //  d!(adding key: $($key)+ value: $value to object: $obj);
+    d!(adding key: $($key)+ value: $value to object: $obj)
 
     //  Append to the "values" array e.g.
     //    {"key":"device", "value":"010203"},
@@ -131,7 +142,7 @@ fn main() {
         add_88!(1)
     );
     parse! (
-        @json @object context ["device"] ("010203") , omitted 
+        @json @object context ["device"] ("010203") , (omitted) 
     );
     println!("bad soup: {}",
         make_bad_soup().unwrap()
