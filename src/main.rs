@@ -1,6 +1,17 @@
 #![feature(proc_macro_hygiene)]
 #![feature(custom_attribute)]
 
+/// Given an expression `e`, add 88
+macro_rules! add_88 {
+    // If `e` is an expression like `123`, `i * 2`, `func(i)`...
+    ($e:expr) => {
+        {
+            // Add 88 to the expression and return it.
+            $e + 88
+        }
+    }
+}
+
 /// Let's make some soup based on a recipe...
 macro_rules! bad_soup {
     // The caller shall pass in a recipe for the soup, 
@@ -39,7 +50,8 @@ macro_rules! good_soup {
 fn make_bad_soup() -> Result<i32, ()> {
     let soup = bad_soup!(
         // We try to make soup with our salt and recipe...
-        88//// + salt
+        88
+        //// + salt
         // But the salt isn't the same inside the recipe.  
         // Rust Compiler fails with Hygiene Error:
         // `salt` not found in this scope.
@@ -65,6 +77,14 @@ mod tests {
     use super::*;  //  Import everything from outer scope.
 
     #[test]
+    fn test_add_88() { 
+        assert_eq!(
+            add_88!(1),
+            89
+        );
+    }
+
+    #[test]
     fn test_bad_soup() { 
         assert_eq!(
             make_bad_soup(),
@@ -83,6 +103,9 @@ mod tests {
 
 /// Let's start cooking!
 fn main() {
+    println!("test_add_88: {}",
+        add_88!(1)
+    );
     println!("bad soup: {}",
         make_bad_soup().unwrap()
     );
