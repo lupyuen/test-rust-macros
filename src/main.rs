@@ -30,12 +30,14 @@ macro_rules! good_soup {
     }
 }
 
-/// Makes an Unhygienic soup...
+/// Make an Unhygienic soup...
 fn make_bad_soup() -> Result<i32, ()> {
     let soup = bad_soup!(
         // We try to tell the macro how to make the soup with our salt...
         88 + salt
-        // But the salt above isn't the same salt inside the recipe.  Hygiene Error!
+        // But the salt above isn't the same salt inside the recipe.  
+        // Rust Compiler fails with Hygiene Error:
+        // `salt` not found in this scope.
     );
     Ok(soup)  //  Return the cooked soup.
 }
