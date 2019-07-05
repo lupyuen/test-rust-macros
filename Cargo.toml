@@ -1,0 +1,13 @@
+# See .cargo/config for more build settings
+[package]
+name = "test-rust-macros"
+version = "0.1.0"
+authors = ["lupyuen <luppy@appkaki.com>"]
+edition = "2018"
+
+[dependencies]
+# For testing safe-wrap macro
+# cty = "0.2.0"        # String utilities from cty library: https://crates.io/crates/cty
+# cstr_core = "0.1.2"  # String utilities from cstr_core library: https://crates.io/crates/cstr_core
+# memchr = { version = "2", default-features = false } # String search. Reduce the ROM size by disabling default features. See https://github.com/BurntSushi/rust-memchr
+# mynewt_macros = { path = "../../mynewt/stm32bluepill-mynewt-sensor/macros" } # Path to local Mynewt macros

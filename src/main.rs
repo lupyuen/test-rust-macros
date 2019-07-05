@@ -1,0 +1,251 @@
+#![feature(proc_macro_hygiene)]
+#![feature(custom_attribute)]
+
+/// Let's make some soup based on a recipe...
+macro_rules! bad_soup {
+    // The caller shall pass in a recipe for the soup, say `salt + 88`
+    ($recipe:expr) => {
+        {
+            // We use our own salt, say Table Salt.
+            let salt = 1;
+            // We try to use our salt, but the recipe actually requires 
+            // a different salt, like Sea Salt.
+            $recipe
+            // At this point, the Rust Compiler fails due to a Hygiene Error.
+        }
+    }
+}
+
+/// Let's make soup the right way...
+macro_rules! good_soup {
+    // The caller shall pass in 2 things: Which salt to use, and the recipe (like `salt + 88`)
+    ($salt:ident, $recipe:expr) => {
+        {
+            // We use whatever salt the caller passes in. Hence we use `$salt` instead of `salt`.
+            let $salt = 1;
+            // Then we use the same salt inside the recipe.
+            $recipe
+            // It works!
+        }
+    }
+}
+
+/// Let's start cooking!
+fn main() {
+    // This makes a bad soup...
+    let soup = bad_soup!(
+        // We try to tell the macro how to make the soup with our salt...
+        88 + salt
+        // But the salt above isn't the same salt inside the recipe.  Hygiene Error!
+    );
+
+    // This makes a good soup...
+    let soup = good_soup!(
+        // First we tell the macro which salt we're using...
+        salt, 
+        // Then we tell the macro what to do with that salt.
+        88 + salt
+        //  It works!
+    );
+}
+
+/// Testing safe_wrap
+#[cfg(test_safe_wrap_macro)]
+mod tests {
+    extern crate mynewt_macros;
+    use mynewt_macros::{out, strn, init_strn}; //  Import Mynewt macros from `macros` library
+
+    ///////////////////////////////////////////////////////////////////////////////
+    //  Testing
+
+    /// Represents a null-terminated byte string, suitable for passing to Mynewt APIs as `* const char`
+    pub struct Strn {
+        /// Byte string terminated with null
+        pub bytestr: &'static [u8]
+    }
+
+    impl Strn {
+        /// Create a new byte string. Fail if the last byte is not zero.
+        /// ```
+        /// Strn::new(b"network\0")
+        /// strn!("network")
+        /// ```
+        pub fn new(bs: &'static [u8]) -> Strn {
+            //  Last byte must be 0.
+            assert_eq!(bs.last(), Some(&0u8));
+            let res = Strn { bytestr: bs };
+            res
+        }
+
+        /// Return the byte string as a null-terminated `* const char` C-style string.
+        /// Fail if the last byte is not zero.
+        pub fn as_cstr(self) -> *const ::cty::c_char {
+            //  Last byte must be 0.
+            let bs: &'static [u8] = self.bytestr;
+            assert_eq!(bs.last(), Some(&0u8));
+            bs.as_ptr() as *const ::cty::c_char
+        }
+
+        /// Return the byte string.
+        /// Fail if the last byte is not zero.
+        pub fn as_bytestr(self) -> &'static [u8] {
+            //  Last byte must be 0.
+            let bs: &'static [u8] = self.bytestr;
+            assert_eq!(bs.last(), Some(&0u8));
+            &bs
+        }
+
+        /// Fail if the last byte is not zero.
+        pub fn validate(self) {
+            //  Last byte must be 0.
+            let bs = &self.bytestr;
+            assert_eq!(bs.last(), Some(&0u8));
+        }
+
+        /// Fail if the last byte is not zero.
+        pub fn validate_bytestr(bs: &'static [u8]) {
+            //  Last byte must be 0.
+            assert_eq!(bs.last(), Some(&0u8));
+        }
+    }
+
+    static _test_static: Strn = init_strn!("hello");
+
+    fn test_safe_wrap() -> MynewtResult<()> {
+        let _test_local = init_strn!("hello");
+
+        "-------------------------------------------------------------";
+        #[mynewt_macros::safe_wrap(attr)]
+        extern "C" {
+            pub fn os_task_init(
+                arg1: *mut os_task,
+                arg2: *const ::cty::c_char,
+                arg3: os_task_func_t,
+                arg4: *mut ::cty::c_void,
+                arg5: u8,
+                arg6: os_time_t,
+                arg7: *mut os_stack_t,
+                arg8: u16,
+            ) -> ::cty::c_int;
+        }
+        "-------------------------------------------------------------";
+
+        type Out<T> = &'static mut T;
+        type Ptr = *mut ::cty::c_void;
+        const NULL: Ptr = 0 as Ptr;
+
+        task_init(                      //  Create a new task and start it...
+            out!( NETWORK_TASK ),       //  Task object will be saved here
+            strn!( "network" ),         //  Name of task
+            Some( network_task_func ),  //  Function to execute when task starts
+            NULL,  //  Argument to be passed to above function
+            10,    //  Task priority: highest is 0, lowest is 255 (main task is 127)
+            os::OS_WAIT_FOREVER as u32,   //  Don't do sanity / watchdog checking
+            out!( NETWORK_TASK_STACK ),   //  Stack space for the task
+            NETWORK_TASK_STACK_SIZE       //  Size of the stack (in 4-byte units)
+        )?;                               //  `?` means check for error
+
+        pub fn OLDtask_init(
+            t: Out<os_task>,  //  TODO: *mut os_task
+            name: &Strn,      //  TODO: *const ::cty::c_char
+            func: os_task_func_t,
+            arg: Ptr,         //  TODO: *mut ::cty::c_void
+            prio: u8,
+            sanity_itvl: os_time_t,
+            stack_bottom: Out<[os_stack_t]>,  //  TODO: *mut os_stack_t
+            stack_size: usize,                //  TODO: u16
+        ) -> MynewtResult<()> {               //  TODO: ::cty::c_int;
+            extern "C" {
+                pub fn os_task_init(
+                    t: *mut os_task,
+                    name: *const ::cty::c_char,
+                    func: os_task_func_t,
+                    arg: *mut ::cty::c_void,
+                    prio: u8,
+                    sanity_itvl: os_time_t,
+                    stack_bottom: *mut os_stack_t,
+                    stack_size: u16,
+                ) -> ::cty::c_int;
+            }
+            Strn::validate_bytestr(name.bytestr);  //  TODO
+            unsafe {
+                let res = os_task_init(
+                    t,
+                    name.bytestr.as_ptr() as *const ::cty::c_char,  //  TODO
+                    func,
+                    arg,
+                    prio,
+                    sanity_itvl,
+                    stack_bottom.as_ptr() as *mut os_stack_t,  //  TODO
+                    stack_size as u16       //  TODO
+                );
+                if res == 0 { Ok(()) }
+                else { Err(MynewtError::from(res)) }
+            }
+        }
+
+            #[doc = " Initialize a task."]
+            #[doc = ""]
+            #[doc = " This function initializes the task structure pointed to by t,"]
+            #[doc = " clearing and setting it's stack pointer, provides sane defaults"]
+            #[doc = " and sets the task as ready to run, and inserts it into the operating"]
+            #[doc = " system scheduler."]
+            #[doc = ""]
+            #[doc = " - __`t`__: The task to initialize"]
+            #[doc = " - __`name`__: The name of the task to initialize"]
+            #[doc = " - __`func`__: The task function to call"]
+            #[doc = " - __`arg`__: The argument to pass to this task function"]
+            #[doc = " - __`prio`__: The priority at which to run this task"]
+            #[doc = " - __`sanity_itvl`__: The time at which this task should check in with the"]
+            #[doc = "                    sanity task.  OS_WAIT_FOREVER means never check in"]
+            #[doc = "                    here."]
+            #[doc = " - __`stack_bottom`__: A pointer to the bottom of a task's stack"]
+            #[doc = " - __`stack_size`__: The overall size of the task's stack."]
+            #[doc = ""]
+            #[doc = " Return: 0 on success, non-zero on failure."]
+            fn dummy() {}
+        Ok(())
+    }
+    }
+
+/// Test run!() macro
+#[cfg(test_run_macro)]
+mod tests {
+    // Note this useful idiom: importing names from outer (for mod tests) scope.
+    // use super::*;
+
+    /// Run a block of CBOR encoding calls with error checking.
+    fn test_run() {
+        "-------------------------------------------------------------";
+        run!({
+            cbor_encode_text_string(
+                encoder("Will be transformed", ""),
+                key_to_cstr(""),
+                cstr_len("")
+            );
+            encoder("Will NOT be transformed", "");
+            cbor_encode_int(
+                encoder("Will be transformed", ""),
+                0
+            );
+        });
+        "-------------------------------------------------------------";
+    }
+    fn cbor_encode_text_string(_: i8, _: i8, _: i8) -> i8 { 0 }
+    fn cbor_encode_int(_: i8, _: i8) -> i8 { 0 }
+    fn encoder(_: &str, _: &str) -> i8 { 0 }
+    fn key_to_cstr(_: &str) -> i8 { 0 }
+    fn cstr_len(_: &str) -> i8 { 0 }
+    struct Context;
+    impl Context {
+        fn check_error(self, _: i8) {}
+    }
+    static context: Context = Context {};
+
+    #[test]
+    fn test1() {
+        //assert_eq!(1, 1);
+        test_run();
+        test_safe_wrap();
+    }
+}

@@ -1,0 +1,14 @@
+# Rust build settings
+[build]
+
+# Rust compiler options
+rustflags = [
+    # Allow unstable (experimental) options like `--pretty`
+    "-Z", "unstable-options", 
+
+    # Expand macros
+    # "--pretty",  "expanded",
+
+    # Expand macros and show hygiene info
+    "--pretty",  "expanded,hygiene",
+]
