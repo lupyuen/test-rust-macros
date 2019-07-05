@@ -3,12 +3,9 @@
 
 # Rust compiler options
 rustflags = [
-    # Allow unstable (experimental) options like `--pretty`
-    # 
-
     # Expand macros
-    # "-Z", "unstable-options", "--pretty",  "expanded",
+    # "-Z", "unstable-options", "--pretty", "expanded",
 
     # Expand macros and show hygiene info
-    "-Z", "unstable-options", "--pretty",  "expanded,hygiene",
+    # "-Z", "unstable-options", "--pretty", "expanded,hygiene",
 ]
