@@ -30,22 +30,57 @@ macro_rules! good_soup {
     }
 }
 
-/// Let's start cooking!
-fn main() {
-    // This makes a bad soup...
+/// Makes an Unhygienic soup...
+fn make_bad_soup() -> Result<i32, ()> {
     let soup = bad_soup!(
         // We try to tell the macro how to make the soup with our salt...
         88 + salt
         // But the salt above isn't the same salt inside the recipe.  Hygiene Error!
     );
+    Ok(soup)  //  Return the cooked soup.
+}
 
-    // This makes a good soup...
+/// Make a Hygienic soup
+fn make_good_soup() -> Result<i32, ()> {
     let soup = good_soup!(
         // First we tell the macro which salt we're using...
         salt, 
         // Then we tell the macro what to do with that salt.
         88 + salt
         //  It works!
+    );
+    Ok(soup)  //  Return the cooked soup.
+}
+
+/// Let's test cooking!
+#[cfg(test)]
+mod tests {
+    use super::*;  //  Import everything from outer scope.
+
+    #[test]
+    fn test_bad_soup() { 
+        assert_eq!(
+            make_bad_soup(),
+            Ok(89)
+        );
+    }
+
+    #[test]
+    fn test_good_soup() { 
+        assert_eq!(
+            make_good_soup(),
+            Ok(89)
+        );
+    }
+}
+
+/// Let's start cooking!
+fn main() {
+    println!("bad soup: {}",
+        make_bad_soup().unwrap()
+    );
+    println!("good soup: {}",
+        make_good_soup().unwrap()
     );
 }
 
