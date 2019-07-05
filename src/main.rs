@@ -12,6 +12,23 @@ macro_rules! add_88 {
     }
 }
 
+macro_rules! parse {
+  // Parse the `key: value` entry from JSON. The entry should be followed by a trailing comma.
+  // ```
+  // parse! (@json @object context "device" "010203" , (...omitted...) )
+  // ```
+  (@$enc:ident @object $obj:ident [$($key:tt)+] ($value:expr) , $($rest:tt)*) => {
+    //  d!(adding key: $($key)+ value: $value to object: $obj);
+
+    //  Append to the "values" array e.g.
+    //    {"key":"device", "value":"010203"},
+    //  $crate::coap_item_str!(@$enc $obj, $($key)+, $value);
+
+    //  Continue expanding the rest of the JSON.
+    //  $crate::parse!(@$enc @object $obj () ($($rest)*) ($($rest)*));
+  };
+}
+
 /// Let's make some soup based on a recipe...
 macro_rules! bad_soup {
     // The caller shall pass in a recipe for the soup, 
@@ -85,6 +102,13 @@ mod tests {
     }
 
     #[test]
+    fn test_parse() { 
+        parse! (
+            @json @object context ["device"] ("010203") , omitted 
+        );
+    }
+
+    #[test]
     fn test_bad_soup() { 
         assert_eq!(
             make_bad_soup(),
@@ -105,6 +129,9 @@ mod tests {
 fn main() {
     println!("test_add_88: {}",
         add_88!(1)
+    );
+    parse! (
+        @json @object context ["device"] ("010203") , omitted 
     );
     println!("bad soup: {}",
         make_bad_soup().unwrap()
