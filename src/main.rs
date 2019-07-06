@@ -1,5 +1,6 @@
-#![feature(proc_macro_hygiene)]
-#![feature(custom_attribute)]
+#![feature(trace_macros)]        //  Enable tracing of macros
+#![feature(proc_macro_hygiene)]  //  Allow proc macros to be unhygienic
+#![feature(custom_attribute)]    //  Allow custom attributes like [safe_wrap]
 
 /// Given an expression `e`, add 88. If identifier `i` and statement block `blk` are specified, add `i` to the result and execute `blk`.
 macro_rules! add_88 {
@@ -168,9 +169,11 @@ mod tests {
 
 /// Let's start cooking!
 fn main() {
-    println!("test_add_88: {}",
-        add_88!(1)
-    );
+    trace_macros!(true);   //  Start tracing macros
+    let res = add_88!(1);
+    trace_macros!(false);  //  Stop tracing macros
+    println!("test_add_88: {}", res);
+
     parse! (
         @json @object context ["device"] ("010203") , (omitted) 
     );
