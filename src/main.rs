@@ -89,8 +89,7 @@ macro_rules! good_soup {
 fn make_bad_soup() -> Result<i32, ()> {
     let soup = bad_soup!(
         // We try to make soup with our salt and recipe...
-        88
-        //// + salt
+        88 + salt
         // But the salt isn't the same inside the recipe.  
         // Rust Compiler fails with Hygiene Error:
         // `salt` not found in this scope.
