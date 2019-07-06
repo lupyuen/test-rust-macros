@@ -1,7 +1,7 @@
 #![feature(proc_macro_hygiene)]
 #![feature(custom_attribute)]
 
-/// Given an expression `e`, add 88
+/// Given an expression `e`, add 88. If identifier `i` and statement block `blk` are specified, add `i` to the result and execute `blk`.
 macro_rules! add_88 {
     // If `e` is an expression like `123`, `i * 2`, `func(i)`...
     ($e:expr) => {
