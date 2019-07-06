@@ -9,6 +9,17 @@ macro_rules! add_88 {
             // Add 88 to the expression and return it.
             $e + 88
         }
+    };
+    // If `e` is an expression, `i` is an identifier like `myvar`, `blk` is a block of statements...
+    ($e:expr, $i:ident, $blk:block) => {
+        {
+            // Add 88 and the value of `i` to the expression.
+            let result = $e + $i + 88;
+            // Execute the code block.
+            $blk;
+            // Return the result.
+            result
+        }
     }
 }
 
@@ -104,12 +115,32 @@ fn make_good_soup() -> Result<i32, ()> {
 mod tests {
     use super::*;  //  Import everything from outer scope.
 
+    /// Test the simple add_88 macro with 1 parameter.
     #[test]
     fn test_add_88() { 
         assert_eq!(
+            89,
             add_88!(1),
-            89
         );
+    }
+
+    /// Test the extended add_88 macro with 3 parameters.
+    #[test]
+    fn test_add_88_extended() { 
+        let x = 2;
+        let y = 3;
+        assert_eq!(
+            99,
+            add_88!(
+                //  Expression
+                x * 4,
+                //  Identifier
+                y,
+                //  Code Block
+                { println!("The values of x and y are {} and {}", x, y); }
+            )
+        );
+        // Shows `The value of x and y are 2 and 3`. Result is 99.
     }
 
     #[test]
