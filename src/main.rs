@@ -186,7 +186,7 @@ fn main() {
 }
 
 /// Testing safe_wrap
-#[cfg(test_safe_wrap_macro)]
+////#[cfg(test_safe_wrap_macro)]
 mod tests {
     extern crate mynewt_macros;
     use mynewt_macros::{out, strn, init_strn}; //  Import Mynewt macros from `macros` library
@@ -251,7 +251,6 @@ mod tests {
         let _test_local = init_strn!("hello");
 
         "-------------------------------------------------------------";
-        /*
         #[mynewt_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Pull a single item off the event queue and call it's event"]
@@ -260,7 +259,6 @@ mod tests {
             #[doc = " - __`evq`__: The event queue to pull the item off."]
             pub fn os_eventq_run(evq: *mut os_eventq);
         }
-        */
         "-------------------------------------------------------------";
         /*
         #[mynewt_macros::safe_wrap(attr)] ////
@@ -272,74 +270,76 @@ mod tests {
         }
         */
         "-------------------------------------------------------------";
-        #[mynewt_macros::safe_wrap(attr)]
-        extern "C" {
-            pub fn os_task_init(
-                arg1: *mut os_task,
-                arg2: *const ::cty::c_char,
-                arg3: os_task_func_t,
-                arg4: *mut ::cty::c_void,
-                arg5: u8,
-                arg6: os_time_t,
-                arg7: *mut os_stack_t,
-                arg8: u16,
-            ) -> ::cty::c_int;
-        }
-        "-------------------------------------------------------------";
-
-        type Out<T> = &'static mut T;
-        type Ptr = *mut ::cty::c_void;
-        const NULL: Ptr = 0 as Ptr;
-
-        task_init(                      //  Create a new task and start it...
-            out!( NETWORK_TASK ),       //  Task object will be saved here
-            strn!( "network" ),         //  Name of task
-            Some( network_task_func ),  //  Function to execute when task starts
-            NULL,  //  Argument to be passed to above function
-            10,    //  Task priority: highest is 0, lowest is 255 (main task is 127)
-            os::OS_WAIT_FOREVER as u32,   //  Don't do sanity / watchdog checking
-            out!( NETWORK_TASK_STACK ),   //  Stack space for the task
-            NETWORK_TASK_STACK_SIZE       //  Size of the stack (in 4-byte units)
-        )?;                               //  `?` means check for error
-
-        pub fn OLDtask_init(
-            t: Out<os_task>,  //  TODO: *mut os_task
-            name: &Strn,      //  TODO: *const ::cty::c_char
-            func: os_task_func_t,
-            arg: Ptr,         //  TODO: *mut ::cty::c_void
-            prio: u8,
-            sanity_itvl: os_time_t,
-            stack_bottom: Out<[os_stack_t]>,  //  TODO: *mut os_stack_t
-            stack_size: usize,                //  TODO: u16
-        ) -> MynewtResult<()> {               //  TODO: ::cty::c_int;
+        /*
+            #[mynewt_macros::safe_wrap(attr)]
             extern "C" {
                 pub fn os_task_init(
-                    t: *mut os_task,
-                    name: *const ::cty::c_char,
-                    func: os_task_func_t,
-                    arg: *mut ::cty::c_void,
-                    prio: u8,
-                    sanity_itvl: os_time_t,
-                    stack_bottom: *mut os_stack_t,
-                    stack_size: u16,
+                    arg1: *mut os_task,
+                    arg2: *const ::cty::c_char,
+                    arg3: os_task_func_t,
+                    arg4: *mut ::cty::c_void,
+                    arg5: u8,
+                    arg6: os_time_t,
+                    arg7: *mut os_stack_t,
+                    arg8: u16,
                 ) -> ::cty::c_int;
             }
-            Strn::validate_bytestr(name.bytestr);  //  TODO
-            unsafe {
-                let res = os_task_init(
-                    t,
-                    name.bytestr.as_ptr() as *const ::cty::c_char,  //  TODO
-                    func,
-                    arg,
-                    prio,
-                    sanity_itvl,
-                    stack_bottom.as_ptr() as *mut os_stack_t,  //  TODO
-                    stack_size as u16       //  TODO
-                );
-                if res == 0 { Ok(()) }
-                else { Err(MynewtError::from(res)) }
+        */
+        "-------------------------------------------------------------";
+        /*
+            type Out<T> = &'static mut T;
+            type Ptr = *mut ::cty::c_void;
+            const NULL: Ptr = 0 as Ptr;
+
+            task_init(                      //  Create a new task and start it...
+                out!( NETWORK_TASK ),       //  Task object will be saved here
+                strn!( "network" ),         //  Name of task
+                Some( network_task_func ),  //  Function to execute when task starts
+                NULL,  //  Argument to be passed to above function
+                10,    //  Task priority: highest is 0, lowest is 255 (main task is 127)
+                os::OS_WAIT_FOREVER as u32,   //  Don't do sanity / watchdog checking
+                out!( NETWORK_TASK_STACK ),   //  Stack space for the task
+                NETWORK_TASK_STACK_SIZE       //  Size of the stack (in 4-byte units)
+            )?;                               //  `?` means check for error
+
+            pub fn OLDtask_init(
+                t: Out<os_task>,  //  TODO: *mut os_task
+                name: &Strn,      //  TODO: *const ::cty::c_char
+                func: os_task_func_t,
+                arg: Ptr,         //  TODO: *mut ::cty::c_void
+                prio: u8,
+                sanity_itvl: os_time_t,
+                stack_bottom: Out<[os_stack_t]>,  //  TODO: *mut os_stack_t
+                stack_size: usize,                //  TODO: u16
+            ) -> MynewtResult<()> {               //  TODO: ::cty::c_int;
+                extern "C" {
+                    pub fn os_task_init(
+                        t: *mut os_task,
+                        name: *const ::cty::c_char,
+                        func: os_task_func_t,
+                        arg: *mut ::cty::c_void,
+                        prio: u8,
+                        sanity_itvl: os_time_t,
+                        stack_bottom: *mut os_stack_t,
+                        stack_size: u16,
+                    ) -> ::cty::c_int;
+                }
+                Strn::validate_bytestr(name.bytestr);  //  TODO
+                unsafe {
+                    let res = os_task_init(
+                        t,
+                        name.bytestr.as_ptr() as *const ::cty::c_char,  //  TODO
+                        func,
+                        arg,
+                        prio,
+                        sanity_itvl,
+                        stack_bottom.as_ptr() as *mut os_stack_t,  //  TODO
+                        stack_size as u16       //  TODO
+                    );
+                    if res == 0 { Ok(()) }
+                    else { Err(MynewtError::from(res)) }
+                }
             }
-        }
 
             #[doc = " Initialize a task."]
             #[doc = ""]
@@ -361,6 +361,8 @@ mod tests {
             #[doc = ""]
             #[doc = " Return: 0 on success, non-zero on failure."]
             fn dummy() {}
+        */
+        "-------------------------------------------------------------";
         Ok(())
     }
     }
