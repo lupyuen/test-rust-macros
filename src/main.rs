@@ -251,6 +251,27 @@ mod tests {
         let _test_local = init_strn!("hello");
 
         "-------------------------------------------------------------";
+        /*
+        #[mynewt_macros::safe_wrap(attr)] ////
+        extern "C" {
+            #[doc = " Pull a single item off the event queue and call it's event"]
+            #[doc = " callback."]
+            #[doc = ""]
+            #[doc = " - __`evq`__: The event queue to pull the item off."]
+            pub fn os_eventq_run(evq: *mut os_eventq);
+        }
+        */
+        "-------------------------------------------------------------";
+        /*
+        #[mynewt_macros::safe_wrap(attr)] ////
+        extern "C" {
+            #[doc = " Retrieves the default event queue processed by OS main task."]
+            #[doc = ""]
+            #[doc = " Return:                      The default event queue."]
+            pub fn os_eventq_dflt_get() -> *mut os_eventq;
+        }
+        */
+        "-------------------------------------------------------------";
         #[mynewt_macros::safe_wrap(attr)]
         extern "C" {
             pub fn os_task_init(
