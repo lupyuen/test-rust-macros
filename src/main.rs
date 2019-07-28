@@ -5,6 +5,8 @@
 /// Testing safe_wrap
 #[cfg(feature = "test_safe_wrap")]
 mod test_safe_wrap {
+    use cty::*;               //  Import C types from cty library: https://crates.io/crates/cty
+
     extern crate macros;
     use macros::{init_strn}; //  Import Mynewt macros from `macros` library
 
@@ -416,4 +418,7 @@ mod test_macro_hygiene {
             make_good_soup().unwrap()
         );
     }
+}
+
+fn main() {    
 }

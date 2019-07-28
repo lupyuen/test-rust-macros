@@ -7,7 +7,7 @@ edition = "2018"
 
 [dependencies]
 # For testing safe-wrap macro
-# cty = "0.2.0"        # String utilities from cty library: https://crates.io/crates/cty
+cty = "0.2.0"        # String utilities from cty library: https://crates.io/crates/cty
 # cstr_core = "0.1.2"  # String utilities from cstr_core library: https://crates.io/crates/cstr_core
 # memchr = { version = "2", default-features = false } # String search. Reduce the ROM size by disabling default features. See https://github.com/BurntSushi/rust-memchr
 macros = { path = "../stm32bluepill-mynewt-sensor/rust/macros" } # Path to local Mynewt macros
