@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/Luppy/mynewt/stm32bluepill-mynewt-sensor/rust/macros"
+		},
+		{
+			"path": "/Users/Luppy/mynewt/stm32bluepill-mynewt-sensor/rust/mynewt"
 		}
 	],
 	"settings": {}

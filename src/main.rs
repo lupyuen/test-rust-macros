@@ -13,7 +13,32 @@ mod test_safe_wrap {
     extern crate mynewt;
     use mynewt::{
         result::*,            //  Import Mynewt result and error types
-        kernel::os::os_eventq,
+        Ptr, Out,
+        //coap, d, fill_zero,   //  Import Mynewt macros
+        kernel::os::{  
+            //self,             //  Import Mynewt OS functions
+            os_eventq,        //  Import Mynewt OS types
+            os_task,          
+            os_stack_t,
+            os_task_func_t,
+            os_time_t,
+        },
+        encoding::{
+            coap_context::{   //  Import Mynewt JSON Encoder Context
+                //self,
+                //COAP_CONTEXT,
+                //ToBytesOptionalNull,
+            },
+            //tinycbor,         //  Import Mynewt TinyCBOR API
+        },
+        libs::{
+            //mynewt_rust,      //  Import Mynewt Rust Helper API
+            //sensor_network,   //  Import Mynewt Sensor Network API
+            sensor_coap::{    //  Import Mynewt Sensor CoAP API
+                //self,
+                //sensor_value,
+            },
+        },
     };
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -30,31 +55,27 @@ mod test_safe_wrap {
             pub fn os_eventq_run(evq: *mut os_eventq);
         }
         "-------------------------------------------------------------";
-        /*
-            #[mynewt_macros::safe_wrap(attr)] ////
-            extern "C" {
-                #[doc = " Retrieves the default event queue processed by OS main task."]
-                #[doc = ""]
-                #[doc = " Return:                      The default event queue."]
-                pub fn os_eventq_dflt_get() -> *mut os_eventq;
-            }
-        */
+        #[macros::safe_wrap(attr)] ////
+        extern "C" {
+            #[doc = " Retrieves the default event queue processed by OS main task."]
+            #[doc = ""]
+            #[doc = " Return:                      The default event queue."]
+            pub fn os_eventq_dflt_get() -> *mut os_eventq;
+        }
         "-------------------------------------------------------------";
-        /*
-            #[mynewt_macros::safe_wrap(attr)]
-            extern "C" {
-                pub fn os_task_init(
-                    arg1: *mut os_task,
-                    arg2: *const ::cty::c_char,
-                    arg3: os_task_func_t,
-                    arg4: *mut ::cty::c_void,
-                    arg5: u8,
-                    arg6: os_time_t,
-                    arg7: *mut os_stack_t,
-                    arg8: u16,
-                ) -> ::cty::c_int;
-            }
-        */
+        #[macros::safe_wrap(attr)] ////
+        extern "C" {
+            pub fn os_task_init(
+                arg1: *mut os_task,
+                arg2: *const ::cty::c_char,
+                arg3: os_task_func_t,
+                arg4: *mut ::cty::c_void,
+                arg5: u8,
+                arg6: os_time_t,
+                arg7: *mut os_stack_t,
+                arg8: u16,
+            ) -> ::cty::c_int;
+        }
         "-------------------------------------------------------------";
         /*
             type Out<T> = &'static mut T;
