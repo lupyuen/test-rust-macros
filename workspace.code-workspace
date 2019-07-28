@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "/Users/Luppy/mynewt/stm32bluepill-mynewt-sensor/rust/mynewt"
+		},
+		{
+			"path": "/Users/Luppy/mynewt/stm32bluepill-mynewt-sensor/apps/my_sensor_app"
 		}
 	],
 	"settings": {}

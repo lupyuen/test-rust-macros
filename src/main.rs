@@ -23,6 +23,9 @@ mod test_safe_wrap {
             os_task_func_t,
             os_time_t,
         },
+        hw::sensor::{
+            sensor,
+        },
         encoding::{
             coap_context::{   //  Import Mynewt JSON Encoder Context
                 //self,
@@ -45,8 +48,30 @@ mod test_safe_wrap {
     //  Testing
 
     fn test_safe_wrap() -> MynewtResult<()> {
-        "-------------------------------------------------------------";
+        //#[macros::safe_wrap(attr)] ////
+        extern "C" {
+            #[doc = " Set the sensor poll rate"]
+            #[doc = ""]
+            #[doc = " - __`devname`__: Name of the sensor"]
+            #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
+            pub fn sensor_set_poll_rate_ms(devname: *const ::cty::c_char, poll_rate: u32) -> ::cty::c_int;
+        }
         #[macros::safe_wrap(attr)] ////
+        extern "C" {
+            #[doc = " Search the sensor list and find the next sensor that corresponds"]
+            #[doc = " to a given device name."]
+            #[doc = ""]
+            #[doc = " - __`devname`__: The device name to search for"]
+            #[doc = " - __`sensor`__: The previous sensor found with this device name"]
+            #[doc = ""]
+            #[doc = " Return: 0 on success, non-zero error code on failure"]
+            pub fn sensor_mgr_find_next_bydevname(
+                devname: *const ::cty::c_char,
+                prev_cursor: *mut sensor,
+            ) -> *mut sensor;
+        }
+        "-------------------------------------------------------------";
+        //#[macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Pull a single item off the event queue and call it's event"]
             #[doc = " callback."]
@@ -55,7 +80,7 @@ mod test_safe_wrap {
             pub fn os_eventq_run(evq: *mut os_eventq);
         }
         "-------------------------------------------------------------";
-        #[macros::safe_wrap(attr)] ////
+        //#[macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Retrieves the default event queue processed by OS main task."]
             #[doc = ""]
@@ -63,7 +88,7 @@ mod test_safe_wrap {
             pub fn os_eventq_dflt_get() -> *mut os_eventq;
         }
         "-------------------------------------------------------------";
-        #[macros::safe_wrap(attr)] ////
+        //#[macros::safe_wrap(attr)] ////
         extern "C" {
             pub fn os_task_init(
                 arg1: *mut os_task,

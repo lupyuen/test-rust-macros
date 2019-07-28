@@ -1,6 +1,4 @@
-return_type_str: ""
-return_type_str: "* mut os_eventq"
-return_type_str: ":: cty :: c_int"
+return_type_str: "* mut sensor"
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
@@ -32,7 +30,7 @@ mod test_safe_wrap {
                               //self,             //  Import Mynewt OS functions
                               os_eventq,  //  Import Mynewt OS types
                               os_task, os_stack_t, os_task_func_t, os_time_t},
-                 encoding::{coap_context::{}},
+                 hw::sensor::{sensor}, encoding::{coap_context::{}},
                   //  Import Mynewt JSON Encoder Context
                   //self,
                   //COAP_CONTEXT,
@@ -52,73 +50,76 @@ mod test_safe_wrap {
     //  Testing
 
     fn test_safe_wrap() -> MynewtResult<()> {
-        "-------------------------------------------------------------"; ////
-        pub fn eventq_run(evq: *mut os_eventq) -> MynewtResult<()> {
+        //#[macros::safe_wrap(attr)] ////
+        extern "C" {
+            #[doc = " Set the sensor poll rate"]
+            #[doc = ""]
+            #[doc = " - __`devname`__: Name of the sensor"]
+            #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
+            pub fn sensor_set_poll_rate_ms(devname: *const ::cty::c_char,
+                                           poll_rate: u32) -> ::cty::c_int;
+        } ////
+        pub fn mgr_find_next_bydevname(devname: &Strn,
+                                       prev_cursor: *mut sensor)
+         -> MynewtResult<*mut sensor> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
             extern "C" {
                 #[doc =
-                      " Pull a single item off the event queue and call it's event"]
-                #[doc = " callback."]
+                      " Search the sensor list and find the next sensor that corresponds"]
+                #[doc = " to a given device name."]
                 #[doc = ""]
-                #[doc = " - __`evq`__: The event queue to pull the item off."]
-                pub fn os_eventq_run(evq: *mut os_eventq);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_code = os_task_init(`----------";
-                os_eventq_run(evq as *mut os_eventq);
-                Ok(())
-            }
-        }
-        "-------------------------------------------------------------"; ////
-        pub fn eventq_dflt_get() -> MynewtResult<*mut os_eventq> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
+                #[doc = " - __`devname`__: The device name to search for"]
                 #[doc =
-                      " Retrieves the default event queue processed by OS main task."]
+                      " - __`sensor`__: The previous sensor found with this device name"]
                 #[doc = ""]
                 #[doc =
-                      " Return:                      The default event queue."]
-                pub fn os_eventq_dflt_get() -> *mut os_eventq;
+                      " Return: 0 on success, non-zero error code on failure"]
+                pub fn sensor_mgr_find_next_bydevname(devname:
+                                                          *const ::cty::c_char,
+                                                      prev_cursor:
+                                                          *mut sensor)
+                 -> *mut sensor;
             }
             "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_code = os_task_init(`----------";
-                let result_value = os_eventq_dflt_get();
-                Ok(result_value)
-            }
-        }
-        "-------------------------------------------------------------"; ////
-        pub fn task_init(arg1: Out<os_task>, arg2: &Strn,
-                         arg3: os_task_func_t, arg4: Ptr, arg5: u8,
-                         arg6: os_time_t, arg7: Out<[os_stack_t]>, arg8: u16)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn os_task_init(arg1: *mut os_task,
-                                    arg2: *const ::cty::c_char,
-                                    arg3: os_task_func_t,
-                                    arg4: *mut ::cty::c_void, arg5: u8,
-                                    arg6: os_time_t, arg7: *mut os_stack_t,
-                                    arg8: u16) -> ::cty::c_int;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            Strn::validate_bytestr(arg2.bytestr);
+            Strn::validate_bytestr(devname.bytestr);
             unsafe {
                 "----------Insert Call: `let result_code = os_task_init(`----------";
                 let result_value =
-                    os_task_init(arg1 as *mut os_task,
-                                 arg2.bytestr.as_ptr() as
-                                     *const ::cty::c_char,
-                                 arg3 as os_task_func_t,
-                                 arg4 as *mut ::cty::c_void, arg5 as u8,
-                                 arg6 as os_time_t,
-                                 arg7.as_ptr() as *mut os_stack_t,
-                                 arg8 as u16);
-                if result_value == 0 {
-                    Ok(())
-                } else { Err(MynewtError::from(result_value)) }
+                    sensor_mgr_find_next_bydevname(devname.bytestr.as_ptr() as
+                                                       *const ::cty::c_char,
+                                                   prev_cursor as
+                                                       *mut sensor);
+                Ok(result_value)
             }
+        }
+        "-------------------------------------------------------------";
+        //#[macros::safe_wrap(attr)] ////
+        extern "C" {
+            #[doc =
+                  " Pull a single item off the event queue and call it's event"]
+            #[doc = " callback."]
+            #[doc = ""]
+            #[doc = " - __`evq`__: The event queue to pull the item off."]
+            pub fn os_eventq_run(evq: *mut os_eventq);
+        }
+        "-------------------------------------------------------------";
+        //#[macros::safe_wrap(attr)] ////
+        extern "C" {
+            #[doc =
+                  " Retrieves the default event queue processed by OS main task."]
+            #[doc = ""]
+            #[doc = " Return:                      The default event queue."]
+            pub fn os_eventq_dflt_get() -> *mut os_eventq;
+        }
+        "-------------------------------------------------------------";
+        //#[macros::safe_wrap(attr)] ////
+        extern "C" {
+            pub fn os_task_init(arg1: *mut os_task,
+                                arg2: *const ::cty::c_char,
+                                arg3: os_task_func_t,
+                                arg4: *mut ::cty::c_void, arg5: u8,
+                                arg6: os_time_t, arg7: *mut os_stack_t,
+                                arg8: u16) -> ::cty::c_int;
         }
         "-------------------------------------------------------------";
         /*
@@ -318,7 +319,7 @@ mod test_safe_wrap {
                                                                                                                             ::std::fmt::Debug::fmt)],
                                                                                            }),
                                                            &("src/main.rs",
-                                                             175u32, 13u32))
+                                                             200u32, 13u32))
                             }
                         }
                     }
@@ -351,7 +352,7 @@ mod test_safe_wrap {
                                                                                                                             ::std::fmt::Debug::fmt)],
                                                                                            }),
                                                            &("src/main.rs",
-                                                             185u32, 13u32))
+                                                             210u32, 13u32))
                             }
                         }
                     }
@@ -383,7 +384,7 @@ mod test_safe_wrap {
                                                                                                                             ::std::fmt::Debug::fmt)],
                                                                                            }),
                                                            &("src/main.rs",
-                                                             194u32, 13u32))
+                                                             219u32, 13u32))
                             }
                         }
                     }
@@ -414,7 +415,7 @@ mod test_safe_wrap {
                                                                                                                             ::std::fmt::Debug::fmt)],
                                                                                            }),
                                                            &("src/main.rs",
-                                                             202u32, 13u32))
+                                                             227u32, 13u32))
                             }
                         }
                     }
@@ -443,7 +444,7 @@ mod test_safe_wrap {
                                                                                                                             ::std::fmt::Debug::fmt)],
                                                                                            }),
                                                            &("src/main.rs",
-                                                             208u32, 13u32))
+                                                             233u32, 13u32))
                             }
                         }
                     }
