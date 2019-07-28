@@ -24,8 +24,6 @@ mod test_safe_wrap {
 
     extern crate mynewt;
     use mynewt::{result::*,  //  Import Mynewt result and error types
-                 Ptr, Out,
-                 //coap, d, fill_zero,   //  Import Mynewt macros
                  kernel::os::{
                               //self,             //  Import Mynewt OS functions
                               os_eventq,  //  Import Mynewt OS types
@@ -40,11 +38,13 @@ mod test_safe_wrap {
                  libs::{
                         //mynewt_rust,      //  Import Mynewt Rust Helper API
                         //sensor_network,   //  Import Mynewt Sensor Network API
-                        sensor_coap::{}}};
-    //  Import Mynewt Sensor CoAP API
-    //self,
-    //sensor_value,
+                        sensor_coap::{}},
+                  //  Import Mynewt Sensor CoAP API
+                  //self,
+                  //sensor_value,
 
+                 //coap, d, fill_zero,   //  Import Mynewt macros
+                 NULL, Out, Ptr, Strn};
 
     ///////////////////////////////////////////////////////////////////////////////
     //  Testing
@@ -203,255 +203,79 @@ mod test_safe_wrap {
         Ok(())
     }
 
-    /// Represents a null-terminated byte string, suitable for passing to Mynewt APIs as `* const char`
-    pub struct Strn {
-        /// Byte string terminated with null
-        pub bytestr: &'static [u8],
-    }
-
-    impl Strn {
-        /// Create a new byte string. Fail if the last byte is not zero.
-        /// ```
-        /// Strn::new(b"network\0")
-        /// strn!("network")
-        /// ```
-        pub fn new(bs: &'static [u8]) -> Strn {
-            //  Last byte must be 0.
-
-            //  Last byte must be 0.
-
-            //  Last byte must be 0.
-
-            //  Last byte must be 0.
-
-            //  Last byte must be 0.
-
-
-            // Note this useful idiom: importing names from outer (for mod tests) scope.
-            // use super::*;
-
-
-            //assert_eq!(1, 1);
-
-            // If `e` is an expression like `123`, `i * 2`, `func(i)`...
-            // Add 88 to the expression and return it.
-            // If `e` is an expression, `i` is an identifier like `myvar`, `blk` is a block of statements...
-            // Add 88 and the value of `i` to the expression.
-            // Execute the code block.
-            // Return the result.
-
-            //  This rule matches zero or more tokens.
-            //  For all matched tokens, convert into a string.
-
-            // Helper macro to parse a JSON `key: value` entry. The entry should be followed by a trailing comma.
-            // For example: When parsing the JSON code `{ "device": "010203" , (omitted) }`, the macro will be called like this:
-            // ```
-            // parse!( @json @object context ["device"] ("010203") , (omitted) )
-            // ```
-
-            //  Append to the "values" array e.g.
-            //    {"key":"device", "value":"010203"},
-            //  $crate::coap_item_str!(@$enc $obj, $($key)+, $value);
-
-            //  Continue expanding the rest of the JSON.
-            //  $crate::parse!(@$enc @object $obj () ($($rest)*) ($($rest)*));
-
-            // The caller shall pass in a recipe for the soup, 
-            // say `salt + 88`
-            // We use our own salt, say Table Salt.
-            // We try to use our salt, but the recipe 
-            // actually requires a different salt, 
-            // like Sea Salt.
-            // Rust Compiler fails with a Hygiene Error.
-
-            // The caller shall pass in 2 things: 
-            // Which salt to use
-            // and the recipe (like `salt + 88`)
-            // We use whatever salt the caller passes in. 
-            // Hence we use `$salt` instead of `salt`.
-            // Then we use the same salt inside the recipe.
-            // It works!
-
-            // We try to make soup with our salt and recipe...
-            // If you're testing other macros, comment out the `+ salt` part or the code will never compile
-            // But the salt isn't the same inside the recipe.  
-            // Rust Compiler fails with Hygiene Error:
-            // `salt` not found in this scope.
-             //  Return the cooked soup.
-
-            // First we tell the macro which salt we're using...
-            // Then we tell the macro what to do with that salt.
-            //  It works!
-            //  Return the cooked soup.
-
-            //  Import everything from outer scope.
-
-
-            //  Expression
-            //  Identifier
-            //  Code Block
-            // Shows `The value of x and y are 2 and 3`. Result is 99.
-
-
-
-
-            //  Start tracing macros
-            //  Stop tracing macros
-
-
-            {
-                match (&bs.last(), &Some(&0u8)) {
-                    (left_val, right_val) => {
-                        if !(*left_val == *right_val) {
-                            {
-                                ::std::rt::begin_panic_fmt(&::std::fmt::Arguments::new_v1(&["assertion failed: `(left == right)`\n  left: `",
-                                                                                            "`,\n right: `",
-                                                                                            "`"],
-                                                                                          &match (&&*left_val,
-                                                                                                  &&*right_val)
-                                                                                               {
-                                                                                               (arg0,
-                                                                                                arg1)
-                                                                                               =>
-                                                                                               [::std::fmt::ArgumentV1::new(arg0,
-                                                                                                                            ::std::fmt::Debug::fmt),
-                                                                                                ::std::fmt::ArgumentV1::new(arg1,
-                                                                                                                            ::std::fmt::Debug::fmt)],
-                                                                                           }),
-                                                           &("src/main.rs",
-                                                             200u32, 13u32))
-                            }
-                        }
-                    }
-                }
-            };
-            let res = Strn{bytestr: bs,};
-            res
-        }
-        /// Return the byte string as a null-terminated `* const char` C-style string.
-        /// Fail if the last byte is not zero.
-        pub fn as_cstr(self) -> *const ::cty::c_char {
-            let bs: &'static [u8] = self.bytestr;
-            {
-                match (&bs.last(), &Some(&0u8)) {
-                    (left_val, right_val) => {
-                        if !(*left_val == *right_val) {
-                            {
-                                ::std::rt::begin_panic_fmt(&::std::fmt::Arguments::new_v1(&["assertion failed: `(left == right)`\n  left: `",
-                                                                                            "`,\n right: `",
-                                                                                            "`"],
-                                                                                          &match (&&*left_val,
-                                                                                                  &&*right_val)
-                                                                                               {
-                                                                                               (arg0,
-                                                                                                arg1)
-                                                                                               =>
-                                                                                               [::std::fmt::ArgumentV1::new(arg0,
-                                                                                                                            ::std::fmt::Debug::fmt),
-                                                                                                ::std::fmt::ArgumentV1::new(arg1,
-                                                                                                                            ::std::fmt::Debug::fmt)],
-                                                                                           }),
-                                                           &("src/main.rs",
-                                                             210u32, 13u32))
-                            }
-                        }
-                    }
-                }
-            };
-            bs.as_ptr() as *const ::cty::c_char
-        }
-        /// Return the byte string.
-        /// Fail if the last byte is not zero.
-        pub fn as_bytestr(self) -> &'static [u8] {
-            let bs: &'static [u8] = self.bytestr;
-            {
-                match (&bs.last(), &Some(&0u8)) {
-                    (left_val, right_val) => {
-                        if !(*left_val == *right_val) {
-                            {
-                                ::std::rt::begin_panic_fmt(&::std::fmt::Arguments::new_v1(&["assertion failed: `(left == right)`\n  left: `",
-                                                                                            "`,\n right: `",
-                                                                                            "`"],
-                                                                                          &match (&&*left_val,
-                                                                                                  &&*right_val)
-                                                                                               {
-                                                                                               (arg0,
-                                                                                                arg1)
-                                                                                               =>
-                                                                                               [::std::fmt::ArgumentV1::new(arg0,
-                                                                                                                            ::std::fmt::Debug::fmt),
-                                                                                                ::std::fmt::ArgumentV1::new(arg1,
-                                                                                                                            ::std::fmt::Debug::fmt)],
-                                                                                           }),
-                                                           &("src/main.rs",
-                                                             219u32, 13u32))
-                            }
-                        }
-                    }
-                }
-            };
-            &bs
-        }
-        /// Fail if the last byte is not zero.
-        pub fn validate(self) {
-            let bs = &self.bytestr;
-            {
-                match (&bs.last(), &Some(&0u8)) {
-                    (left_val, right_val) => {
-                        if !(*left_val == *right_val) {
-                            {
-                                ::std::rt::begin_panic_fmt(&::std::fmt::Arguments::new_v1(&["assertion failed: `(left == right)`\n  left: `",
-                                                                                            "`,\n right: `",
-                                                                                            "`"],
-                                                                                          &match (&&*left_val,
-                                                                                                  &&*right_val)
-                                                                                               {
-                                                                                               (arg0,
-                                                                                                arg1)
-                                                                                               =>
-                                                                                               [::std::fmt::ArgumentV1::new(arg0,
-                                                                                                                            ::std::fmt::Debug::fmt),
-                                                                                                ::std::fmt::ArgumentV1::new(arg1,
-                                                                                                                            ::std::fmt::Debug::fmt)],
-                                                                                           }),
-                                                           &("src/main.rs",
-                                                             227u32, 13u32))
-                            }
-                        }
-                    }
-                }
-            };
-        }
-        /// Fail if the last byte is not zero.
-        pub fn validate_bytestr(bs: &'static [u8]) {
-            {
-                match (&bs.last(), &Some(&0u8)) {
-                    (left_val, right_val) => {
-                        if !(*left_val == *right_val) {
-                            {
-                                ::std::rt::begin_panic_fmt(&::std::fmt::Arguments::new_v1(&["assertion failed: `(left == right)`\n  left: `",
-                                                                                            "`,\n right: `",
-                                                                                            "`"],
-                                                                                          &match (&&*left_val,
-                                                                                                  &&*right_val)
-                                                                                               {
-                                                                                               (arg0,
-                                                                                                arg1)
-                                                                                               =>
-                                                                                               [::std::fmt::ArgumentV1::new(arg0,
-                                                                                                                            ::std::fmt::Debug::fmt),
-                                                                                                ::std::fmt::ArgumentV1::new(arg1,
-                                                                                                                            ::std::fmt::Debug::fmt)],
-                                                                                           }),
-                                                           &("src/main.rs",
-                                                             233u32, 13u32))
-                            }
-                        }
-                    }
-                }
-            };
-        }
-    }
     static _test_static: Strn = Strn{bytestr: b"hello\0",};
 }
+
+// Note this useful idiom: importing names from outer (for mod tests) scope.
+// use super::*;
+
+
+//assert_eq!(1, 1);
+
+// If `e` is an expression like `123`, `i * 2`, `func(i)`...
+// Add 88 to the expression and return it.
+// If `e` is an expression, `i` is an identifier like `myvar`, `blk` is a block of statements...
+// Add 88 and the value of `i` to the expression.
+// Execute the code block.
+// Return the result.
+
+//  This rule matches zero or more tokens.
+//  For all matched tokens, convert into a string.
+
+// Helper macro to parse a JSON `key: value` entry. The entry should be followed by a trailing comma.
+// For example: When parsing the JSON code `{ "device": "010203" , (omitted) }`, the macro will be called like this:
+// ```
+// parse!( @json @object context ["device"] ("010203") , (omitted) )
+// ```
+
+//  Append to the "values" array e.g.
+//    {"key":"device", "value":"010203"},
+//  $crate::coap_item_str!(@$enc $obj, $($key)+, $value);
+
+//  Continue expanding the rest of the JSON.
+//  $crate::parse!(@$enc @object $obj () ($($rest)*) ($($rest)*));
+
+// The caller shall pass in a recipe for the soup, 
+// say `salt + 88`
+// We use our own salt, say Table Salt.
+// We try to use our salt, but the recipe 
+// actually requires a different salt, 
+// like Sea Salt.
+// Rust Compiler fails with a Hygiene Error.
+
+// The caller shall pass in 2 things: 
+// Which salt to use
+// and the recipe (like `salt + 88`)
+// We use whatever salt the caller passes in. 
+// Hence we use `$salt` instead of `salt`.
+// Then we use the same salt inside the recipe.
+// It works!
+
+// We try to make soup with our salt and recipe...
+// If you're testing other macros, comment out the `+ salt` part or the code will never compile
+// But the salt isn't the same inside the recipe.  
+// Rust Compiler fails with Hygiene Error:
+// `salt` not found in this scope.
+ //  Return the cooked soup.
+
+// First we tell the macro which salt we're using...
+// Then we tell the macro what to do with that salt.
+//  It works!
+//  Return the cooked soup.
+
+//  Import everything from outer scope.
+
+
+//  Expression
+//  Identifier
+//  Code Block
+// Shows `The value of x and y are 2 and 3`. Result is 99.
+
+
+
+
+//  Start tracing macros
+//  Stop tracing macros
+
+
 fn main() { }
