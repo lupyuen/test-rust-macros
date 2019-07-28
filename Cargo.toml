@@ -10,4 +10,15 @@ edition = "2018"
 # cty = "0.2.0"        # String utilities from cty library: https://crates.io/crates/cty
 # cstr_core = "0.1.2"  # String utilities from cstr_core library: https://crates.io/crates/cstr_core
 # memchr = { version = "2", default-features = false } # String search. Reduce the ROM size by disabling default features. See https://github.com/BurntSushi/rust-memchr
-mynewt_macros = { path = "../stm32bluepill-mynewt-sensor/macros" } # Path to local Mynewt macros
+macros = { path = "../stm32bluepill-mynewt-sensor/rust/macros" } # Path to local Mynewt macros
+mynewt = { path = "../stm32bluepill-mynewt-sensor/rust/mynewt" } # Path to local Mynewt src
+
+[features]
+default =  [                # Select the conditional compiled features
+    # "test_cbor"           # Test CBOR encoding
+    # "test_macro_hygiene", # Test macro hygiene
+    "test_safe_wrap"        # Test safe wrap
+]
+test_cbor           = []
+test_macro_hygiene  = []
+test_safe_wrap      = []
