@@ -1,3 +1,4 @@
+foreign_item_tokens: "# [ doc = \" Set the sensor poll rate\" ] # [ doc = \"\" ] # [\ndoc = \" - __`devname`__: Name of the sensor\" ] # [\ndoc = \" - __`poll_rate`__: The poll rate in milli seconds\" ] pub fn\nsensor_set_poll_rate_ms ( devname : * const :: cty :: c_char , poll_rate : u32\n) -> :: cty :: c_int ;"
 namespace: "sensor"
 #![feature(prelude_import)]
 #![no_std]
@@ -63,30 +64,13 @@ mod test_safe_wrap {
         extern "C" {
             pub fn do_server_post() -> bool;
         } ////
-        pub fn set_poll_rate_ms(devname: &Strn, poll_rate: u32)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set the sensor poll rate"]
-                #[doc = ""]
-                #[doc = " - __`devname`__: Name of the sensor"]
-                #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
-                pub fn sensor_set_poll_rate_ms(devname: *const ::cty::c_char,
-                                               poll_rate: u32)
-                 -> ::cty::c_int;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            Strn::validate_bytestr(devname.bytestr);
-            unsafe {
-                "----------Insert Call: `let result_code = os_task_init(`----------";
-                let result_value =
-                    sensor_set_poll_rate_ms(devname.bytestr.as_ptr() as
-                                                *const ::cty::c_char,
-                                            poll_rate as u32);
-                if result_value == 0 {
-                    Ok(())
-                } else { Err(MynewtError::from(result_value)) }
-            }
+        extern "C" {
+            #[doc = " Set the sensor poll rate"]
+            #[doc = ""]
+            #[doc = " - __`devname`__: Name of the sensor"]
+            #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
+            pub fn sensor_set_poll_rate_ms(devname: *const ::cty::c_char,
+                                           poll_rate: u32) -> ::cty::c_int;
         }
         //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
