@@ -1,4 +1,4 @@
-return_type_str: ":: cty :: c_int"
+namespace: ""
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
@@ -50,7 +50,7 @@ mod test_safe_wrap {
     //  Testing
 
     fn test_safe_wrap() -> MynewtResult<()> { ////
-        pub fn server_transport() -> MynewtResult<()> {
+        pub fn start_server_transport() -> MynewtResult<()> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
             extern "C" {
                 #[doc = ""]
