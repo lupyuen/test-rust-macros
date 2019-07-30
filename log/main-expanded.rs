@@ -1,4 +1,4 @@
-return_type_str: "* mut sensor"
+return_type_str: ":: cty :: c_int"
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
@@ -18,8 +18,8 @@ mod test_safe_wrap {
     use cty::*;
     //  Import C types from cty library: https://crates.io/crates/cty
 
-    extern crate macros;
-    use macros::{init_strn};
+    extern crate macros as proc_macros;
+    use proc_macros::{init_strn};
     //  Import Mynewt macros from `macros` library
 
     extern crate mynewt;
@@ -49,8 +49,31 @@ mod test_safe_wrap {
     ///////////////////////////////////////////////////////////////////////////////
     //  Testing
 
-    fn test_safe_wrap() -> MynewtResult<()> {
-        //#[macros::safe_wrap(attr)] ////
+    fn test_safe_wrap() -> MynewtResult<()> { ////
+        pub fn server_transport() -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = ""]
+                pub fn start_server_transport() -> ::cty::c_int;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_code = os_task_init(`----------";
+                let result_value = start_server_transport();
+                if result_value == 0 {
+                    Ok(())
+                } else { Err(MynewtError::from(result_value)) }
+            }
+        }
+        //#[proc_macros::safe_wrap(attr)] ////
+        extern "C" {
+            pub fn init_server_post(uri: *const ::cty::c_char) -> bool;
+        }
+        //#[proc_macros::safe_wrap(attr)] ////
+        extern "C" {
+            pub fn do_server_post() -> bool;
+        }
+        //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Set the sensor poll rate"]
             #[doc = ""]
@@ -58,42 +81,25 @@ mod test_safe_wrap {
             #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
             pub fn sensor_set_poll_rate_ms(devname: *const ::cty::c_char,
                                            poll_rate: u32) -> ::cty::c_int;
-        } ////
-        pub fn mgr_find_next_bydevname(devname: &Strn,
-                                       prev_cursor: *mut sensor)
-         -> MynewtResult<*mut sensor> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                      " Search the sensor list and find the next sensor that corresponds"]
-                #[doc = " to a given device name."]
-                #[doc = ""]
-                #[doc = " - __`devname`__: The device name to search for"]
-                #[doc =
-                      " - __`sensor`__: The previous sensor found with this device name"]
-                #[doc = ""]
-                #[doc =
-                      " Return: 0 on success, non-zero error code on failure"]
-                pub fn sensor_mgr_find_next_bydevname(devname:
-                                                          *const ::cty::c_char,
-                                                      prev_cursor:
-                                                          *mut sensor)
-                 -> *mut sensor;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            Strn::validate_bytestr(devname.bytestr);
-            unsafe {
-                "----------Insert Call: `let result_code = os_task_init(`----------";
-                let result_value =
-                    sensor_mgr_find_next_bydevname(devname.bytestr.as_ptr() as
-                                                       *const ::cty::c_char,
-                                                   prev_cursor as
-                                                       *mut sensor);
-                Ok(result_value)
-            }
+        }
+        //#[proc_macros::safe_wrap(attr)] ////
+        extern "C" {
+            #[doc =
+                  " Search the sensor list and find the next sensor that corresponds"]
+            #[doc = " to a given device name."]
+            #[doc = ""]
+            #[doc = " - __`devname`__: The device name to search for"]
+            #[doc =
+                  " - __`sensor`__: The previous sensor found with this device name"]
+            #[doc = ""]
+            #[doc = " Return: 0 on success, non-zero error code on failure"]
+            pub fn sensor_mgr_find_next_bydevname(devname:
+                                                      *const ::cty::c_char,
+                                                  prev_cursor: *mut sensor)
+             -> *mut sensor;
         }
         "-------------------------------------------------------------";
-        //#[macros::safe_wrap(attr)] ////
+        //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc =
                   " Pull a single item off the event queue and call it's event"]
@@ -103,7 +109,7 @@ mod test_safe_wrap {
             pub fn os_eventq_run(evq: *mut os_eventq);
         }
         "-------------------------------------------------------------";
-        //#[macros::safe_wrap(attr)] ////
+        //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc =
                   " Retrieves the default event queue processed by OS main task."]
@@ -112,7 +118,7 @@ mod test_safe_wrap {
             pub fn os_eventq_dflt_get() -> *mut os_eventq;
         }
         "-------------------------------------------------------------";
-        //#[macros::safe_wrap(attr)] ////
+        //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             pub fn os_task_init(arg1: *mut os_task,
                                 arg2: *const ::cty::c_char,
