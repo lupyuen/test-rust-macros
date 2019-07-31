@@ -51,20 +51,20 @@ mod test_safe_wrap {
         #[proc_macros::safe_wrap(attr)] extern "C" {
             pub static mut os_main_task: os_task;
         }
-        //#[proc_macros::safe_wrap(attr)] ////
+        #[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = ""]
             pub fn start_server_transport() -> ::cty::c_int;
         }
-        //#[proc_macros::safe_wrap(attr)] ////
+        #[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             pub fn init_server_post(uri: *const ::cty::c_char) -> bool;
         }
-        //#[proc_macros::safe_wrap(attr)] ////
+        #[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             pub fn do_server_post() -> bool;
         }
-        //#[proc_macros::safe_wrap(attr)] ////
+        #[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Set the sensor poll rate"]
             #[doc = ""]
@@ -72,7 +72,7 @@ mod test_safe_wrap {
             #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
             pub fn sensor_set_poll_rate_ms(devname: *const ::cty::c_char, poll_rate: u32) -> ::cty::c_int;
         }
-        //#[proc_macros::safe_wrap(attr)] ////
+        #[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Search the sensor list and find the next sensor that corresponds"]
             #[doc = " to a given device name."]
@@ -87,7 +87,7 @@ mod test_safe_wrap {
             ) -> *mut sensor;
         }
         "-------------------------------------------------------------";
-        //#[proc_macros::safe_wrap(attr)] ////
+        #[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Pull a single item off the event queue and call it's event"]
             #[doc = " callback."]
@@ -96,7 +96,7 @@ mod test_safe_wrap {
             pub fn os_eventq_run(evq: *mut os_eventq);
         }
         "-------------------------------------------------------------";
-        //#[proc_macros::safe_wrap(attr)] ////
+        #[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Retrieves the default event queue processed by OS main task."]
             #[doc = ""]
@@ -104,7 +104,7 @@ mod test_safe_wrap {
             pub fn os_eventq_dflt_get() -> *mut os_eventq;
         }
         "-------------------------------------------------------------";
-        //#[proc_macros::safe_wrap(attr)] ////
+        #[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             pub fn os_task_init(
                 arg1: *mut os_task,

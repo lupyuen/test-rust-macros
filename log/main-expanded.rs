@@ -51,73 +51,196 @@ mod test_safe_wrap {
     fn test_safe_wrap() -> MynewtResult<()> {
         extern "C" {
             pub static mut os_main_task: os_task;
+        } ////
+        #[doc = ""]
+        pub fn start_server_transport() -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = ""]
+                pub fn start_server_transport() -> ::cty::c_int;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_code = os_task_init(`----------";
+                let result_value = start_server_transport();
+                if result_value == 0 {
+                    Ok(())
+                } else { Err(MynewtError::from(result_value)) }
+            }
+        } ////
+        pub fn init_server_post(uri: &Strn) -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn init_server_post(uri: *const ::cty::c_char) -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            Strn::validate_bytestr(uri.bytestr);
+            unsafe {
+                "----------Insert Call: `let result_code = os_task_init(`----------";
+                let result_value =
+                    init_server_post(uri.bytestr.as_ptr() as
+                                         *const ::cty::c_char);
+                Ok(result_value)
+            }
+        } ////
+        pub fn do_server_post() -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn do_server_post() -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_code = os_task_init(`----------";
+                let result_value = do_server_post();
+                Ok(result_value)
+            }
+        } ////
+        #[doc = " Set the sensor poll rate"]
+        #[doc = ""]
+        #[doc = " - __`devname`__: Name of the sensor"]
+        #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
+        pub fn set_poll_rate_ms(devname: &Strn, poll_rate: u32)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set the sensor poll rate"]
+                #[doc = ""]
+                #[doc = " - __`devname`__: Name of the sensor"]
+                #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
+                pub fn sensor_set_poll_rate_ms(devname: *const ::cty::c_char,
+                                               poll_rate: u32)
+                 -> ::cty::c_int;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            Strn::validate_bytestr(devname.bytestr);
+            unsafe {
+                "----------Insert Call: `let result_code = os_task_init(`----------";
+                let result_value =
+                    sensor_set_poll_rate_ms(devname.bytestr.as_ptr() as
+                                                *const ::cty::c_char,
+                                            poll_rate as u32);
+                if result_value == 0 {
+                    Ok(())
+                } else { Err(MynewtError::from(result_value)) }
+            }
+        } ////
+        #[doc =
+              " Search the sensor list and find the next sensor that corresponds"]
+        #[doc = " to a given device name."]
+        #[doc = ""]
+        #[doc = " - __`devname`__: The device name to search for"]
+        #[doc =
+              " - __`sensor`__: The previous sensor found with this device name"]
+        #[doc = ""]
+        #[doc = " Return: 0 on success, non-zero error code on failure"]
+        pub fn mgr_find_next_bydevname(devname: &Strn,
+                                       prev_cursor: *mut sensor)
+         -> MynewtResult<*mut sensor> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                      " Search the sensor list and find the next sensor that corresponds"]
+                #[doc = " to a given device name."]
+                #[doc = ""]
+                #[doc = " - __`devname`__: The device name to search for"]
+                #[doc =
+                      " - __`sensor`__: The previous sensor found with this device name"]
+                #[doc = ""]
+                #[doc =
+                      " Return: 0 on success, non-zero error code on failure"]
+                pub fn sensor_mgr_find_next_bydevname(devname:
+                                                          *const ::cty::c_char,
+                                                      prev_cursor:
+                                                          *mut sensor)
+                 -> *mut sensor;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            Strn::validate_bytestr(devname.bytestr);
+            unsafe {
+                "----------Insert Call: `let result_code = os_task_init(`----------";
+                let result_value =
+                    sensor_mgr_find_next_bydevname(devname.bytestr.as_ptr() as
+                                                       *const ::cty::c_char,
+                                                   prev_cursor as
+                                                       *mut sensor);
+                Ok(result_value)
+            }
         }
-        //#[proc_macros::safe_wrap(attr)] ////
-        extern "C" {
-            #[doc = ""]
-            pub fn start_server_transport() -> ::cty::c_int;
+        "-------------------------------------------------------------"; ////
+        #[doc = " Pull a single item off the event queue and call it's event"]
+        #[doc = " callback."]
+        #[doc = ""]
+        #[doc = " - __`evq`__: The event queue to pull the item off."]
+        pub fn eventq_run(evq: *mut os_eventq) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                      " Pull a single item off the event queue and call it's event"]
+                #[doc = " callback."]
+                #[doc = ""]
+                #[doc = " - __`evq`__: The event queue to pull the item off."]
+                pub fn os_eventq_run(evq: *mut os_eventq);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_code = os_task_init(`----------";
+                os_eventq_run(evq as *mut os_eventq);
+                Ok(())
+            }
         }
-        //#[proc_macros::safe_wrap(attr)] ////
-        extern "C" {
-            pub fn init_server_post(uri: *const ::cty::c_char) -> bool;
+        "-------------------------------------------------------------"; ////
+        #[doc =
+              " Retrieves the default event queue processed by OS main task."]
+        #[doc = ""]
+        #[doc = " Return:                      The default event queue."]
+        pub fn eventq_dflt_get() -> MynewtResult<*mut os_eventq> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                      " Retrieves the default event queue processed by OS main task."]
+                #[doc = ""]
+                #[doc =
+                      " Return:                      The default event queue."]
+                pub fn os_eventq_dflt_get() -> *mut os_eventq;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_code = os_task_init(`----------";
+                let result_value = os_eventq_dflt_get();
+                Ok(result_value)
+            }
         }
-        //#[proc_macros::safe_wrap(attr)] ////
-        extern "C" {
-            pub fn do_server_post() -> bool;
-        }
-        //#[proc_macros::safe_wrap(attr)] ////
-        extern "C" {
-            #[doc = " Set the sensor poll rate"]
-            #[doc = ""]
-            #[doc = " - __`devname`__: Name of the sensor"]
-            #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
-            pub fn sensor_set_poll_rate_ms(devname: *const ::cty::c_char,
-                                           poll_rate: u32) -> ::cty::c_int;
-        }
-        //#[proc_macros::safe_wrap(attr)] ////
-        extern "C" {
-            #[doc =
-                  " Search the sensor list and find the next sensor that corresponds"]
-            #[doc = " to a given device name."]
-            #[doc = ""]
-            #[doc = " - __`devname`__: The device name to search for"]
-            #[doc =
-                  " - __`sensor`__: The previous sensor found with this device name"]
-            #[doc = ""]
-            #[doc = " Return: 0 on success, non-zero error code on failure"]
-            pub fn sensor_mgr_find_next_bydevname(devname:
-                                                      *const ::cty::c_char,
-                                                  prev_cursor: *mut sensor)
-             -> *mut sensor;
-        }
-        "-------------------------------------------------------------";
-        //#[proc_macros::safe_wrap(attr)] ////
-        extern "C" {
-            #[doc =
-                  " Pull a single item off the event queue and call it's event"]
-            #[doc = " callback."]
-            #[doc = ""]
-            #[doc = " - __`evq`__: The event queue to pull the item off."]
-            pub fn os_eventq_run(evq: *mut os_eventq);
-        }
-        "-------------------------------------------------------------";
-        //#[proc_macros::safe_wrap(attr)] ////
-        extern "C" {
-            #[doc =
-                  " Retrieves the default event queue processed by OS main task."]
-            #[doc = ""]
-            #[doc = " Return:                      The default event queue."]
-            pub fn os_eventq_dflt_get() -> *mut os_eventq;
-        }
-        "-------------------------------------------------------------";
-        //#[proc_macros::safe_wrap(attr)] ////
-        extern "C" {
-            pub fn os_task_init(arg1: *mut os_task,
-                                arg2: *const ::cty::c_char,
-                                arg3: os_task_func_t,
-                                arg4: *mut ::cty::c_void, arg5: u8,
-                                arg6: os_time_t, arg7: *mut os_stack_t,
-                                arg8: u16) -> ::cty::c_int;
+        "-------------------------------------------------------------"; ////
+        pub fn task_init(arg1: Out<os_task>, arg2: &Strn,
+                         arg3: os_task_func_t, arg4: Ptr, arg5: u8,
+                         arg6: os_time_t, arg7: Out<[os_stack_t]>, arg8: u16)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn os_task_init(arg1: *mut os_task,
+                                    arg2: *const ::cty::c_char,
+                                    arg3: os_task_func_t,
+                                    arg4: *mut ::cty::c_void, arg5: u8,
+                                    arg6: os_time_t, arg7: *mut os_stack_t,
+                                    arg8: u16) -> ::cty::c_int;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            Strn::validate_bytestr(arg2.bytestr);
+            unsafe {
+                "----------Insert Call: `let result_code = os_task_init(`----------";
+                let result_value =
+                    os_task_init(arg1 as *mut os_task,
+                                 arg2.bytestr.as_ptr() as
+                                     *const ::cty::c_char,
+                                 arg3 as os_task_func_t,
+                                 arg4 as *mut ::cty::c_void, arg5 as u8,
+                                 arg6 as os_time_t,
+                                 arg7.as_ptr() as *mut os_stack_t,
+                                 arg8 as u16);
+                if result_value == 0 {
+                    Ok(())
+                } else { Err(MynewtError::from(result_value)) }
+            }
         }
         "-------------------------------------------------------------";
         /*
