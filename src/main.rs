@@ -5,7 +5,7 @@
 /// Testing safe_wrap
 #[cfg(feature = "test_safe_wrap")]
 mod test_safe_wrap {
-    use cty::*;               //  Import C types from cty library: https://crates.io/crates/cty
+    //  use cty::*;               //  Import C types from cty library: https://crates.io/crates/cty
 
     extern crate macros as proc_macros;
     use proc_macros::{init_strn}; //  Import Mynewt macros from `macros` library
@@ -47,19 +47,20 @@ mod test_safe_wrap {
     ///////////////////////////////////////////////////////////////////////////////
     //  Testing
 
+    const BEGIN: &str = "-------------------------------------------------------------";
+    #[proc_macros::infer_type(attr)] 
+    fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _) -> MynewtResult<()> {
+        sensor::set_poll_rate_ms(sensor, poll_time) ? ;
+        let sensor_object = sensor::mgr_find_next_bydevname(sensor, NULL_SENSOR_OBJECT) ? ;
+        if sensor_object != null {
+            let listener = sensor::new_sensor_listener(sensor_type, "handle_sensor_data") ? ;
+            sensor::register_listener(sensor_object, listener) ? ;
+        }
+        Ok(())
+    }        
+    const END: &str = "-------------------------------------------------------------";
+
     fn test_safe_wrap() -> MynewtResult<()> {
-        "-------------------------------------------------------------";
-        #[proc_macros::infer_type(attr)] 
-        fn start_sensor_listener(sensor, sensor_type, poll_time) -> MynewtResult<()> {
-            sensor::set_poll_rate_ms(sensor, poll_time) ? ;
-            let sensor_object = sensor::mgr_find_next_bydevname(sensor, NULL_SENSOR_OBJECT) ? ;
-            if sensor_object != null {
-                let listener = sensor::new_sensor_listener(sensor_type, "handle_sensor_data") ? ;
-                sensor::register_listener(sensor_object, listener) ? ;
-            }
-            Ok(())
-        }        
-        "-------------------------------------------------------------";
         //#[proc_macros::safe_wrap(attr)] 
         extern "C" {
             pub fn get_device_id() -> *const ::cty::c_char;
