@@ -5,6 +5,11 @@ para: "poll_time"
 func: "sensor :: set_poll_rate_ms"
 arg: "sensor"
 arg: "poll_time"
+func: "sensor :: mgr_find_next_bydevname"
+arg: "sensor"
+arg: "NULL_SENSOR_OBJECT"
+func: "Ok"
+arg: "(  )"
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
