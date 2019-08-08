@@ -6,8 +6,14 @@ fname: "sensor::set_poll_rate_ms"
 sensor has inferred type &Strn
 poll_time has inferred type u32
 fname: "sensor::mgr_find_next_bydevname"
+sensor has inferred type &Strn
+NULL_SENSOR_OBJECT has inferred type *mut sensor
 fname: "sensor::new_sensor_listener"
+sensor_type has inferred type &Strn
+"handle_sensor_data" has inferred type u32
 fname: "sensor::register_listener"
+sensor_object has inferred type *mut sensor
+listener has inferred type sensor_listener
 fname: "Ok"
 #![feature(prelude_import)]
 #![no_std]
