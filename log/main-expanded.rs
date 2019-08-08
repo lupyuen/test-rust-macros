@@ -1,85 +1,10 @@
 fname: "start_sensor_listener"
 para: "sensor"
-stmt: Semi(
-    Try(
-        ExprTry {
-            attrs: [],
-            expr: Call(
-                ExprCall {
-                    attrs: [],
-                    func: Path(
-                        ExprPath {
-                            attrs: [],
-                            qself: None,
-                            path: Path {
-                                leading_colon: None,
-                                segments: [
-                                    PathSegment {
-                                        ident: Ident {
-                                            ident: "sensor",
-                                            span: #0 bytes(638..644),
-                                        },
-                                        arguments: None,
-                                    },
-                                    Colon2,
-                                    PathSegment {
-                                        ident: Ident {
-                                            ident: "set_poll_rate_ms",
-                                            span: #0 bytes(646..662),
-                                        },
-                                        arguments: None,
-                                    },
-                                ],
-                            },
-                        },
-                    ),
-                    paren_token: Paren,
-                    args: [
-                        Path(
-                            ExprPath {
-                                attrs: [],
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident {
-                                                ident: "sensor",
-                                                span: #0 bytes(663..669),
-                                            },
-                                            arguments: None,
-                                        },
-                                    ],
-                                },
-                            },
-                        ),
-                        Comma,
-                        Path(
-                            ExprPath {
-                                attrs: [],
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident {
-                                                ident: "poll_time",
-                                                span: #0 bytes(671..680),
-                                            },
-                                            arguments: None,
-                                        },
-                                    ],
-                                },
-                            },
-                        ),
-                    ],
-                },
-            ),
-            question_token: Question,
-        },
-    ),
-    Semi,
-)
+para: "sensor_type"
+para: "poll_time"
+func: "sensor :: set_poll_rate_ms"
+arg: "sensor"
+arg: "poll_time"
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
