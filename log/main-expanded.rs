@@ -38,8 +38,8 @@ mod test_infer_type {
 
     const _BEGIN: &str =
         "-------------------------------------------------------------";
-    fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _)
-     -> MynewtResult<()> {
+    fn start_sensor_listener(sensor: &Strn, sensor_type: &Strn,
+                             poll_time: u32) -> MynewtResult<()> {
         sensor::set_poll_rate_ms(sensor, poll_time)?;
         let sensor_object = sensor::mgr_find_next_bydevname(sensor, null)?;
         if sensor_object != null {
