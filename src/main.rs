@@ -6,17 +6,19 @@
 #[cfg(feature = "test_infer_type")]
 mod test_infer_type {
     extern crate macros as mynewt_macros;
-
     extern crate mynewt;
-    //use mynewt::{
-        //Strn,
-    //};
+    use core::ptr::null;
+    use mynewt::{
+        result::*,
+        hw::sensor,
+        Strn,
+    };
 
     const _BEGIN: &str = "-------------------------------------------------------------";
     #[mynewt_macros::infer_type(attr)] 
     fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _) -> MynewtResult<()> {
         sensor::set_poll_rate_ms(sensor, poll_time) ? ;
-        let sensor_object = sensor::mgr_find_next_bydevname(sensor, NULL_SENSOR_OBJECT) ? ;
+        let sensor_object = sensor::mgr_find_next_bydevname(sensor, null) ? ;
         if sensor_object != null {
             let listener = sensor::new_sensor_listener(sensor_type, "handle_sensor_data") ? ;
             sensor::register_listener(sensor_object, listener) ? ;

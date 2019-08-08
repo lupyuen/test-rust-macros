@@ -7,7 +7,7 @@ sensor has inferred type &Strn
 poll_time has inferred type u32
 fname: "sensor::mgr_find_next_bydevname"
 sensor has inferred type &Strn
-NULL_SENSOR_OBJECT has inferred type *mut sensor
+null has inferred type *mut sensor
 fname: "sensor::new_sensor_listener"
 sensor_type has inferred type &Strn
 "handle_sensor_data" has inferred type u32
@@ -32,14 +32,24 @@ extern crate std as std;
 #[cfg(feature = "test_infer_type")]
 mod test_infer_type {
     extern crate macros as mynewt_macros;
-
     extern crate mynewt;
-    //use mynewt::{
-    //Strn,
-    //};
+    use core::ptr::null;
+    use mynewt::{result::*, hw::sensor, Strn};
 
     const _BEGIN: &str =
         "-------------------------------------------------------------";
+    fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _)
+     -> MynewtResult<()> {
+        sensor::set_poll_rate_ms(sensor, poll_time)?;
+        let sensor_object = sensor::mgr_find_next_bydevname(sensor, null)?;
+        if sensor_object != null {
+            let listener =
+                sensor::new_sensor_listener(sensor_type,
+                                            "handle_sensor_data")?;
+            sensor::register_listener(sensor_object, listener)?;
+        }
+        Ok(())
+    }
     const _END: &str =
         "-------------------------------------------------------------";
 }
