@@ -3,19 +3,48 @@ para: "sensor"
 para: "sensor_type"
 para: "poll_time"
 fname: "sensor::set_poll_rate_ms"
-arg: "sensor"
-arg: "poll_time"
+arg: Path(
+    ExprPath {
+        attrs: [],
+        qself: None,
+        path: Path {
+            leading_colon: None,
+            segments: [
+                PathSegment {
+                    ident: Ident {
+                        ident: "sensor",
+                        span: #0 bytes(663..669),
+                    },
+                    arguments: None,
+                },
+            ],
+        },
+    },
+)
+arg: sensor / decl: &Strn
+arg: Path(
+    ExprPath {
+        attrs: [],
+        qself: None,
+        path: Path {
+            leading_colon: None,
+            segments: [
+                PathSegment {
+                    ident: Ident {
+                        ident: "poll_time",
+                        span: #0 bytes(671..680),
+                    },
+                    arguments: None,
+                },
+            ],
+        },
+    },
+)
+arg: poll_time / decl: u32
 fname: "sensor::mgr_find_next_bydevname"
-arg: "sensor"
-arg: "NULL_SENSOR_OBJECT"
 fname: "sensor::new_sensor_listener"
-arg: "sensor_type"
-arg: "\"handle_sensor_data\""
 fname: "sensor::register_listener"
-arg: "sensor_object"
-arg: "listener"
 fname: "Ok"
-arg: "(  )"
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
