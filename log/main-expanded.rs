@@ -16,6 +16,8 @@ fname: "sensor::register_listener"
 sensor_object has inferred type *mut sensor
 listener has inferred type sensor_listener
 fname: "Ok"
+save_decls: "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]]}"
+successfully wrote to test.json
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
