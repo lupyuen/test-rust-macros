@@ -2,6 +2,30 @@
 #![feature(proc_macro_hygiene)]  //  Allow proc macros to be unhygienic
 #![feature(custom_attribute)]    //  Allow custom attributes like [safe_wrap]
 
+/// Testing infer_type
+#[cfg(feature = "test_infer_type")]
+mod test_infer_type {
+    extern crate macros as mynewt_macros;
+
+    extern crate mynewt;
+    //use mynewt::{
+        //Strn,
+    //};
+
+    const _BEGIN: &str = "-------------------------------------------------------------";
+    #[mynewt_macros::infer_type(attr)] 
+    fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _) -> MynewtResult<()> {
+        sensor::set_poll_rate_ms(sensor, poll_time) ? ;
+        let sensor_object = sensor::mgr_find_next_bydevname(sensor, NULL_SENSOR_OBJECT) ? ;
+        if sensor_object != null {
+            let listener = sensor::new_sensor_listener(sensor_type, "handle_sensor_data") ? ;
+            sensor::register_listener(sensor_object, listener) ? ;
+        }
+        Ok(())
+    }        
+    const _END: &str = "-------------------------------------------------------------";
+}
+
 /// Testing safe_wrap
 #[cfg(feature = "test_safe_wrap")]
 mod test_safe_wrap {
@@ -46,19 +70,6 @@ mod test_safe_wrap {
 
     ///////////////////////////////////////////////////////////////////////////////
     //  Testing
-
-    const BEGIN: &str = "-------------------------------------------------------------";
-    #[proc_macros::infer_type(attr)] 
-    fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _) -> MynewtResult<()> {
-        sensor::set_poll_rate_ms(sensor, poll_time) ? ;
-        let sensor_object = sensor::mgr_find_next_bydevname(sensor, NULL_SENSOR_OBJECT) ? ;
-        if sensor_object != null {
-            let listener = sensor::new_sensor_listener(sensor_type, "handle_sensor_data") ? ;
-            sensor::register_listener(sensor_object, listener) ? ;
-        }
-        Ok(())
-    }        
-    const END: &str = "-------------------------------------------------------------";
 
     fn test_safe_wrap() -> MynewtResult<()> {
         //#[proc_macros::safe_wrap(attr)] 
