@@ -7,25 +7,57 @@
 mod test_infer_type {
     extern crate macros as mynewt_macros;
     extern crate mynewt;
-    use core::ptr::null;
+    use core::ptr::{
+        //null,
+        null_mut,
+    };
     use mynewt::{
         result::*,
-        hw::sensor,
-        Strn,
+        hw::sensor::{
+            self,
+            sensor_type_t,
+            //sensor_data_func,
+            sensor_data_func_untyped,
+            sensor_listener,
+            sensor_data_ptr,
+            sensor_ptr,
+            sensor_arg,
+        },
+        Strn, fill_zero,
     };
 
     const _BEGIN: &str = "-------------------------------------------------------------";
+    #[allow(dead_code)]
     #[mynewt_macros::infer_type(attr)] 
     fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _) -> MynewtResult<()> {
         sensor::set_poll_rate_ms(sensor, poll_time) ? ;
-        let sensor_object = sensor::mgr_find_next_bydevname(sensor, null) ? ;
-        if sensor_object != null {
-            let listener = sensor::new_sensor_listener(sensor_type, "handle_sensor_data") ? ;
+        let sensor_object = sensor::mgr_find_next_bydevname(sensor, null_mut()) ? ;
+        if sensor_object != null_mut() {
+            let listener = new_sensor_listener(sensor_type, handle_sensor_data) ? ;
             sensor::register_listener(sensor_object, listener) ? ;
         }
         Ok(())
     }        
     const _END: &str = "-------------------------------------------------------------";
+
+    //  TODO
+    fn new_sensor_listener(sensor_type: sensor_type_t, sensor_func: sensor_data_func_untyped) -> MynewtResult<sensor_listener> {
+        Ok(sensor_listener {
+            //sl_arg: null_mut(),
+            //sl_next: null(),
+            sl_func: Some(sensor_func),
+            sl_sensor_type: sensor_type,
+            ..fill_zero!(sensor_listener)
+        })
+    }
+
+    //  TODO
+    extern fn handle_sensor_data(
+        _sensor: sensor_ptr, 
+        _arg: sensor_arg, 
+        _sensor_data: sensor_data_ptr, 
+        _sensor_type: sensor_type_t) -> i32
+    { 0 }
 }
 
 /// Testing safe_wrap
