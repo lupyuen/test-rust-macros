@@ -1,3 +1,588 @@
+input: ItemFn {
+    attrs: [],
+    vis: Inherited,
+    constness: None,
+    asyncness: None,
+    unsafety: None,
+    abi: None,
+    ident: Ident {
+        ident: "start_sensor_listener",
+        span: #0 bytes(0..0),
+    },
+    decl: FnDecl {
+        fn_token: Fn,
+        generics: Generics {
+            lt_token: None,
+            params: [],
+            gt_token: None,
+            where_clause: None,
+        },
+        paren_token: Paren,
+        inputs: [
+            Captured(
+                ArgCaptured {
+                    pat: Ident(
+                        PatIdent {
+                            by_ref: None,
+                            mutability: None,
+                            ident: Ident {
+                                ident: "sensor",
+                                span: #0 bytes(0..0),
+                            },
+                            subpat: None,
+                        },
+                    ),
+                    colon_token: Colon,
+                    ty: Tuple(
+                        TypeTuple {
+                            paren_token: Paren,
+                            elems: [],
+                        },
+                    ),
+                },
+            ),
+            Comma,
+            Captured(
+                ArgCaptured {
+                    pat: Ident(
+                        PatIdent {
+                            by_ref: None,
+                            mutability: None,
+                            ident: Ident {
+                                ident: "sensor_type",
+                                span: #0 bytes(0..0),
+                            },
+                            subpat: None,
+                        },
+                    ),
+                    colon_token: Colon,
+                    ty: Tuple(
+                        TypeTuple {
+                            paren_token: Paren,
+                            elems: [],
+                        },
+                    ),
+                },
+            ),
+            Comma,
+            Captured(
+                ArgCaptured {
+                    pat: Ident(
+                        PatIdent {
+                            by_ref: None,
+                            mutability: None,
+                            ident: Ident {
+                                ident: "poll_time",
+                                span: #0 bytes(0..0),
+                            },
+                            subpat: None,
+                        },
+                    ),
+                    colon_token: Colon,
+                    ty: Tuple(
+                        TypeTuple {
+                            paren_token: Paren,
+                            elems: [],
+                        },
+                    ),
+                },
+            ),
+        ],
+        variadic: None,
+        output: Type(
+            RArrow,
+            Path(
+                TypePath {
+                    qself: None,
+                    path: Path {
+                        leading_colon: None,
+                        segments: [
+                            PathSegment {
+                                ident: Ident {
+                                    ident: "MynewtResult",
+                                    span: #0 bytes(0..0),
+                                },
+                                arguments: AngleBracketed(
+                                    AngleBracketedGenericArguments {
+                                        colon2_token: None,
+                                        lt_token: Lt,
+                                        args: [
+                                            Type(
+                                                Tuple(
+                                                    TypeTuple {
+                                                        paren_token: Paren,
+                                                        elems: [],
+                                                    },
+                                                ),
+                                            ),
+                                        ],
+                                        gt_token: Gt,
+                                    },
+                                ),
+                            },
+                        ],
+                    },
+                },
+            ),
+        ),
+    },
+    block: Block {
+        brace_token: Brace,
+        stmts: [
+            Semi(
+                Try(
+                    ExprTry {
+                        attrs: [],
+                        expr: Call(
+                            ExprCall {
+                                attrs: [],
+                                func: Path(
+                                    ExprPath {
+                                        attrs: [],
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident {
+                                                        ident: "sensor",
+                                                        span: #0 bytes(0..0),
+                                                    },
+                                                    arguments: None,
+                                                },
+                                                Colon2,
+                                                PathSegment {
+                                                    ident: Ident {
+                                                        ident: "set_poll_rate_ms",
+                                                        span: #0 bytes(0..0),
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                        },
+                                    },
+                                ),
+                                paren_token: Paren,
+                                args: [
+                                    Path(
+                                        ExprPath {
+                                            attrs: [],
+                                            qself: None,
+                                            path: Path {
+                                                leading_colon: None,
+                                                segments: [
+                                                    PathSegment {
+                                                        ident: Ident {
+                                                            ident: "sensor",
+                                                            span: #0 bytes(0..0),
+                                                        },
+                                                        arguments: None,
+                                                    },
+                                                ],
+                                            },
+                                        },
+                                    ),
+                                    Comma,
+                                    Path(
+                                        ExprPath {
+                                            attrs: [],
+                                            qself: None,
+                                            path: Path {
+                                                leading_colon: None,
+                                                segments: [
+                                                    PathSegment {
+                                                        ident: Ident {
+                                                            ident: "poll_time",
+                                                            span: #0 bytes(0..0),
+                                                        },
+                                                        arguments: None,
+                                                    },
+                                                ],
+                                            },
+                                        },
+                                    ),
+                                ],
+                            },
+                        ),
+                        question_token: Question,
+                    },
+                ),
+                Semi,
+            ),
+            Local(
+                Local {
+                    attrs: [],
+                    let_token: Let,
+                    pats: [
+                        Ident(
+                            PatIdent {
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident {
+                                    ident: "sensor_object",
+                                    span: #0 bytes(0..0),
+                                },
+                                subpat: None,
+                            },
+                        ),
+                    ],
+                    ty: None,
+                    init: Some(
+                        (
+                            Eq,
+                            Try(
+                                ExprTry {
+                                    attrs: [],
+                                    expr: Call(
+                                        ExprCall {
+                                            attrs: [],
+                                            func: Path(
+                                                ExprPath {
+                                                    attrs: [],
+                                                    qself: None,
+                                                    path: Path {
+                                                        leading_colon: None,
+                                                        segments: [
+                                                            PathSegment {
+                                                                ident: Ident {
+                                                                    ident: "sensor",
+                                                                    span: #0 bytes(0..0),
+                                                                },
+                                                                arguments: None,
+                                                            },
+                                                            Colon2,
+                                                            PathSegment {
+                                                                ident: Ident {
+                                                                    ident: "mgr_find_next_bydevname",
+                                                                    span: #0 bytes(0..0),
+                                                                },
+                                                                arguments: None,
+                                                            },
+                                                        ],
+                                                    },
+                                                },
+                                            ),
+                                            paren_token: Paren,
+                                            args: [
+                                                Path(
+                                                    ExprPath {
+                                                        attrs: [],
+                                                        qself: None,
+                                                        path: Path {
+                                                            leading_colon: None,
+                                                            segments: [
+                                                                PathSegment {
+                                                                    ident: Ident {
+                                                                        ident: "sensor",
+                                                                        span: #0 bytes(0..0),
+                                                                    },
+                                                                    arguments: None,
+                                                                },
+                                                            ],
+                                                        },
+                                                    },
+                                                ),
+                                                Comma,
+                                                Path(
+                                                    ExprPath {
+                                                        attrs: [],
+                                                        qself: None,
+                                                        path: Path {
+                                                            leading_colon: None,
+                                                            segments: [
+                                                                PathSegment {
+                                                                    ident: Ident {
+                                                                        ident: "NULL_SENSOR_OBJECT",
+                                                                        span: #0 bytes(0..0),
+                                                                    },
+                                                                    arguments: None,
+                                                                },
+                                                            ],
+                                                        },
+                                                    },
+                                                ),
+                                            ],
+                                        },
+                                    ),
+                                    question_token: Question,
+                                },
+                            ),
+                        ),
+                    ),
+                    semi_token: Semi,
+                },
+            ),
+            Expr(
+                If(
+                    ExprIf {
+                        attrs: [],
+                        if_token: If,
+                        cond: Binary(
+                            ExprBinary {
+                                attrs: [],
+                                left: Path(
+                                    ExprPath {
+                                        attrs: [],
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident {
+                                                        ident: "sensor_object",
+                                                        span: #0 bytes(0..0),
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                        },
+                                    },
+                                ),
+                                op: Ne(
+                                    Ne,
+                                ),
+                                right: Path(
+                                    ExprPath {
+                                        attrs: [],
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident {
+                                                        ident: "null",
+                                                        span: #0 bytes(0..0),
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                        },
+                                    },
+                                ),
+                            },
+                        ),
+                        then_branch: Block {
+                            brace_token: Brace,
+                            stmts: [
+                                Local(
+                                    Local {
+                                        attrs: [],
+                                        let_token: Let,
+                                        pats: [
+                                            Ident(
+                                                PatIdent {
+                                                    by_ref: None,
+                                                    mutability: None,
+                                                    ident: Ident {
+                                                        ident: "listener",
+                                                        span: #0 bytes(0..0),
+                                                    },
+                                                    subpat: None,
+                                                },
+                                            ),
+                                        ],
+                                        ty: None,
+                                        init: Some(
+                                            (
+                                                Eq,
+                                                Try(
+                                                    ExprTry {
+                                                        attrs: [],
+                                                        expr: Call(
+                                                            ExprCall {
+                                                                attrs: [],
+                                                                func: Path(
+                                                                    ExprPath {
+                                                                        attrs: [],
+                                                                        qself: None,
+                                                                        path: Path {
+                                                                            leading_colon: None,
+                                                                            segments: [
+                                                                                PathSegment {
+                                                                                    ident: Ident {
+                                                                                        ident: "sensor",
+                                                                                        span: #0 bytes(0..0),
+                                                                                    },
+                                                                                    arguments: None,
+                                                                                },
+                                                                                Colon2,
+                                                                                PathSegment {
+                                                                                    ident: Ident {
+                                                                                        ident: "new_sensor_listener",
+                                                                                        span: #0 bytes(0..0),
+                                                                                    },
+                                                                                    arguments: None,
+                                                                                },
+                                                                            ],
+                                                                        },
+                                                                    },
+                                                                ),
+                                                                paren_token: Paren,
+                                                                args: [
+                                                                    Path(
+                                                                        ExprPath {
+                                                                            attrs: [],
+                                                                            qself: None,
+                                                                            path: Path {
+                                                                                leading_colon: None,
+                                                                                segments: [
+                                                                                    PathSegment {
+                                                                                        ident: Ident {
+                                                                                            ident: "sensor_type",
+                                                                                            span: #0 bytes(0..0),
+                                                                                        },
+                                                                                        arguments: None,
+                                                                                    },
+                                                                                ],
+                                                                            },
+                                                                        },
+                                                                    ),
+                                                                    Comma,
+                                                                    Lit(
+                                                                        ExprLit {
+                                                                            attrs: [],
+                                                                            lit: Str(
+                                                                                LitStr {
+                                                                                    token: Literal { lit: Lit { kind: Str, symbol: handle_sensor_data, suffix: None }, span: Span { lo: BytePos(0), hi: BytePos(0), ctxt: #0 } },
+                                                                                },
+                                                                            ),
+                                                                        },
+                                                                    ),
+                                                                ],
+                                                            },
+                                                        ),
+                                                        question_token: Question,
+                                                    },
+                                                ),
+                                            ),
+                                        ),
+                                        semi_token: Semi,
+                                    },
+                                ),
+                                Semi(
+                                    Try(
+                                        ExprTry {
+                                            attrs: [],
+                                            expr: Call(
+                                                ExprCall {
+                                                    attrs: [],
+                                                    func: Path(
+                                                        ExprPath {
+                                                            attrs: [],
+                                                            qself: None,
+                                                            path: Path {
+                                                                leading_colon: None,
+                                                                segments: [
+                                                                    PathSegment {
+                                                                        ident: Ident {
+                                                                            ident: "sensor",
+                                                                            span: #0 bytes(0..0),
+                                                                        },
+                                                                        arguments: None,
+                                                                    },
+                                                                    Colon2,
+                                                                    PathSegment {
+                                                                        ident: Ident {
+                                                                            ident: "register_listener",
+                                                                            span: #0 bytes(0..0),
+                                                                        },
+                                                                        arguments: None,
+                                                                    },
+                                                                ],
+                                                            },
+                                                        },
+                                                    ),
+                                                    paren_token: Paren,
+                                                    args: [
+                                                        Path(
+                                                            ExprPath {
+                                                                attrs: [],
+                                                                qself: None,
+                                                                path: Path {
+                                                                    leading_colon: None,
+                                                                    segments: [
+                                                                        PathSegment {
+                                                                            ident: Ident {
+                                                                                ident: "sensor_object",
+                                                                                span: #0 bytes(0..0),
+                                                                            },
+                                                                            arguments: None,
+                                                                        },
+                                                                    ],
+                                                                },
+                                                            },
+                                                        ),
+                                                        Comma,
+                                                        Path(
+                                                            ExprPath {
+                                                                attrs: [],
+                                                                qself: None,
+                                                                path: Path {
+                                                                    leading_colon: None,
+                                                                    segments: [
+                                                                        PathSegment {
+                                                                            ident: Ident {
+                                                                                ident: "listener",
+                                                                                span: #0 bytes(0..0),
+                                                                            },
+                                                                            arguments: None,
+                                                                        },
+                                                                    ],
+                                                                },
+                                                            },
+                                                        ),
+                                                    ],
+                                                },
+                                            ),
+                                            question_token: Question,
+                                        },
+                                    ),
+                                    Semi,
+                                ),
+                            ],
+                        },
+                        else_branch: None,
+                    },
+                ),
+            ),
+            Expr(
+                Call(
+                    ExprCall {
+                        attrs: [],
+                        func: Path(
+                            ExprPath {
+                                attrs: [],
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident {
+                                                ident: "Ok",
+                                                span: #0 bytes(0..0),
+                                            },
+                                            arguments: None,
+                                        },
+                                    ],
+                                },
+                            },
+                        ),
+                        paren_token: Paren,
+                        args: [
+                            Tuple(
+                                ExprTuple {
+                                    attrs: [],
+                                    paren_token: Paren,
+                                    elems: [],
+                                },
+                            ),
+                        ],
+                    },
+                ),
+            ),
+        ],
+    },
+}
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
@@ -49,18 +634,11 @@ mod test_safe_wrap {
     //  Testing
 
     fn test_safe_wrap() -> MynewtResult<()> {
-        pub fn get_device_id() -> MynewtResult<Strn> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn get_device_id() -> *const ::cty::c_char;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = get_device_id();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(Strn::from_cstr(result_value as *const u8))
-            }
+        "-------------------------------------------------------------";
+        "-------------------------------------------------------------";
+        //#[proc_macros::safe_wrap(attr)] 
+        extern "C" {
+            pub fn get_device_id() -> *const ::cty::c_char;
         }
         //#[proc_macros::safe_wrap(attr)] 
         extern "C" {
@@ -104,7 +682,6 @@ mod test_safe_wrap {
                                                   prev_cursor: *mut sensor)
              -> *mut sensor;
         }
-        "-------------------------------------------------------------";
         //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc =
@@ -114,7 +691,6 @@ mod test_safe_wrap {
             #[doc = " - __`evq`__: The event queue to pull the item off."]
             pub fn os_eventq_run(evq: *mut os_eventq);
         }
-        "-------------------------------------------------------------";
         //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc =
@@ -123,7 +699,6 @@ mod test_safe_wrap {
             #[doc = " Return:                      The default event queue."]
             pub fn os_eventq_dflt_get() -> *mut os_eventq;
         }
-        "-------------------------------------------------------------";
         //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             pub fn os_task_init(arg1: *mut os_task,
@@ -133,7 +708,6 @@ mod test_safe_wrap {
                                 arg6: os_time_t, arg7: *mut os_stack_t,
                                 arg8: u16) -> ::cty::c_int;
         }
-        "-------------------------------------------------------------";
         /*
             type Out<T> = &'static mut T;
             type Ptr = *mut ::cty::c_void;
@@ -210,7 +784,6 @@ mod test_safe_wrap {
             #[doc = " Return: 0 on success, non-zero on failure."]
             fn dummy() {}
         */
-        "-------------------------------------------------------------";
         let _test_local = Strn{rep: mynewt::StrnRep::ByteStr(b"hello\x00"),};
         Ok(())
     }

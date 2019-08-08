@@ -48,7 +48,19 @@ mod test_safe_wrap {
     //  Testing
 
     fn test_safe_wrap() -> MynewtResult<()> {
-        #[proc_macros::safe_wrap(attr)] 
+        "-------------------------------------------------------------";
+        #[proc_macros::infer_type(attr)] 
+        fn start_sensor_listener(sensor, sensor_type, poll_time) -> MynewtResult<()> {
+            sensor::set_poll_rate_ms(sensor, poll_time) ? ;
+            let sensor_object = sensor::mgr_find_next_bydevname(sensor, NULL_SENSOR_OBJECT) ? ;
+            if sensor_object != null {
+                let listener = sensor::new_sensor_listener(sensor_type, "handle_sensor_data") ? ;
+                sensor::register_listener(sensor_object, listener) ? ;
+            }
+            Ok(())
+        }        
+        "-------------------------------------------------------------";
+        //#[proc_macros::safe_wrap(attr)] 
         extern "C" {
             pub fn get_device_id() -> *const ::cty::c_char;
         }
@@ -91,7 +103,6 @@ mod test_safe_wrap {
                 prev_cursor: *mut sensor,
             ) -> *mut sensor;
         }
-        "-------------------------------------------------------------";
         //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Pull a single item off the event queue and call it's event"]
@@ -100,7 +111,6 @@ mod test_safe_wrap {
             #[doc = " - __`evq`__: The event queue to pull the item off."]
             pub fn os_eventq_run(evq: *mut os_eventq);
         }
-        "-------------------------------------------------------------";
         //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             #[doc = " Retrieves the default event queue processed by OS main task."]
@@ -108,7 +118,6 @@ mod test_safe_wrap {
             #[doc = " Return:                      The default event queue."]
             pub fn os_eventq_dflt_get() -> *mut os_eventq;
         }
-        "-------------------------------------------------------------";
         //#[proc_macros::safe_wrap(attr)] ////
         extern "C" {
             pub fn os_task_init(
@@ -122,7 +131,6 @@ mod test_safe_wrap {
                 arg8: u16,
             ) -> ::cty::c_int;
         }
-        "-------------------------------------------------------------";
         /*
             type Out<T> = &'static mut T;
             type Ptr = *mut ::cty::c_void;
@@ -199,7 +207,6 @@ mod test_safe_wrap {
             #[doc = " Return: 0 on success, non-zero on failure."]
             fn dummy() {}
         */
-        "-------------------------------------------------------------";
         let _test_local = init_strn!("hello");
         Ok(())
     }
