@@ -1,17 +1,19 @@
-fname: "handle_sensor_data2"
+test.json contains:
+{"send_sensor_data":[["sensor_data","&SensorValue"]]}fname: "handle_sensor_data2"
 para: "sensor_data"
 fname: "send_sensor_data"
 fname: "Ok"
-save_decls: "{\"handle_sensor_data2\":[[\"sensor_data\",\"_\"]]}"
+save_decls: "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"_\"]]}"
 successfully wrote to test.json
-fname: "send_sensor_data"
+test.json contains:
+{"send_sensor_data":[["sensor_data","&SensorValue"]],"handle_sensor_data2":[["sensor_data","_"]]}fname: "send_sensor_data"
 para: "sensor_data"
 fname: "sensor_network::get_device_id"
 fname: "sensor_network::init_server_post"
 sensor_data has inferred type &SensorValue
 fname: "sensor_network::do_server_post"
 fname: "Ok"
-save_decls: "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]]}"
+save_decls: "{\"handle_sensor_data2\":[[\"sensor_data\",\"_\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]]}"
 successfully wrote to test.json
 #![feature(prelude_import)]
 #![no_std]
