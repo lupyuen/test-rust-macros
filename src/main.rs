@@ -36,10 +36,9 @@ mod test_infer_type {
     };
     use mynewt_macros::{ strn, init_strn };
 
-    /*
     const _: &str = "-------------------------------------------------------------";
 
-    //#[mynewt_macros::infer_type(attr)] 
+    #[mynewt_macros::infer_type(attr)] 
     fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _) -> MynewtResult<()> {
         sensor::set_poll_rate_ms(sensor, poll_time) ? ;
         let sensor_object = sensor::mgr_find_next_bydevname(sensor, null_mut()) ? ;
@@ -49,7 +48,6 @@ mod test_infer_type {
         }
         Ok(())
     }        
-    */
 
     const _: &str = "-------------------------------------------------------------";
 
