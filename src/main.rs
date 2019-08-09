@@ -23,6 +23,7 @@ mod test_infer_type {
             sensor_data_ptr,
             sensor_ptr,
             sensor_arg,
+            SensorValue,
             SensorValueType,
         },
         encoding::{
@@ -48,17 +49,17 @@ mod test_infer_type {
         }
         Ok(())
     }        
+    */
 
     const _: &str = "-------------------------------------------------------------";
 
-    //#[mynewt_macros::infer_type(attr)] 
+    #[mynewt_macros::infer_type(attr)] 
     fn handle_sensor_data2(sensor_data: _) -> MynewtResult<()> {
         send_sensor_data(sensor_data) ? ;
         Ok(())
     }
 
-    */
-    //const _: &str = "-------------------------------------------------------------";
+    const _: &str = "-------------------------------------------------------------";
 
     #[mynewt_macros::infer_type(attr)] 
     fn send_sensor_data(sensor_data: _) -> MynewtResult<()> {
@@ -74,7 +75,7 @@ mod test_infer_type {
         Ok(())
     }
 
-    //const _: &str = "-------------------------------------------------------------";
+    const _: &str = "-------------------------------------------------------------";
 
     //  TODO
     const DEFAULT_URI: Strn = init_strn!("");

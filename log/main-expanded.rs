@@ -1,79 +1,17 @@
+fname: "handle_sensor_data2"
+para: "sensor_data"
+fname: "send_sensor_data"
+fname: "Ok"
+save_decls: "{\"handle_sensor_data2\":[[\"sensor_data\",\"_\"]]}"
+successfully wrote to test.json
 fname: "send_sensor_data"
 para: "sensor_data"
 fname: "sensor_network::get_device_id"
 fname: "sensor_network::init_server_post"
-macro: ExprMacro {
-    attrs: [],
-    mac: Macro {
-        path: Path {
-            leading_colon: None,
-            segments: [
-                PathSegment {
-                    ident: Ident {
-                        ident: "coap",
-                        span: #0 bytes(2209..2213),
-                    },
-                    arguments: None,
-                },
-            ],
-        },
-        bang_token: Bang,
-        delimiter: Paren(
-            Paren,
-        ),
-        tts: TokenStream [
-            Punct {
-                ch: '@',
-                spacing: Alone,
-                span: #0 bytes(2216..2217),
-            },
-            Ident {
-                ident: "json",
-                span: #0 bytes(2217..2221),
-            },
-            Group {
-                delimiter: Brace,
-                stream: TokenStream [
-                    Literal { lit: Lit { kind: Str, symbol: device, suffix: None }, span: Span { lo: BytePos(2248), hi: BytePos(2256), ctxt: #0 } },
-                    Punct {
-                        ch: ':',
-                        spacing: Alone,
-                        span: #0 bytes(2256..2257),
-                    },
-                    Punct {
-                        ch: '&',
-                        spacing: Alone,
-                        span: #0 bytes(2258..2259),
-                    },
-                    Ident {
-                        ident: "device_id",
-                        span: #0 bytes(2259..2268),
-                    },
-                    Punct {
-                        ch: ',',
-                        spacing: Alone,
-                        span: #0 bytes(2268..2269),
-                    },
-                    Ident {
-                        ident: "sensor_data",
-                        span: #0 bytes(2286..2297),
-                    },
-                    Punct {
-                        ch: ',',
-                        spacing: Alone,
-                        span: #0 bytes(2297..2298),
-                    },
-                ],
-                span: #0 bytes(2222..2312),
-            },
-        ],
-    },
-}
-path: "coap"
-tts: "@ json { \"device\" : & device_id , sensor_data , }"
+sensor_data has inferred type &SensorValue
 fname: "sensor_network::do_server_post"
 fname: "Ok"
-save_decls: "{\"send_sensor_data\":[[\"sensor_data\",\"_\"]]}"
+save_decls: "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]]}"
 successfully wrote to test.json
 #![feature(prelude_import)]
 #![no_std]
@@ -102,8 +40,9 @@ mod test_infer_type {
                               //sensor_data_func,
                               sensor_data_func_untyped, sensor_listener,
                               sensor_data_ptr, sensor_ptr, sensor_arg,
-                              SensorValueType}, encoding::{coap_context::*},
-                 libs::{sensor_network}, Strn, fill_zero, coap, d};
+                              SensorValue, SensorValueType},
+                 encoding::{coap_context::*}, libs::{sensor_network}, Strn,
+                 fill_zero, coap, d};
     use mynewt_macros::{strn, init_strn};
 
     /*
@@ -119,24 +58,24 @@ mod test_infer_type {
         }
         Ok(())
     }        
+    */
 
-    const _: &str = "-------------------------------------------------------------";
+    const _: &str =
+        "-------------------------------------------------------------";
 
-    //#[mynewt_macros::infer_type(attr)] 
     fn handle_sensor_data2(sensor_data: _) -> MynewtResult<()> {
-        send_sensor_data(sensor_data) ? ;
+        send_sensor_data(sensor_data)?;
         Ok(())
     }
 
-    */
-    //const _: &str = "-------------------------------------------------------------";
+    const _: &str =
+        "-------------------------------------------------------------";
 
-    fn send_sensor_data(sensor_data: _) -> MynewtResult<()> {
+    fn send_sensor_data(sensor_data: &SensorValue) -> MynewtResult<()> {
         let device_id = sensor_network::get_device_id()?;
         let network_ready = sensor_network::init_server_post(&DEFAULT_URI)?;
         if network_ready {
             let payload =
-                //const _: &str = "-------------------------------------------------------------";
 
                 //  TODO
 
@@ -496,6 +435,8 @@ mod test_infer_type {
         }
         Ok(())
     }
+    const _: &str =
+        "-------------------------------------------------------------";
     const DEFAULT_URI: Strn = Strn{rep: mynewt::StrnRep::ByteStr(b"\x00"),};
     fn new_sensor_listener(sensor_type: sensor_type_t,
                            sensor_func: sensor_data_func_untyped)
