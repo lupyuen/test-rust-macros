@@ -65,12 +65,10 @@ mod test_infer_type {
         let device_id = sensor_network::get_device_id() ? ;
         let network_ready = sensor_network::init_server_post(&DEFAULT_URI) ? ;
         if network_ready {
-            /*
             let payload = coap!( @json {        
                 "device": &device_id,
                 sensor_data,
             });
-            */
             sensor_network::do_server_post() ? ;
         }
         Ok(())
