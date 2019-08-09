@@ -61,7 +61,7 @@ mod test_infer_type {
     //const _: &str = "-------------------------------------------------------------";
 
     #[mynewt_macros::infer_type(attr)] 
-    fn send_sensor_data(sensor_data: u32) -> MynewtResult<()> {
+    fn send_sensor_data(sensor_data: _) -> MynewtResult<()> {
         let device_id = sensor_network::get_device_id() ? ;
         let network_ready = sensor_network::init_server_post(&DEFAULT_URI) ? ;
         if network_ready {

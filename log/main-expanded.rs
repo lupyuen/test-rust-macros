@@ -4,7 +4,7 @@ fname: "sensor_network::get_device_id"
 fname: "sensor_network::init_server_post"
 fname: "sensor_network::do_server_post"
 fname: "Ok"
-save_decls: "{\"send_sensor_data\":[[\"sensor_data\",\"\"]]}"
+save_decls: "{\"send_sensor_data\":[[\"sensor_data\",\"_\"]]}"
 successfully wrote to test.json
 #![feature(prelude_import)]
 #![no_std]
@@ -62,7 +62,7 @@ mod test_infer_type {
     */
     //const _: &str = "-------------------------------------------------------------";
 
-    fn send_sensor_data(sensor_data: u32) -> MynewtResult<()> {
+    fn send_sensor_data(sensor_data: _) -> MynewtResult<()> {
         let device_id = sensor_network::get_device_id()?;
         let network_ready = sensor_network::init_server_post(&DEFAULT_URI)?;
         if network_ready {
