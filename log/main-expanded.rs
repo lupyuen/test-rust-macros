@@ -1,23 +1,9 @@
-fname: "start_sensor_listener"
-para: "sensor"
-para: "sensor_type"
-para: "poll_time"
-fname: "sensor::set_poll_rate_ms"
-sensor has inferred type &Strn
-poll_time has inferred type u32
-fname: "sensor::mgr_find_next_bydevname"
-sensor has inferred type &Strn
-null_mut() has inferred type *mut sensor
-fname: "null_mut"
-fname: "new_sensor_listener"
-sensor_type has inferred type sensor_type_t
-handle_sensor_data has inferred type sensor_data_func
-fname: "sensor::register_listener"
-sensor_object has inferred type *mut sensor
-listener has inferred type sensor_listener
+fname: "send_sensor_data"
+para: "sensor_data"
+fname: "sensor_network::get_device_id"
+fname: "sensor_network::init_server_post"
+fname: "sensor_network::do_server_post"
 fname: "Ok"
-save_decls: "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]]}"
-successfully wrote to test.json
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
@@ -33,6 +19,7 @@ extern crate std as std;
 
 /// Testing infer_type
 #[cfg(feature = "test_infer_type")]
+#[allow(dead_code)]
 mod test_infer_type {
     extern crate macros as mynewt_macros;
     extern crate mynewt;
@@ -43,26 +30,47 @@ mod test_infer_type {
                  hw::sensor::{self, sensor_type_t,
                               //sensor_data_func,
                               sensor_data_func_untyped, sensor_listener,
-                              sensor_data_ptr, sensor_ptr, sensor_arg}, Strn,
-                 fill_zero};
+                              sensor_data_ptr, sensor_ptr, sensor_arg,
+                              SensorValueType}, encoding::{coap_context::*},
+                 libs::{sensor_network}, Strn, fill_zero, coap, d};
+    use mynewt_macros::{strn, init_strn};
 
-    const _BEGIN: &str =
-        "-------------------------------------------------------------";
-    #[allow(dead_code)]
-    fn start_sensor_listener(sensor: &Strn, sensor_type: sensor_type_t,
-                             poll_time: u32) -> MynewtResult<()> {
-        sensor::set_poll_rate_ms(sensor, poll_time)?;
-        let sensor_object =
-            sensor::mgr_find_next_bydevname(sensor, null_mut())?;
+    /*
+    const _: &str = "-------------------------------------------------------------";
+
+    //#[mynewt_macros::infer_type(attr)] 
+    fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _) -> MynewtResult<()> {
+        sensor::set_poll_rate_ms(sensor, poll_time) ? ;
+        let sensor_object = sensor::mgr_find_next_bydevname(sensor, null_mut()) ? ;
         if sensor_object != null_mut() {
-            let listener =
-                new_sensor_listener(sensor_type, handle_sensor_data)?;
-            sensor::register_listener(sensor_object, listener)?;
+            let listener = new_sensor_listener(sensor_type, handle_sensor_data) ? ;
+            sensor::register_listener(sensor_object, listener) ? ;
         }
         Ok(())
+    }        
+
+    const _: &str = "-------------------------------------------------------------";
+
+    //#[mynewt_macros::infer_type(attr)] 
+    fn handle_sensor_data2(sensor_data: _) -> MynewtResult<()> {
+        send_sensor_data(sensor_data) ? ;
+        Ok(())
     }
-    const _END: &str =
-        "-------------------------------------------------------------";
+
+    */
+    //const _: &str = "-------------------------------------------------------------";
+
+    /*
+    let payload = coap!( @json {        
+        "device": &device_id,
+        sensor_data,
+    });
+    */
+
+    //const _: &str = "-------------------------------------------------------------";
+
+    //  TODO
+    const DEFAULT_URI: Strn = Strn{rep: mynewt::StrnRep::ByteStr(b"\x00"),};
 
     //  TODO
     fn new_sensor_listener(sensor_type: sensor_type_t,

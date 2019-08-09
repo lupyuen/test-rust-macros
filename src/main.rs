@@ -4,6 +4,7 @@
 
 /// Testing infer_type
 #[cfg(feature = "test_infer_type")]
+#[allow(dead_code)]
 mod test_infer_type {
     extern crate macros as mynewt_macros;
     extern crate mynewt;
@@ -22,13 +23,22 @@ mod test_infer_type {
             sensor_data_ptr,
             sensor_ptr,
             sensor_arg,
+            SensorValueType,
         },
-        Strn, fill_zero,
+        encoding::{
+            coap_context::*,
+        },
+        libs::{
+            sensor_network,
+        },
+        Strn, fill_zero, coap, d,
     };
+    use mynewt_macros::{ strn, init_strn };
 
-    const _BEGIN: &str = "-------------------------------------------------------------";
-    #[allow(dead_code)]
-    #[mynewt_macros::infer_type(attr)] 
+    /*
+    const _: &str = "-------------------------------------------------------------";
+
+    //#[mynewt_macros::infer_type(attr)] 
     fn start_sensor_listener(sensor: _, sensor_type: _, poll_time: _) -> MynewtResult<()> {
         sensor::set_poll_rate_ms(sensor, poll_time) ? ;
         let sensor_object = sensor::mgr_find_next_bydevname(sensor, null_mut()) ? ;
@@ -38,7 +48,38 @@ mod test_infer_type {
         }
         Ok(())
     }        
-    const _END: &str = "-------------------------------------------------------------";
+
+    const _: &str = "-------------------------------------------------------------";
+
+    //#[mynewt_macros::infer_type(attr)] 
+    fn handle_sensor_data2(sensor_data: _) -> MynewtResult<()> {
+        send_sensor_data(sensor_data) ? ;
+        Ok(())
+    }
+
+    */
+    //const _: &str = "-------------------------------------------------------------";
+
+    #[mynewt_macros::infer_type(attr)] 
+    fn send_sensor_data(sensor_data: u32) -> MynewtResult<()> {
+        let device_id = sensor_network::get_device_id() ? ;
+        let network_ready = sensor_network::init_server_post(&DEFAULT_URI) ? ;
+        if network_ready {
+            /*
+            let payload = coap!( @json {        
+                "device": &device_id,
+                sensor_data,
+            });
+            */
+            sensor_network::do_server_post() ? ;
+        }
+        Ok(())
+    }
+
+    //const _: &str = "-------------------------------------------------------------";
+
+    //  TODO
+    const DEFAULT_URI: Strn = init_strn!("");
 
     //  TODO
     fn new_sensor_listener(sensor_type: sensor_type_t, sensor_func: sensor_data_func_untyped) -> MynewtResult<sensor_listener> {
