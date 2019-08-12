@@ -66,7 +66,7 @@ mod test_infer_type {
         if network_ready {
             let payload = coap!( @json {        
                 "device": &device_id,
-                sensor_data,
+                sensor_data
             });
             sensor_network::do_server_post() ? ;
         }

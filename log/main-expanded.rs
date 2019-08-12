@@ -48,7 +48,7 @@ null_mut() has inferred type *mut sensor
 #s src/main.rs | 45 | 28 | 45 | 38
 #s src/main.rs | 45 | 28 | 45 | 38
 fname: "null_mut"
-load_decls: test.json, "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]]}"
+load_decls: infer.json, "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
 #s src/main.rs | 45 | 28 | 45 | 38
 #s src/main.rs | 45 | 11 | 45 | 38
 #s src/main.rs | 45 | 39 | 48 | 9
@@ -94,8 +94,9 @@ listener has inferred type sensor_listener
 fname: "Ok"
 #s src/main.rs | 49 | 8 | 49 | 14
 #s src/main.rs | 42 | 90 | 50 | 5
-save_decls: test.json, "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]]}"
-successfully wrote to test.json
+load_decls: infer.json, "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
+save_decls: infer.json, "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
+successfully wrote to infer.json
 fname: "handle_sensor_data2"
 para: "sensor_data"
 #s src/main.rs | 55 | 27 | 55 | 38
@@ -120,8 +121,9 @@ sensor_data has inferred type &SensorValue
 fname: "Ok"
 #s src/main.rs | 57 | 8 | 57 | 14
 #s src/main.rs | 55 | 63 | 58 | 5
-save_decls: test.json, "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
-successfully wrote to test.json
+load_decls: infer.json, "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
+save_decls: infer.json, "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
+successfully wrote to infer.json
 fname: "send_sensor_data"
 para: "sensor_data"
 #s src/main.rs | 63 | 24 | 63 | 35
@@ -168,8 +170,9 @@ fname: "sensor_network::do_server_post"
 fname: "Ok"
 #s src/main.rs | 73 | 8 | 73 | 14
 #s src/main.rs | 63 | 60 | 74 | 5
-save_decls: test.json, "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]]}"
-successfully wrote to test.json
+load_decls: infer.json, "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
+save_decls: infer.json, "{\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]],\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]]}"
+successfully wrote to infer.json
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
@@ -449,7 +452,7 @@ mod test_infer_type {
                                     };
                                 };
                                 {
-                                    " >>  >> \"device\" >> : & device_id , sensor_data ,";
+                                    " >>  >> \"device\" >> : & device_id , sensor_data";
                                     "add1 key : \"device\" value : $crate::parse!(@ json &device_id) to object :\nCOAP_CONTEXT";
                                     {
                                         "begin json coap_item_str , parent : COAP_CONTEXT , key : \"device\" , val :\n$crate::parse!(@ json &device_id)";
@@ -500,7 +503,7 @@ mod test_infer_type {
                                         "end json coap_item_str";
                                     };
                                     "--------------------";
-                                    " >>  >> sensor_data >> ,";
+                                    " >>  >> sensor_data >> ";
                                     "--------------------";
                                     {
                                         "begin json coap_item_int_val , c : COAP_CONTEXT , val : sensor_data";
