@@ -1,178 +1,152 @@
-fname: "start_sensor_listener"
-para: "sensor"
-#s src/main.rs | 42 | 29 | 42 | 35
-para: "sensor_type"
-#s src/main.rs | 42 | 40 | 42 | 51
-para: "poll_time"
-#s src/main.rs | 42 | 56 | 42 | 65
-#s src/main.rs | 42 | 90 | 50 | 5
-#s src/main.rs | 43 | 8 | 43 | 55
-#s src/main.rs | 43 | 8 | 43 | 53
-#s src/main.rs | 43 | 8 | 43 | 51
-#s src/main.rs | 43 | 8 | 43 | 51
-fname: "sensor::set_poll_rate_ms"
-#m sensor::set_poll_rate_ms | src/main.rs | 43 | 8 | 43 | 51
-#s src/main.rs | 43 | 33 | 43 | 50
-sensor has inferred type &Strn
-#s src/main.rs | 43 | 33 | 43 | 39
+#s src/main.rs | 59 | 29 | 59 | 35
+#s src/main.rs | 59 | 40 | 59 | 50
+#s src/main.rs | 59 | 55 | 59 | 66
+#s src/main.rs | 59 | 71 | 59 | 80
+#s src/main.rs | 59 | 105 | 67 | 5
+#s src/main.rs | 60 | 8 | 60 | 55
+#s src/main.rs | 60 | 8 | 60 | 53
+#s src/main.rs | 60 | 8 | 60 | 51
+#s src/main.rs | 60 | 8 | 60 | 51
+#m sensor::set_poll_rate_ms | src/main.rs | 60 | 8 | 60 | 51
+#s src/main.rs | 60 | 33 | 60 | 50
+start_sensor_listener: sensor has inferred type &Strn
+#s src/main.rs | 60 | 33 | 60 | 39
 #i start_sensor_listener | sensor | sensor::set_poll_rate_ms | devname | &Strn
-poll_time has inferred type u32
-#s src/main.rs | 43 | 41 | 43 | 50
+start_sensor_listener: poll_time has inferred type u32
+#s src/main.rs | 60 | 41 | 60 | 50
 #i start_sensor_listener | poll_time | sensor::set_poll_rate_ms | poll_rate | u32
-#s src/main.rs | 43 | 33 | 43 | 50
-#s src/main.rs | 43 | 8 | 43 | 51
-#s src/main.rs | 43 | 8 | 43 | 51
-#s src/main.rs | 43 | 8 | 43 | 53
-#s src/main.rs | 44 | 8 | 44 | 83
-#s src/main.rs | 44 | 28 | 44 | 81
-#s src/main.rs | 44 | 28 | 44 | 79
-#s src/main.rs | 44 | 28 | 44 | 79
-fname: "sensor::mgr_find_next_bydevname"
-#m sensor::mgr_find_next_bydevname | src/main.rs | 44 | 28 | 44 | 79
-#s src/main.rs | 44 | 60 | 44 | 78
-sensor has inferred type &Strn
-#s src/main.rs | 44 | 60 | 44 | 66
+#s src/main.rs | 60 | 33 | 60 | 50
+#s src/main.rs | 60 | 8 | 60 | 51
+#s src/main.rs | 60 | 8 | 60 | 51
+#s src/main.rs | 60 | 8 | 60 | 53
+#s src/main.rs | 61 | 8 | 61 | 83
+#s src/main.rs | 61 | 28 | 61 | 81
+#s src/main.rs | 61 | 28 | 61 | 79
+#s src/main.rs | 61 | 28 | 61 | 79
+#m sensor::mgr_find_next_bydevname | src/main.rs | 61 | 28 | 61 | 79
+#s src/main.rs | 61 | 60 | 61 | 78
+start_sensor_listener: sensor has inferred type &Strn
+#s src/main.rs | 61 | 60 | 61 | 66
 #i start_sensor_listener | sensor | sensor::mgr_find_next_bydevname | devname | &Strn
-null_mut() has inferred type *mut sensor
-#s src/main.rs | 44 | 68 | 44 | 78
+start_sensor_listener: null_mut() has inferred type *mut sensor
+#s src/main.rs | 61 | 68 | 61 | 78
 #i start_sensor_listener | null_mut() | sensor::mgr_find_next_bydevname | prev_cursor | *mut sensor
-#s src/main.rs | 44 | 60 | 44 | 78
-#s src/main.rs | 44 | 28 | 44 | 79
-#s src/main.rs | 44 | 28 | 44 | 79
-#s src/main.rs | 44 | 28 | 44 | 81
-#s src/main.rs | 45 | 8 | 48 | 9
-#s src/main.rs | 45 | 8 | 48 | 9
-#s src/main.rs | 45 | 11 | 45 | 38
-#s src/main.rs | 45 | 11 | 45 | 24
-#s src/main.rs | 45 | 11 | 45 | 24
-#s src/main.rs | 45 | 28 | 45 | 38
-#s src/main.rs | 45 | 28 | 45 | 38
-fname: "null_mut"
-load_decls: infer.json, "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
-#s src/main.rs | 45 | 28 | 45 | 38
-#s src/main.rs | 45 | 11 | 45 | 38
-#s src/main.rs | 45 | 39 | 48 | 9
-#s src/main.rs | 46 | 12 | 46 | 83
-#s src/main.rs | 46 | 27 | 46 | 81
-#s src/main.rs | 46 | 27 | 46 | 79
-#s src/main.rs | 46 | 27 | 46 | 79
-fname: "new_sensor_listener"
-#m new_sensor_listener | src/main.rs | 46 | 27 | 46 | 79
-#s src/main.rs | 46 | 47 | 46 | 78
-sensor_type has inferred type sensor_type_t
-#s src/main.rs | 46 | 47 | 46 | 58
-#i start_sensor_listener | sensor_type | new_sensor_listener | sl_sensor_type | sensor_type_t
-handle_sensor_data has inferred type sensor_data_func
-#s src/main.rs | 46 | 60 | 46 | 78
-#i start_sensor_listener | handle_sensor_data | new_sensor_listener | sl_func | sensor_data_func
-#s src/main.rs | 46 | 47 | 46 | 78
-#s src/main.rs | 46 | 27 | 46 | 79
-#s src/main.rs | 46 | 27 | 46 | 79
-#s src/main.rs | 46 | 27 | 46 | 81
-#s src/main.rs | 47 | 12 | 47 | 66
-#s src/main.rs | 47 | 12 | 47 | 64
-#s src/main.rs | 47 | 12 | 47 | 62
-#s src/main.rs | 47 | 12 | 47 | 62
-fname: "sensor::register_listener"
-#m sensor::register_listener | src/main.rs | 47 | 12 | 47 | 62
-#s src/main.rs | 47 | 38 | 47 | 61
-sensor_object has inferred type *mut sensor
-#s src/main.rs | 47 | 38 | 47 | 51
+#s src/main.rs | 61 | 60 | 61 | 78
+#s src/main.rs | 61 | 28 | 61 | 79
+#s src/main.rs | 61 | 28 | 61 | 79
+#s src/main.rs | 61 | 28 | 61 | 81
+#s src/main.rs | 62 | 8 | 65 | 9
+#s src/main.rs | 62 | 8 | 65 | 9
+#s src/main.rs | 62 | 11 | 62 | 38
+#s src/main.rs | 62 | 11 | 62 | 24
+#s src/main.rs | 62 | 11 | 62 | 24
+#s src/main.rs | 62 | 28 | 62 | 38
+#s src/main.rs | 62 | 28 | 62 | 38
+#s src/main.rs | 62 | 28 | 62 | 38
+#s src/main.rs | 62 | 11 | 62 | 38
+#s src/main.rs | 62 | 39 | 65 | 9
+#s src/main.rs | 63 | 12 | 63 | 103
+#s src/main.rs | 63 | 27 | 63 | 101
+#s src/main.rs | 63 | 27 | 63 | 99
+#s src/main.rs | 63 | 27 | 63 | 99
+#m sensor::new_sensor_listener | src/main.rs | 63 | 27 | 63 | 99
+#s src/main.rs | 63 | 55 | 63 | 98
+start_sensor_listener: sensor_key has inferred type &'static Strn
+#s src/main.rs | 63 | 55 | 63 | 65
+#i start_sensor_listener | sensor_key | sensor::new_sensor_listener | sensor_key | &'static Strn
+start_sensor_listener: sensor_type has inferred type sensor_type_t
+#s src/main.rs | 63 | 67 | 63 | 78
+#i start_sensor_listener | sensor_type | sensor::new_sensor_listener | sensor_type | sensor_type_t
+start_sensor_listener: handle_sensor_data has inferred type SensorValueFunc
+#s src/main.rs | 63 | 80 | 63 | 98
+#i start_sensor_listener | handle_sensor_data | sensor::new_sensor_listener | listener_func | SensorValueFunc
+#s src/main.rs | 63 | 55 | 63 | 98
+#s src/main.rs | 63 | 27 | 63 | 99
+#s src/main.rs | 63 | 27 | 63 | 99
+#s src/main.rs | 63 | 27 | 63 | 101
+#s src/main.rs | 64 | 12 | 64 | 66
+#s src/main.rs | 64 | 12 | 64 | 64
+#s src/main.rs | 64 | 12 | 64 | 62
+#s src/main.rs | 64 | 12 | 64 | 62
+#m sensor::register_listener | src/main.rs | 64 | 12 | 64 | 62
+#s src/main.rs | 64 | 38 | 64 | 61
+start_sensor_listener: sensor_object has inferred type *mut sensor
+#s src/main.rs | 64 | 38 | 64 | 51
 #i start_sensor_listener | sensor_object | sensor::register_listener | sensor | *mut sensor
-listener has inferred type sensor_listener
-#s src/main.rs | 47 | 53 | 47 | 61
+start_sensor_listener: listener has inferred type sensor_listener
+#s src/main.rs | 64 | 53 | 64 | 61
 #i start_sensor_listener | listener | sensor::register_listener | listener | sensor_listener
-#s src/main.rs | 47 | 38 | 47 | 61
-#s src/main.rs | 47 | 12 | 47 | 62
-#s src/main.rs | 47 | 12 | 47 | 62
-#s src/main.rs | 47 | 12 | 47 | 64
-#s src/main.rs | 45 | 39 | 48 | 9
-#s src/main.rs | 45 | 8 | 48 | 9
-#s src/main.rs | 49 | 8 | 49 | 14
-#s src/main.rs | 49 | 8 | 49 | 14
-#s src/main.rs | 49 | 8 | 49 | 14
-fname: "Ok"
-#s src/main.rs | 49 | 8 | 49 | 14
-#s src/main.rs | 42 | 90 | 50 | 5
-load_decls: infer.json, "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
-save_decls: infer.json, "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
-successfully wrote to infer.json
-fname: "handle_sensor_data2"
-para: "sensor_data"
-#s src/main.rs | 55 | 27 | 55 | 38
-#s src/main.rs | 55 | 63 | 58 | 5
-#s src/main.rs | 56 | 8 | 56 | 41
-#s src/main.rs | 56 | 8 | 56 | 39
-#s src/main.rs | 56 | 8 | 56 | 37
-#s src/main.rs | 56 | 8 | 56 | 37
-fname: "send_sensor_data"
-#m send_sensor_data | src/main.rs | 56 | 8 | 56 | 37
-#s src/main.rs | 56 | 25 | 56 | 36
-sensor_data has inferred type &SensorValue
-#s src/main.rs | 56 | 25 | 56 | 36
-#i handle_sensor_data2 | sensor_data | send_sensor_data | sensor_data | &SensorValue
-#s src/main.rs | 56 | 25 | 56 | 36
-#s src/main.rs | 56 | 8 | 56 | 37
-#s src/main.rs | 56 | 8 | 56 | 37
-#s src/main.rs | 56 | 8 | 56 | 39
-#s src/main.rs | 57 | 8 | 57 | 14
-#s src/main.rs | 57 | 8 | 57 | 14
-#s src/main.rs | 57 | 8 | 57 | 14
-fname: "Ok"
-#s src/main.rs | 57 | 8 | 57 | 14
-#s src/main.rs | 55 | 63 | 58 | 5
-load_decls: infer.json, "{\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
-save_decls: infer.json, "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
-successfully wrote to infer.json
-fname: "send_sensor_data"
-para: "sensor_data"
-#s src/main.rs | 63 | 24 | 63 | 35
-#s src/main.rs | 63 | 60 | 74 | 5
-#s src/main.rs | 64 | 8 | 64 | 59
-#s src/main.rs | 64 | 24 | 64 | 57
-#s src/main.rs | 64 | 24 | 64 | 55
-#s src/main.rs | 64 | 24 | 64 | 55
-fname: "sensor_network::get_device_id"
-#s src/main.rs | 64 | 24 | 64 | 55
-#s src/main.rs | 64 | 24 | 64 | 57
-#s src/main.rs | 65 | 8 | 65 | 78
-#s src/main.rs | 65 | 28 | 65 | 76
-#s src/main.rs | 65 | 28 | 65 | 74
-#s src/main.rs | 65 | 28 | 65 | 74
-fname: "sensor_network::init_server_post"
-#s src/main.rs | 65 | 28 | 65 | 74
-#s src/main.rs | 65 | 28 | 65 | 76
-#s src/main.rs | 66 | 8 | 72 | 9
-#s src/main.rs | 66 | 8 | 72 | 9
-#s src/main.rs | 66 | 11 | 66 | 24
-#s src/main.rs | 66 | 11 | 66 | 24
-#s src/main.rs | 66 | 25 | 72 | 9
-#s src/main.rs | 67 | 12 | 70 | 15
-#s src/main.rs | 67 | 26 | 70 | 14
-#s src/main.rs | 67 | 26 | 70 | 14
-#m coap | src/main.rs | 67 | 26 | 70 | 14
-sensor_data has inferred type &SensorValue
+#s src/main.rs | 64 | 38 | 64 | 61
+#s src/main.rs | 64 | 12 | 64 | 62
+#s src/main.rs | 64 | 12 | 64 | 62
+#s src/main.rs | 64 | 12 | 64 | 64
+#s src/main.rs | 62 | 39 | 65 | 9
+#s src/main.rs | 62 | 8 | 65 | 9
+#s src/main.rs | 66 | 8 | 66 | 14
+#s src/main.rs | 66 | 8 | 66 | 14
+#s src/main.rs | 66 | 8 | 66 | 14
+#s src/main.rs | 66 | 8 | 66 | 14
+#s src/main.rs | 59 | 105 | 67 | 5
+start_sensor_listener: updated infer.json
+#s src/main.rs | 73 | 26 | 73 | 37
+#s src/main.rs | 73 | 62 | 76 | 5
+#s src/main.rs | 74 | 8 | 74 | 41
+#s src/main.rs | 74 | 8 | 74 | 39
+#s src/main.rs | 74 | 8 | 74 | 37
+#s src/main.rs | 74 | 8 | 74 | 37
+#m send_sensor_data | src/main.rs | 74 | 8 | 74 | 37
+#s src/main.rs | 74 | 25 | 74 | 36
+handle_sensor_data: sensor_data has inferred type &SensorValue
+#s src/main.rs | 74 | 25 | 74 | 36
+#i handle_sensor_data | sensor_data | send_sensor_data | sensor_data | &SensorValue
+#s src/main.rs | 74 | 25 | 74 | 36
+#s src/main.rs | 74 | 8 | 74 | 37
+#s src/main.rs | 74 | 8 | 74 | 37
+#s src/main.rs | 74 | 8 | 74 | 39
+#s src/main.rs | 75 | 8 | 75 | 14
+#s src/main.rs | 75 | 8 | 75 | 14
+#s src/main.rs | 75 | 8 | 75 | 14
+#s src/main.rs | 75 | 8 | 75 | 14
+#s src/main.rs | 73 | 62 | 76 | 5
+handle_sensor_data: updated infer.json
+#s src/main.rs | 81 | 24 | 81 | 35
+#s src/main.rs | 81 | 60 | 92 | 5
+#s src/main.rs | 82 | 8 | 82 | 60
+#s src/main.rs | 82 | 24 | 82 | 58
+#s src/main.rs | 82 | 24 | 82 | 58
+#s src/main.rs | 83 | 8 | 83 | 77
+#s src/main.rs | 83 | 28 | 83 | 75
+#s src/main.rs | 83 | 28 | 83 | 73
+#s src/main.rs | 83 | 28 | 83 | 73
+#s src/main.rs | 83 | 28 | 83 | 73
+#s src/main.rs | 83 | 28 | 83 | 75
+#s src/main.rs | 84 | 8 | 90 | 9
+#s src/main.rs | 84 | 8 | 90 | 9
+#s src/main.rs | 84 | 11 | 84 | 24
+#s src/main.rs | 84 | 11 | 84 | 24
+#s src/main.rs | 84 | 25 | 90 | 9
+#s src/main.rs | 85 | 12 | 88 | 15
+#s src/main.rs | 85 | 27 | 88 | 14
+#s src/main.rs | 85 | 27 | 88 | 14
+#m coap | src/main.rs | 85 | 27 | 88 | 14
+send_sensor_data: sensor_data has inferred type &SensorValue
 #i send_sensor_data | sensor_data | coap | singleton | &SensorValue
-#s src/main.rs | 67 | 26 | 70 | 14
-#s src/main.rs | 67 | 26 | 70 | 14
-#s src/main.rs | 71 | 12 | 71 | 48
-#s src/main.rs | 71 | 12 | 71 | 46
-#s src/main.rs | 71 | 12 | 71 | 44
-#s src/main.rs | 71 | 12 | 71 | 44
-fname: "sensor_network::do_server_post"
-#s src/main.rs | 71 | 12 | 71 | 44
-#s src/main.rs | 71 | 12 | 71 | 46
-#s src/main.rs | 66 | 25 | 72 | 9
-#s src/main.rs | 66 | 8 | 72 | 9
-#s src/main.rs | 73 | 8 | 73 | 14
-#s src/main.rs | 73 | 8 | 73 | 14
-#s src/main.rs | 73 | 8 | 73 | 14
-fname: "Ok"
-#s src/main.rs | 73 | 8 | 73 | 14
-#s src/main.rs | 63 | 60 | 74 | 5
-load_decls: infer.json, "{\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]],\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]]}"
-save_decls: infer.json, "{\"handle_sensor_data2\":[[\"sensor_data\",\"&SensorValue\"]],\"start_sensor_listener\":[[\"sensor\",\"&Strn\"],[\"sensor_type\",\"sensor_type_t\"],[\"poll_time\",\"u32\"]],\"send_sensor_data\":[[\"sensor_data\",\"&SensorValue\"]]}"
-successfully wrote to infer.json
+#s src/main.rs | 85 | 27 | 88 | 14
+#s src/main.rs | 85 | 27 | 88 | 14
+#s src/main.rs | 89 | 12 | 89 | 48
+#s src/main.rs | 89 | 12 | 89 | 46
+#s src/main.rs | 89 | 12 | 89 | 44
+#s src/main.rs | 89 | 12 | 89 | 44
+#s src/main.rs | 89 | 12 | 89 | 44
+#s src/main.rs | 89 | 12 | 89 | 46
+#s src/main.rs | 84 | 25 | 90 | 9
+#s src/main.rs | 84 | 8 | 90 | 9
+#s src/main.rs | 91 | 8 | 91 | 14
+#s src/main.rs | 91 | 8 | 91 | 14
+#s src/main.rs | 91 | 8 | 91 | 14
+#s src/main.rs | 91 | 8 | 91 | 14
+#s src/main.rs | 81 | 60 | 92 | 5
+send_sensor_data: updated infer.json
 #![feature(prelude_import)]
 #![no_std]
 #![feature(trace_macros)]
@@ -200,49 +174,66 @@ mod test_infer_type {
                               //sensor_data_func,
                               sensor_data_func_untyped, sensor_listener,
                               sensor_data_ptr, sensor_ptr, sensor_arg,
-                              SensorValue, SensorValueType},
+                              SensorValue, SensorValueType,
+                              SENSOR_TYPE_AMBIENT_TEMPERATURE_RAW},
                  encoding::{coap_context::*}, libs::{sensor_network}, Strn,
                  fill_zero, coap, d};
     use mynewt_macros::{strn, init_strn};
 
+    //  From stm32bluepill-mynewt-sensor/rust/visual/src/lib.rs
     const _: &str =
         "-------------------------------------------------------------";
 
-    fn start_sensor_listener(sensor: &Strn, sensor_type: sensor_type_t,
-                             poll_time: u32) -> MynewtResult<()> {
+    /// Will be run upon startup to initialise the app
+    fn on_start() -> MynewtResult<()> {
+        let SENSOR_DEVICE =
+            &Strn{rep: mynewt::StrnRep::ByteStr(b"temp_stm32_0\x00"),};
+        let SENSOR_POLL_TIME = 10000;
+        let TEMP_SENSOR_KEY = &Strn{rep: mynewt::StrnRep::ByteStr(b"t\x00"),};
+        let TEMP_SENSOR_TYPE = SENSOR_TYPE_AMBIENT_TEMPERATURE_RAW;
+        start_sensor_listener(SENSOR_DEVICE, TEMP_SENSOR_KEY,
+                              TEMP_SENSOR_TYPE, SENSOR_POLL_TIME)?;
+        sensor_network::start_server_transport()?;
+
+        //  Return success to `main()`.
+        Ok(())
+    }
+
+    //  Infer the missing types
+    #[doc = " Ask Mynewt to poll the temperature sensor every"]
+    #[doc = " 10 seconds and call `handle_sensor_data()`."]
+    fn start_sensor_listener(sensor: &Strn, sensor_key: &'static Strn,
+                             sensor_type: sensor_type_t, poll_time: u32)
+     -> MynewtResult<()> {
         sensor::set_poll_rate_ms(sensor, poll_time)?;
         let sensor_object =
             sensor::mgr_find_next_bydevname(sensor, null_mut())?;
         if sensor_object != null_mut() {
             let listener =
-                new_sensor_listener(sensor_type, handle_sensor_data)?;
+                sensor::new_sensor_listener(sensor_key, sensor_type,
+                                            handle_sensor_data)?;
             sensor::register_listener(sensor_object, listener)?;
         }
         Ok(())
     }
 
-    const _: &str =
-        "-------------------------------------------------------------";
-
-    fn handle_sensor_data2(sensor_data: &SensorValue) -> MynewtResult<()> {
+    //  Infer the missing types
+    #[doc = " This listener function is called every 10 seconds by Mynewt"]
+    #[doc = " to handle the polled sensor data. We convert the sensor"]
+    #[doc = " data to our transmission format and transmit to the server."]
+    fn handle_sensor_data(sensor_data: &SensorValue) -> MynewtResult<()> {
         send_sensor_data(sensor_data)?;
         Ok(())
     }
 
-    const _: &str =
-        "-------------------------------------------------------------";
-
+    //  Infer the missing types
+    #[doc = " Compose a CoAP JSON message with the Sensor Key (field name)"]
+    #[doc = " and Sensor Value in `sensor_data` and send to the CoAP server."]
     fn send_sensor_data(sensor_data: &SensorValue) -> MynewtResult<()> {
-        let device_id = sensor_network::get_device_id()?;
-        let network_ready = sensor_network::init_server_post(&DEFAULT_URI)?;
+        let device_id = &sensor_network::get_device_id()?;
+        let network_ready = sensor_network::init_server_post(DEFAULT_URI)?;
         if network_ready {
-            let payload =
-
-                //  TODO
-
-                //  TODO
-                //sl_arg: null_mut(),
-                //sl_next: null(),
+            let _payload =
 
                 //  TODO
 
@@ -452,10 +443,10 @@ mod test_infer_type {
                                     };
                                 };
                                 {
-                                    " >>  >> \"device\" >> : & device_id , sensor_data";
-                                    "add1 key : \"device\" value : $crate::parse!(@ json &device_id) to object :\nCOAP_CONTEXT";
+                                    " >>  >> \"device\" >> : device_id , sensor_data";
+                                    "add1 key : \"device\" value : $crate::parse!(@ json device_id) to object :\nCOAP_CONTEXT";
                                     {
-                                        "begin json coap_item_str , parent : COAP_CONTEXT , key : \"device\" , val :\n$crate::parse!(@ json &device_id)";
+                                        "begin json coap_item_str , parent : COAP_CONTEXT , key : \"device\" , val :\n$crate::parse!(@ json device_id)";
                                         {
                                             "begin json coap_item , array : COAP_CONTEXT";
                                             {
@@ -479,11 +470,11 @@ mod test_infer_type {
                                                     };
                                                 };
                                                 {
-                                                    "-- jtxti o: COAP_CONTEXT, k: value, v: $crate::parse!(@ json &device_id)";
+                                                    "-- jtxti o: COAP_CONTEXT, k: value, v: $crate::parse!(@ json device_id)";
                                                     let key_strn: &Strn =
                                                         &Strn::new(b"value\x00");
                                                     let value_strn: &Strn =
-                                                        &device_id;
+                                                        device_id;
                                                     unsafe {
                                                         COAP_CONTEXT.json_set_text_string(key_strn,
                                                                                           value_strn)
@@ -598,23 +589,6 @@ mod test_infer_type {
     }
     const _: &str =
         "-------------------------------------------------------------";
-    const DEFAULT_URI: Strn = Strn{rep: mynewt::StrnRep::ByteStr(b"\x00"),};
-    fn new_sensor_listener(sensor_type: sensor_type_t,
-                           sensor_func: sensor_data_func_untyped)
-     -> MynewtResult<sensor_listener> {
-        Ok(sensor_listener{sl_func: Some(sensor_func),
-                           sl_sensor_type:
-                               sensor_type,
-                                              ..unsafe {
-                                                    ::core::mem::transmute::<[u8; ::core::mem::size_of::<sensor_listener>()],
-                                                                             sensor_listener>([0;
-                                                                                                  ::core::mem::size_of::<sensor_listener>()])
-                                                }})
-    }
-    extern "C" fn handle_sensor_data(_sensor: sensor_ptr, _arg: sensor_arg,
-                                     _sensor_data: sensor_data_ptr,
-                                     _sensor_type: sensor_type_t) -> i32 {
-        0
-    }
+    const DEFAULT_URI: &Strn = &Strn{rep: mynewt::StrnRep::ByteStr(b"\x00"),};
 }
 fn main() { }
