@@ -56,7 +56,7 @@ mod test_infer_type {
     /// Ask Mynewt to poll the temperature sensor every
     /// 10 seconds and call `handle_sensor_data()`.
     #[mynewt_macros::infer_type(attr)]  //  Infer the missing types
-    fn start_sensor_listener(sensor: _, sensor_key: _, sensor_type: _, poll_time: _) -> MynewtResult<()> {
+    fn start_sensor_listener(sensor, sensor_key, sensor_type, poll_time) -> MynewtResult<()> {
         sensor::set_poll_rate_ms(sensor, poll_time) ? ;
         let sensor_object = sensor::mgr_find_next_bydevname(sensor, null_mut()) ? ;
         if sensor_object != null_mut() {
@@ -70,7 +70,7 @@ mod test_infer_type {
     /// to handle the polled sensor data. We convert the sensor
     /// data to our transmission format and transmit to the server.
     #[mynewt_macros::infer_type(attr)]  //  Infer the missing types
-    fn handle_sensor_data(sensor_data: _) -> MynewtResult<()> {
+    fn handle_sensor_data(sensor_data) -> MynewtResult<()> {
         send_sensor_data(sensor_data) ? ;
         Ok(())
     }
@@ -78,7 +78,7 @@ mod test_infer_type {
     /// Compose a CoAP JSON message with the Sensor Key (field name)
     /// and Sensor Value in `sensor_data` and send to the CoAP server.
     #[mynewt_macros::infer_type(attr)]  //  Infer the missing types
-    fn send_sensor_data(sensor_data: _) -> MynewtResult<()> {
+    fn send_sensor_data(sensor_data) -> MynewtResult<()> {
         let device_id = &sensor_network::get_device_id() ? ;
         let network_ready = sensor_network::init_server_post(DEFAULT_URI) ? ;
         if network_ready {
