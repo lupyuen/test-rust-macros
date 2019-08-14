@@ -1,151 +1,163 @@
-#s src/main.rs | 59 | 29 | 59 | 35
-#s src/main.rs | 59 | 40 | 59 | 50
-#s src/main.rs | 59 | 55 | 59 | 66
-#s src/main.rs | 59 | 71 | 59 | 80
-#s src/main.rs | 59 | 105 | 67 | 5
-#s src/main.rs | 60 | 8 | 60 | 55
-#s src/main.rs | 60 | 8 | 60 | 53
-#s src/main.rs | 60 | 8 | 60 | 51
-#s src/main.rs | 60 | 8 | 60 | 51
-#m sensor::set_poll_rate_ms | src/main.rs | 60 | 8 | 60 | 51
-#s src/main.rs | 60 | 33 | 60 | 50
-start_sensor_listener: sensor has inferred type &Strn
-#s src/main.rs | 60 | 33 | 60 | 39
-#i start_sensor_listener | sensor | sensor::set_poll_rate_ms | devname | &Strn
+#s src/main.rs | 68 | 25 | 68 | 36
+#s src/main.rs | 68 | 41 | 68 | 51
+#s src/main.rs | 68 | 56 | 68 | 67
+#s src/main.rs | 68 | 72 | 68 | 81
+#s src/main.rs | 68 | 106 | 82 | 1
+#s src/main.rs | 69 | 4 | 69 | 46
+#s src/main.rs | 69 | 4 | 69 | 45
+#s src/main.rs | 69 | 4 | 69 | 45
+#s src/main.rs | 69 | 4 | 69 | 45
+#s src/main.rs | 71 | 4 | 71 | 56
+#s src/main.rs | 71 | 4 | 71 | 54
+#s src/main.rs | 71 | 4 | 71 | 52
+#s src/main.rs | 71 | 4 | 71 | 52
+#m sensor::set_poll_rate_ms | src/main.rs | 71 | 4 | 71 | 52
+#s src/main.rs | 71 | 29 | 71 | 51
+start_sensor_listener: sensor_name has inferred type &Strn
+#s src/main.rs | 71 | 29 | 71 | 40
+#i start_sensor_listener | sensor_name | sensor::set_poll_rate_ms | devname | &Strn
 start_sensor_listener: poll_time has inferred type u32
-#s src/main.rs | 60 | 41 | 60 | 50
+#s src/main.rs | 71 | 42 | 71 | 51
 #i start_sensor_listener | poll_time | sensor::set_poll_rate_ms | poll_rate | u32
-#s src/main.rs | 60 | 33 | 60 | 50
-#s src/main.rs | 60 | 8 | 60 | 51
-#s src/main.rs | 60 | 8 | 60 | 51
-#s src/main.rs | 60 | 8 | 60 | 53
-#s src/main.rs | 61 | 8 | 61 | 83
-#s src/main.rs | 61 | 28 | 61 | 81
-#s src/main.rs | 61 | 28 | 61 | 79
-#s src/main.rs | 61 | 28 | 61 | 79
-#m sensor::mgr_find_next_bydevname | src/main.rs | 61 | 28 | 61 | 79
-#s src/main.rs | 61 | 60 | 61 | 78
-start_sensor_listener: sensor has inferred type &Strn
-#s src/main.rs | 61 | 60 | 61 | 66
-#i start_sensor_listener | sensor | sensor::mgr_find_next_bydevname | devname | &Strn
+#s src/main.rs | 71 | 29 | 71 | 51
+#s src/main.rs | 71 | 4 | 71 | 52
+#s src/main.rs | 71 | 4 | 71 | 52
+#s src/main.rs | 71 | 4 | 71 | 54
+#s src/main.rs | 73 | 4 | 73 | 84
+#s src/main.rs | 73 | 24 | 73 | 82
+#s src/main.rs | 73 | 24 | 73 | 80
+#s src/main.rs | 73 | 24 | 73 | 80
+#m sensor::mgr_find_next_bydevname | src/main.rs | 73 | 24 | 73 | 80
+#s src/main.rs | 73 | 56 | 73 | 79
+start_sensor_listener: sensor_name has inferred type &Strn
+#s src/main.rs | 73 | 56 | 73 | 67
+#i start_sensor_listener | sensor_name | sensor::mgr_find_next_bydevname | devname | &Strn
 start_sensor_listener: null_mut() has inferred type *mut sensor
-#s src/main.rs | 61 | 68 | 61 | 78
+#s src/main.rs | 73 | 69 | 73 | 79
 #i start_sensor_listener | null_mut() | sensor::mgr_find_next_bydevname | prev_cursor | *mut sensor
-#s src/main.rs | 61 | 60 | 61 | 78
-#s src/main.rs | 61 | 28 | 61 | 79
-#s src/main.rs | 61 | 28 | 61 | 79
-#s src/main.rs | 61 | 28 | 61 | 81
-#s src/main.rs | 62 | 8 | 65 | 9
-#s src/main.rs | 62 | 8 | 65 | 9
-#s src/main.rs | 62 | 11 | 62 | 38
-#s src/main.rs | 62 | 11 | 62 | 24
-#s src/main.rs | 62 | 11 | 62 | 24
-#s src/main.rs | 62 | 28 | 62 | 38
-#s src/main.rs | 62 | 28 | 62 | 38
-#s src/main.rs | 62 | 28 | 62 | 38
-#s src/main.rs | 62 | 11 | 62 | 38
-#s src/main.rs | 62 | 39 | 65 | 9
-#s src/main.rs | 63 | 12 | 63 | 103
-#s src/main.rs | 63 | 27 | 63 | 101
-#s src/main.rs | 63 | 27 | 63 | 99
-#s src/main.rs | 63 | 27 | 63 | 99
-#m sensor::new_sensor_listener | src/main.rs | 63 | 27 | 63 | 99
-#s src/main.rs | 63 | 55 | 63 | 98
+#s src/main.rs | 73 | 56 | 73 | 79
+#s src/main.rs | 73 | 24 | 73 | 80
+#s src/main.rs | 73 | 24 | 73 | 80
+#s src/main.rs | 73 | 24 | 73 | 82
+#s src/main.rs | 75 | 4 | 80 | 5
+#s src/main.rs | 75 | 4 | 80 | 5
+#s src/main.rs | 75 | 7 | 75 | 34
+#s src/main.rs | 75 | 7 | 75 | 20
+#s src/main.rs | 75 | 7 | 75 | 20
+#s src/main.rs | 75 | 24 | 75 | 34
+#s src/main.rs | 75 | 24 | 75 | 34
+#s src/main.rs | 75 | 24 | 75 | 34
+#s src/main.rs | 75 | 7 | 75 | 34
+#s src/main.rs | 75 | 35 | 80 | 5
+#s src/main.rs | 77 | 8 | 77 | 99
+#s src/main.rs | 77 | 23 | 77 | 97
+#s src/main.rs | 77 | 23 | 77 | 95
+#s src/main.rs | 77 | 23 | 77 | 95
+#m sensor::new_sensor_listener | src/main.rs | 77 | 23 | 77 | 95
+#s src/main.rs | 77 | 51 | 77 | 94
 start_sensor_listener: sensor_key has inferred type &'static Strn
-#s src/main.rs | 63 | 55 | 63 | 65
+#s src/main.rs | 77 | 51 | 77 | 61
 #i start_sensor_listener | sensor_key | sensor::new_sensor_listener | sensor_key | &'static Strn
 start_sensor_listener: sensor_type has inferred type sensor_type_t
-#s src/main.rs | 63 | 67 | 63 | 78
+#s src/main.rs | 77 | 63 | 77 | 74
 #i start_sensor_listener | sensor_type | sensor::new_sensor_listener | sensor_type | sensor_type_t
 start_sensor_listener: handle_sensor_data has inferred type SensorValueFunc
-#s src/main.rs | 63 | 80 | 63 | 98
+#s src/main.rs | 77 | 76 | 77 | 94
 #i start_sensor_listener | handle_sensor_data | sensor::new_sensor_listener | listener_func | SensorValueFunc
-#s src/main.rs | 63 | 55 | 63 | 98
-#s src/main.rs | 63 | 27 | 63 | 99
-#s src/main.rs | 63 | 27 | 63 | 99
-#s src/main.rs | 63 | 27 | 63 | 101
-#s src/main.rs | 64 | 12 | 64 | 66
-#s src/main.rs | 64 | 12 | 64 | 64
-#s src/main.rs | 64 | 12 | 64 | 62
-#s src/main.rs | 64 | 12 | 64 | 62
-#m sensor::register_listener | src/main.rs | 64 | 12 | 64 | 62
-#s src/main.rs | 64 | 38 | 64 | 61
-start_sensor_listener: sensor_object has inferred type *mut sensor
-#s src/main.rs | 64 | 38 | 64 | 51
-#i start_sensor_listener | sensor_object | sensor::register_listener | sensor | *mut sensor
+#s src/main.rs | 77 | 51 | 77 | 94
+#s src/main.rs | 77 | 23 | 77 | 95
+#s src/main.rs | 77 | 23 | 77 | 95
+#s src/main.rs | 77 | 23 | 77 | 97
+#s src/main.rs | 79 | 8 | 79 | 62
+#s src/main.rs | 79 | 8 | 79 | 60
+#s src/main.rs | 79 | 8 | 79 | 58
+#s src/main.rs | 79 | 8 | 79 | 58
+#m sensor::register_listener | src/main.rs | 79 | 8 | 79 | 58
+#s src/main.rs | 79 | 34 | 79 | 57
+start_sensor_listener: sensor_driver has inferred type *mut sensor
+#s src/main.rs | 79 | 34 | 79 | 47
+#i start_sensor_listener | sensor_driver | sensor::register_listener | sensor | *mut sensor
 start_sensor_listener: listener has inferred type sensor_listener
-#s src/main.rs | 64 | 53 | 64 | 61
+#s src/main.rs | 79 | 49 | 79 | 57
 #i start_sensor_listener | listener | sensor::register_listener | listener | sensor_listener
-#s src/main.rs | 64 | 38 | 64 | 61
-#s src/main.rs | 64 | 12 | 64 | 62
-#s src/main.rs | 64 | 12 | 64 | 62
-#s src/main.rs | 64 | 12 | 64 | 64
-#s src/main.rs | 62 | 39 | 65 | 9
-#s src/main.rs | 62 | 8 | 65 | 9
-#s src/main.rs | 66 | 8 | 66 | 14
-#s src/main.rs | 66 | 8 | 66 | 14
-#s src/main.rs | 66 | 8 | 66 | 14
-#s src/main.rs | 66 | 8 | 66 | 14
-#s src/main.rs | 59 | 105 | 67 | 5
+#s src/main.rs | 79 | 34 | 79 | 57
+#s src/main.rs | 79 | 8 | 79 | 58
+#s src/main.rs | 79 | 8 | 79 | 58
+#s src/main.rs | 79 | 8 | 79 | 60
+#s src/main.rs | 75 | 35 | 80 | 5
+#s src/main.rs | 75 | 4 | 80 | 5
+#s src/main.rs | 81 | 4 | 81 | 10
+#s src/main.rs | 81 | 4 | 81 | 10
+#s src/main.rs | 81 | 4 | 81 | 10
+#s src/main.rs | 81 | 4 | 81 | 10
+#s src/main.rs | 68 | 106 | 82 | 1
 start_sensor_listener: updated infer.json
-#s src/main.rs | 73 | 26 | 73 | 37
-#s src/main.rs | 73 | 62 | 76 | 5
-#s src/main.rs | 74 | 8 | 74 | 41
-#s src/main.rs | 74 | 8 | 74 | 39
-#s src/main.rs | 74 | 8 | 74 | 37
-#s src/main.rs | 74 | 8 | 74 | 37
-#m send_sensor_data | src/main.rs | 74 | 8 | 74 | 37
-#s src/main.rs | 74 | 25 | 74 | 36
+#s src/main.rs | 88 | 22 | 88 | 33
+#s src/main.rs | 88 | 58 | 93 | 1
+#s src/main.rs | 89 | 4 | 89 | 43
+#s src/main.rs | 89 | 4 | 89 | 42
+#s src/main.rs | 89 | 4 | 89 | 42
+#s src/main.rs | 89 | 4 | 89 | 42
+#s src/main.rs | 91 | 4 | 91 | 37
+#s src/main.rs | 91 | 4 | 91 | 35
+#s src/main.rs | 91 | 4 | 91 | 33
+#s src/main.rs | 91 | 4 | 91 | 33
+#m send_sensor_data | src/main.rs | 91 | 4 | 91 | 33
+#s src/main.rs | 91 | 21 | 91 | 32
 handle_sensor_data: sensor_data has inferred type &SensorValue
-#s src/main.rs | 74 | 25 | 74 | 36
+#s src/main.rs | 91 | 21 | 91 | 32
 #i handle_sensor_data | sensor_data | send_sensor_data | sensor_data | &SensorValue
-#s src/main.rs | 74 | 25 | 74 | 36
-#s src/main.rs | 74 | 8 | 74 | 37
-#s src/main.rs | 74 | 8 | 74 | 37
-#s src/main.rs | 74 | 8 | 74 | 39
-#s src/main.rs | 75 | 8 | 75 | 14
-#s src/main.rs | 75 | 8 | 75 | 14
-#s src/main.rs | 75 | 8 | 75 | 14
-#s src/main.rs | 75 | 8 | 75 | 14
-#s src/main.rs | 73 | 62 | 76 | 5
+#s src/main.rs | 91 | 21 | 91 | 32
+#s src/main.rs | 91 | 4 | 91 | 33
+#s src/main.rs | 91 | 4 | 91 | 33
+#s src/main.rs | 91 | 4 | 91 | 35
+#s src/main.rs | 92 | 4 | 92 | 10
+#s src/main.rs | 92 | 4 | 92 | 10
+#s src/main.rs | 92 | 4 | 92 | 10
+#s src/main.rs | 92 | 4 | 92 | 10
+#s src/main.rs | 88 | 58 | 93 | 1
 handle_sensor_data: updated infer.json
-#s src/main.rs | 81 | 24 | 81 | 35
-#s src/main.rs | 81 | 60 | 92 | 5
-#s src/main.rs | 82 | 8 | 82 | 60
-#s src/main.rs | 82 | 24 | 82 | 58
-#s src/main.rs | 82 | 24 | 82 | 58
-#s src/main.rs | 83 | 8 | 83 | 77
-#s src/main.rs | 83 | 28 | 83 | 75
-#s src/main.rs | 83 | 28 | 83 | 73
-#s src/main.rs | 83 | 28 | 83 | 73
-#s src/main.rs | 83 | 28 | 83 | 73
-#s src/main.rs | 83 | 28 | 83 | 75
-#s src/main.rs | 84 | 8 | 90 | 9
-#s src/main.rs | 84 | 8 | 90 | 9
-#s src/main.rs | 84 | 11 | 84 | 24
-#s src/main.rs | 84 | 11 | 84 | 24
-#s src/main.rs | 84 | 25 | 90 | 9
-#s src/main.rs | 85 | 12 | 88 | 15
-#s src/main.rs | 85 | 27 | 88 | 14
-#s src/main.rs | 85 | 27 | 88 | 14
-#m coap | src/main.rs | 85 | 27 | 88 | 14
+#s src/main.rs | 98 | 20 | 98 | 31
+#s src/main.rs | 98 | 56 | 119 | 1
+#s src/main.rs | 99 | 4 | 99 | 41
+#s src/main.rs | 99 | 4 | 99 | 40
+#s src/main.rs | 99 | 4 | 99 | 40
+#s src/main.rs | 99 | 4 | 99 | 40
+#s src/main.rs | 101 | 4 | 101 | 56
+#s src/main.rs | 101 | 20 | 101 | 54
+#s src/main.rs | 101 | 20 | 101 | 54
+#s src/main.rs | 103 | 4 | 103 | 73
+#s src/main.rs | 103 | 24 | 103 | 71
+#s src/main.rs | 103 | 24 | 103 | 69
+#s src/main.rs | 103 | 24 | 103 | 69
+#s src/main.rs | 103 | 24 | 103 | 69
+#s src/main.rs | 103 | 24 | 103 | 71
+#s src/main.rs | 106 | 4 | 117 | 5
+#s src/main.rs | 106 | 4 | 117 | 5
+#s src/main.rs | 106 | 7 | 106 | 20
+#s src/main.rs | 106 | 7 | 106 | 20
+#s src/main.rs | 106 | 21 | 117 | 5
+#s src/main.rs | 110 | 8 | 113 | 11
+#s src/main.rs | 110 | 23 | 113 | 10
+#s src/main.rs | 110 | 23 | 113 | 10
+#m coap | src/main.rs | 110 | 23 | 113 | 10
 send_sensor_data: sensor_data has inferred type &SensorValue
 #i send_sensor_data | sensor_data | coap | singleton | &SensorValue
-#s src/main.rs | 85 | 27 | 88 | 14
-#s src/main.rs | 85 | 27 | 88 | 14
-#s src/main.rs | 89 | 12 | 89 | 48
-#s src/main.rs | 89 | 12 | 89 | 46
-#s src/main.rs | 89 | 12 | 89 | 44
-#s src/main.rs | 89 | 12 | 89 | 44
-#s src/main.rs | 89 | 12 | 89 | 44
-#s src/main.rs | 89 | 12 | 89 | 46
-#s src/main.rs | 84 | 25 | 90 | 9
-#s src/main.rs | 84 | 8 | 90 | 9
-#s src/main.rs | 91 | 8 | 91 | 14
-#s src/main.rs | 91 | 8 | 91 | 14
-#s src/main.rs | 91 | 8 | 91 | 14
-#s src/main.rs | 91 | 8 | 91 | 14
-#s src/main.rs | 81 | 60 | 92 | 5
+#s src/main.rs | 110 | 23 | 113 | 10
+#s src/main.rs | 110 | 23 | 113 | 10
+#s src/main.rs | 116 | 8 | 116 | 44
+#s src/main.rs | 116 | 8 | 116 | 42
+#s src/main.rs | 116 | 8 | 116 | 40
+#s src/main.rs | 116 | 8 | 116 | 40
+#s src/main.rs | 116 | 8 | 116 | 40
+#s src/main.rs | 116 | 8 | 116 | 42
+#s src/main.rs | 106 | 21 | 117 | 5
+#s src/main.rs | 106 | 4 | 117 | 5
+#s src/main.rs | 118 | 4 | 118 | 10
+#s src/main.rs | 118 | 4 | 118 | 10
+#s src/main.rs | 118 | 4 | 118 | 10
+#s src/main.rs | 118 | 4 | 118 | 10
+#s src/main.rs | 98 | 56 | 119 | 1
 send_sensor_data: updated infer.json
 #![feature(prelude_import)]
 #![no_std]
@@ -187,44 +199,61 @@ mod test_infer_type {
     const _: &str =
         "-------------------------------------------------------------";
 
+    // This Rust program polls the internal temperature sensor every
+    // 10 seconds and sends the sensor data to the server over NB-IoT.
     /// Will be run upon startup to initialise the app
     fn on_start() -> MynewtResult<()> {
+        console::print("on_start\n");
+        // Blue Pill's internal temperature sensor
         let SENSOR_DEVICE =
             &Strn{rep: mynewt::StrnRep::ByteStr(b"temp_stm32_0\x00"),};
+        // Poll the sensor every 10,000 milliseconds (10 seconds)
         let SENSOR_POLL_TIME = 10000;
+        // Sensor data will be transmitted to server as field `t`
         let TEMP_SENSOR_KEY = &Strn{rep: mynewt::StrnRep::ByteStr(b"t\x00"),};
+        // Sensor data is raw temperature in whole numbers (0 to 4095)
         let TEMP_SENSOR_TYPE = SENSOR_TYPE_AMBIENT_TEMPERATURE_RAW;
+        // Poll the sensor every 10 seconds
         start_sensor_listener(SENSOR_DEVICE, TEMP_SENSOR_KEY,
                               TEMP_SENSOR_TYPE, SENSOR_POLL_TIME)?;
+        // Start connecting to NB-IoT network in a background task
         sensor_network::start_server_transport()?;
 
-        //  Return success to `main()`.
+        // Return success to `main()` function
         Ok(())
     }
 
     //  Infer the missing types
-    #[doc = " Ask Mynewt to poll the temperature sensor every"]
-    #[doc = " 10 seconds and call `handle_sensor_data()`."]
-    fn start_sensor_listener(sensor: &Strn, sensor_key: &'static Strn,
+    #[doc = " Poll the temperature sensor every 10 seconds"]
+    #[doc = " and call function `handle_sensor_data()`."]
+    fn start_sensor_listener(sensor_name: &Strn, sensor_key: &'static Strn,
                              sensor_type: sensor_type_t, poll_time: u32)
      -> MynewtResult<()> {
-        sensor::set_poll_rate_ms(sensor, poll_time)?;
-        let sensor_object =
-            sensor::mgr_find_next_bydevname(sensor, null_mut())?;
-        if sensor_object != null_mut() {
+        console::print("start_sensor_listener\n");
+        // Schedule the sensor to be polled every 10 seconds
+        sensor::set_poll_rate_ms(sensor_name, poll_time)?;
+        // Find the sensor driver by name
+        let sensor_driver =
+            sensor::mgr_find_next_bydevname(sensor_name, null_mut())?;
+        // If the sensor driver has been found...
+        if sensor_driver != null_mut() {
+            // Create a sensor listener that will call function `handle_sensor_data` after polling the sensor data
             let listener =
                 sensor::new_sensor_listener(sensor_key, sensor_type,
                                             handle_sensor_data)?;
-            sensor::register_listener(sensor_object, listener)?;
+            // Register the sensor listener
+            sensor::register_listener(sensor_driver, listener)?;
         }
         Ok(())
     }
 
     //  Infer the missing types
-    #[doc = " This listener function is called every 10 seconds by Mynewt"]
-    #[doc = " to handle the polled sensor data. We convert the sensor"]
-    #[doc = " data to our transmission format and transmit to the server."]
+    #[doc = " This listener function is called every 10 seconds to"]
+    #[doc = " handle the polled sensor data. We convert the sensor data"]
+    #[doc = " to our transmission format and transmit to the server."]
     fn handle_sensor_data(sensor_data: &SensorValue) -> MynewtResult<()> {
+        console::print("handle_sensor_data\n");
+        // Transmit the sensor data to the server
         send_sensor_data(sensor_data)?;
         Ok(())
     }
@@ -233,10 +262,21 @@ mod test_infer_type {
     #[doc = " Compose a CoAP JSON message with the Sensor Key (field name)"]
     #[doc = " and Sensor Value in `sensor_data` and send to the CoAP server."]
     fn send_sensor_data(sensor_data: &SensorValue) -> MynewtResult<()> {
+        console::print("send_sensor_data\n");
+        // Get a randomly-generated device ID that changes each time we restart the device
         let device_id = &sensor_network::get_device_id()?;
+        // Start composing a CoAP message
         let network_ready = sensor_network::init_server_post(DEFAULT_URI)?;
+        // Proceed to compose the CoAP message only when
+        // the device has connected to the NB-IoT network
         if network_ready {
+            // Create a CoAP message with payload in JSON format
+            // Fill in the random device ID
+            // And the sensor data like `t: 2870`
             let _payload =
+                // Transmit the CoAP message to the CoAP Server over
+                // NB-IoT. This takes place in a background task.
+
 
                 //  TODO
 
