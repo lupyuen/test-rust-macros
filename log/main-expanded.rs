@@ -1,163 +1,163 @@
-#s src/main.rs | 68 | 25 | 68 | 36
-#s src/main.rs | 68 | 41 | 68 | 51
-#s src/main.rs | 68 | 56 | 68 | 67
-#s src/main.rs | 68 | 72 | 68 | 81
-#s src/main.rs | 68 | 106 | 82 | 1
-#s src/main.rs | 69 | 4 | 69 | 46
-#s src/main.rs | 69 | 4 | 69 | 45
-#s src/main.rs | 69 | 4 | 69 | 45
-#s src/main.rs | 69 | 4 | 69 | 45
-#s src/main.rs | 71 | 4 | 71 | 56
-#s src/main.rs | 71 | 4 | 71 | 54
-#s src/main.rs | 71 | 4 | 71 | 52
-#s src/main.rs | 71 | 4 | 71 | 52
-#m sensor::set_poll_rate_ms | src/main.rs | 71 | 4 | 71 | 52
-#s src/main.rs | 71 | 29 | 71 | 51
+#s src/main.rs | 69 | 25 | 69 | 36
+#s src/main.rs | 69 | 41 | 69 | 51
+#s src/main.rs | 69 | 56 | 69 | 67
+#s src/main.rs | 69 | 72 | 69 | 81
+#s src/main.rs | 69 | 106 | 83 | 1
+#s src/main.rs | 70 | 4 | 70 | 46
+#s src/main.rs | 70 | 4 | 70 | 45
+#s src/main.rs | 70 | 4 | 70 | 45
+#s src/main.rs | 70 | 4 | 70 | 45
+#s src/main.rs | 72 | 4 | 72 | 56
+#s src/main.rs | 72 | 4 | 72 | 54
+#s src/main.rs | 72 | 4 | 72 | 52
+#s src/main.rs | 72 | 4 | 72 | 52
+#m sensor::set_poll_rate_ms | src/main.rs | 72 | 4 | 72 | 52
+#s src/main.rs | 72 | 29 | 72 | 51
 start_sensor_listener: sensor_name has inferred type &Strn
-#s src/main.rs | 71 | 29 | 71 | 40
+#s src/main.rs | 72 | 29 | 72 | 40
 #i start_sensor_listener | sensor_name | sensor::set_poll_rate_ms | devname | &Strn
 start_sensor_listener: poll_time has inferred type u32
-#s src/main.rs | 71 | 42 | 71 | 51
+#s src/main.rs | 72 | 42 | 72 | 51
 #i start_sensor_listener | poll_time | sensor::set_poll_rate_ms | poll_rate | u32
-#s src/main.rs | 71 | 29 | 71 | 51
-#s src/main.rs | 71 | 4 | 71 | 52
-#s src/main.rs | 71 | 4 | 71 | 52
-#s src/main.rs | 71 | 4 | 71 | 54
-#s src/main.rs | 73 | 4 | 73 | 84
-#s src/main.rs | 73 | 24 | 73 | 82
-#s src/main.rs | 73 | 24 | 73 | 80
-#s src/main.rs | 73 | 24 | 73 | 80
-#m sensor::mgr_find_next_bydevname | src/main.rs | 73 | 24 | 73 | 80
-#s src/main.rs | 73 | 56 | 73 | 79
+#s src/main.rs | 72 | 29 | 72 | 51
+#s src/main.rs | 72 | 4 | 72 | 52
+#s src/main.rs | 72 | 4 | 72 | 52
+#s src/main.rs | 72 | 4 | 72 | 54
+#s src/main.rs | 74 | 4 | 74 | 84
+#s src/main.rs | 74 | 24 | 74 | 82
+#s src/main.rs | 74 | 24 | 74 | 80
+#s src/main.rs | 74 | 24 | 74 | 80
+#m sensor::mgr_find_next_bydevname | src/main.rs | 74 | 24 | 74 | 80
+#s src/main.rs | 74 | 56 | 74 | 79
 start_sensor_listener: sensor_name has inferred type &Strn
-#s src/main.rs | 73 | 56 | 73 | 67
+#s src/main.rs | 74 | 56 | 74 | 67
 #i start_sensor_listener | sensor_name | sensor::mgr_find_next_bydevname | devname | &Strn
 start_sensor_listener: null_mut() has inferred type *mut sensor
-#s src/main.rs | 73 | 69 | 73 | 79
+#s src/main.rs | 74 | 69 | 74 | 79
 #i start_sensor_listener | null_mut() | sensor::mgr_find_next_bydevname | prev_cursor | *mut sensor
-#s src/main.rs | 73 | 56 | 73 | 79
-#s src/main.rs | 73 | 24 | 73 | 80
-#s src/main.rs | 73 | 24 | 73 | 80
-#s src/main.rs | 73 | 24 | 73 | 82
-#s src/main.rs | 75 | 4 | 80 | 5
-#s src/main.rs | 75 | 4 | 80 | 5
-#s src/main.rs | 75 | 7 | 75 | 34
-#s src/main.rs | 75 | 7 | 75 | 20
-#s src/main.rs | 75 | 7 | 75 | 20
-#s src/main.rs | 75 | 24 | 75 | 34
-#s src/main.rs | 75 | 24 | 75 | 34
-#s src/main.rs | 75 | 24 | 75 | 34
-#s src/main.rs | 75 | 7 | 75 | 34
-#s src/main.rs | 75 | 35 | 80 | 5
-#s src/main.rs | 77 | 8 | 77 | 99
-#s src/main.rs | 77 | 23 | 77 | 97
-#s src/main.rs | 77 | 23 | 77 | 95
-#s src/main.rs | 77 | 23 | 77 | 95
-#m sensor::new_sensor_listener | src/main.rs | 77 | 23 | 77 | 95
-#s src/main.rs | 77 | 51 | 77 | 94
+#s src/main.rs | 74 | 56 | 74 | 79
+#s src/main.rs | 74 | 24 | 74 | 80
+#s src/main.rs | 74 | 24 | 74 | 80
+#s src/main.rs | 74 | 24 | 74 | 82
+#s src/main.rs | 76 | 4 | 81 | 5
+#s src/main.rs | 76 | 4 | 81 | 5
+#s src/main.rs | 76 | 7 | 76 | 34
+#s src/main.rs | 76 | 7 | 76 | 20
+#s src/main.rs | 76 | 7 | 76 | 20
+#s src/main.rs | 76 | 24 | 76 | 34
+#s src/main.rs | 76 | 24 | 76 | 34
+#s src/main.rs | 76 | 24 | 76 | 34
+#s src/main.rs | 76 | 7 | 76 | 34
+#s src/main.rs | 76 | 35 | 81 | 5
+#s src/main.rs | 78 | 8 | 78 | 99
+#s src/main.rs | 78 | 23 | 78 | 97
+#s src/main.rs | 78 | 23 | 78 | 95
+#s src/main.rs | 78 | 23 | 78 | 95
+#m sensor::new_sensor_listener | src/main.rs | 78 | 23 | 78 | 95
+#s src/main.rs | 78 | 51 | 78 | 94
 start_sensor_listener: sensor_key has inferred type &'static Strn
-#s src/main.rs | 77 | 51 | 77 | 61
+#s src/main.rs | 78 | 51 | 78 | 61
 #i start_sensor_listener | sensor_key | sensor::new_sensor_listener | sensor_key | &'static Strn
 start_sensor_listener: sensor_type has inferred type sensor_type_t
-#s src/main.rs | 77 | 63 | 77 | 74
+#s src/main.rs | 78 | 63 | 78 | 74
 #i start_sensor_listener | sensor_type | sensor::new_sensor_listener | sensor_type | sensor_type_t
 start_sensor_listener: handle_sensor_data has inferred type SensorValueFunc
-#s src/main.rs | 77 | 76 | 77 | 94
+#s src/main.rs | 78 | 76 | 78 | 94
 #i start_sensor_listener | handle_sensor_data | sensor::new_sensor_listener | listener_func | SensorValueFunc
-#s src/main.rs | 77 | 51 | 77 | 94
-#s src/main.rs | 77 | 23 | 77 | 95
-#s src/main.rs | 77 | 23 | 77 | 95
-#s src/main.rs | 77 | 23 | 77 | 97
-#s src/main.rs | 79 | 8 | 79 | 62
-#s src/main.rs | 79 | 8 | 79 | 60
-#s src/main.rs | 79 | 8 | 79 | 58
-#s src/main.rs | 79 | 8 | 79 | 58
-#m sensor::register_listener | src/main.rs | 79 | 8 | 79 | 58
-#s src/main.rs | 79 | 34 | 79 | 57
+#s src/main.rs | 78 | 51 | 78 | 94
+#s src/main.rs | 78 | 23 | 78 | 95
+#s src/main.rs | 78 | 23 | 78 | 95
+#s src/main.rs | 78 | 23 | 78 | 97
+#s src/main.rs | 80 | 8 | 80 | 62
+#s src/main.rs | 80 | 8 | 80 | 60
+#s src/main.rs | 80 | 8 | 80 | 58
+#s src/main.rs | 80 | 8 | 80 | 58
+#m sensor::register_listener | src/main.rs | 80 | 8 | 80 | 58
+#s src/main.rs | 80 | 34 | 80 | 57
 start_sensor_listener: sensor_driver has inferred type *mut sensor
-#s src/main.rs | 79 | 34 | 79 | 47
+#s src/main.rs | 80 | 34 | 80 | 47
 #i start_sensor_listener | sensor_driver | sensor::register_listener | sensor | *mut sensor
 start_sensor_listener: listener has inferred type sensor_listener
-#s src/main.rs | 79 | 49 | 79 | 57
+#s src/main.rs | 80 | 49 | 80 | 57
 #i start_sensor_listener | listener | sensor::register_listener | listener | sensor_listener
-#s src/main.rs | 79 | 34 | 79 | 57
-#s src/main.rs | 79 | 8 | 79 | 58
-#s src/main.rs | 79 | 8 | 79 | 58
-#s src/main.rs | 79 | 8 | 79 | 60
-#s src/main.rs | 75 | 35 | 80 | 5
-#s src/main.rs | 75 | 4 | 80 | 5
-#s src/main.rs | 81 | 4 | 81 | 10
-#s src/main.rs | 81 | 4 | 81 | 10
-#s src/main.rs | 81 | 4 | 81 | 10
-#s src/main.rs | 81 | 4 | 81 | 10
-#s src/main.rs | 68 | 106 | 82 | 1
+#s src/main.rs | 80 | 34 | 80 | 57
+#s src/main.rs | 80 | 8 | 80 | 58
+#s src/main.rs | 80 | 8 | 80 | 58
+#s src/main.rs | 80 | 8 | 80 | 60
+#s src/main.rs | 76 | 35 | 81 | 5
+#s src/main.rs | 76 | 4 | 81 | 5
+#s src/main.rs | 82 | 4 | 82 | 10
+#s src/main.rs | 82 | 4 | 82 | 10
+#s src/main.rs | 82 | 4 | 82 | 10
+#s src/main.rs | 82 | 4 | 82 | 10
+#s src/main.rs | 69 | 106 | 83 | 1
 start_sensor_listener: updated infer.json
-#s src/main.rs | 88 | 22 | 88 | 33
-#s src/main.rs | 88 | 58 | 93 | 1
-#s src/main.rs | 89 | 4 | 89 | 43
-#s src/main.rs | 89 | 4 | 89 | 42
-#s src/main.rs | 89 | 4 | 89 | 42
-#s src/main.rs | 89 | 4 | 89 | 42
-#s src/main.rs | 91 | 4 | 91 | 37
-#s src/main.rs | 91 | 4 | 91 | 35
-#s src/main.rs | 91 | 4 | 91 | 33
-#s src/main.rs | 91 | 4 | 91 | 33
-#m send_sensor_data | src/main.rs | 91 | 4 | 91 | 33
-#s src/main.rs | 91 | 21 | 91 | 32
+#s src/main.rs | 89 | 22 | 89 | 33
+#s src/main.rs | 89 | 58 | 94 | 1
+#s src/main.rs | 90 | 4 | 90 | 43
+#s src/main.rs | 90 | 4 | 90 | 42
+#s src/main.rs | 90 | 4 | 90 | 42
+#s src/main.rs | 90 | 4 | 90 | 42
+#s src/main.rs | 92 | 4 | 92 | 37
+#s src/main.rs | 92 | 4 | 92 | 35
+#s src/main.rs | 92 | 4 | 92 | 33
+#s src/main.rs | 92 | 4 | 92 | 33
+#m send_sensor_data | src/main.rs | 92 | 4 | 92 | 33
+#s src/main.rs | 92 | 21 | 92 | 32
 handle_sensor_data: sensor_data has inferred type &SensorValue
-#s src/main.rs | 91 | 21 | 91 | 32
+#s src/main.rs | 92 | 21 | 92 | 32
 #i handle_sensor_data | sensor_data | send_sensor_data | sensor_data | &SensorValue
-#s src/main.rs | 91 | 21 | 91 | 32
-#s src/main.rs | 91 | 4 | 91 | 33
-#s src/main.rs | 91 | 4 | 91 | 33
-#s src/main.rs | 91 | 4 | 91 | 35
-#s src/main.rs | 92 | 4 | 92 | 10
-#s src/main.rs | 92 | 4 | 92 | 10
-#s src/main.rs | 92 | 4 | 92 | 10
-#s src/main.rs | 92 | 4 | 92 | 10
-#s src/main.rs | 88 | 58 | 93 | 1
+#s src/main.rs | 92 | 21 | 92 | 32
+#s src/main.rs | 92 | 4 | 92 | 33
+#s src/main.rs | 92 | 4 | 92 | 33
+#s src/main.rs | 92 | 4 | 92 | 35
+#s src/main.rs | 93 | 4 | 93 | 10
+#s src/main.rs | 93 | 4 | 93 | 10
+#s src/main.rs | 93 | 4 | 93 | 10
+#s src/main.rs | 93 | 4 | 93 | 10
+#s src/main.rs | 89 | 58 | 94 | 1
 handle_sensor_data: updated infer.json
-#s src/main.rs | 98 | 20 | 98 | 31
-#s src/main.rs | 98 | 56 | 119 | 1
-#s src/main.rs | 99 | 4 | 99 | 41
-#s src/main.rs | 99 | 4 | 99 | 40
-#s src/main.rs | 99 | 4 | 99 | 40
-#s src/main.rs | 99 | 4 | 99 | 40
-#s src/main.rs | 101 | 4 | 101 | 56
-#s src/main.rs | 101 | 20 | 101 | 54
-#s src/main.rs | 101 | 20 | 101 | 54
-#s src/main.rs | 103 | 4 | 103 | 73
-#s src/main.rs | 103 | 24 | 103 | 71
-#s src/main.rs | 103 | 24 | 103 | 69
-#s src/main.rs | 103 | 24 | 103 | 69
-#s src/main.rs | 103 | 24 | 103 | 69
-#s src/main.rs | 103 | 24 | 103 | 71
-#s src/main.rs | 106 | 4 | 117 | 5
-#s src/main.rs | 106 | 4 | 117 | 5
-#s src/main.rs | 106 | 7 | 106 | 20
-#s src/main.rs | 106 | 7 | 106 | 20
-#s src/main.rs | 106 | 21 | 117 | 5
-#s src/main.rs | 110 | 8 | 113 | 11
-#s src/main.rs | 110 | 23 | 113 | 10
-#s src/main.rs | 110 | 23 | 113 | 10
-#m coap | src/main.rs | 110 | 23 | 113 | 10
+#s src/main.rs | 99 | 20 | 99 | 31
+#s src/main.rs | 99 | 56 | 120 | 1
+#s src/main.rs | 100 | 4 | 100 | 41
+#s src/main.rs | 100 | 4 | 100 | 40
+#s src/main.rs | 100 | 4 | 100 | 40
+#s src/main.rs | 100 | 4 | 100 | 40
+#s src/main.rs | 102 | 4 | 102 | 56
+#s src/main.rs | 102 | 20 | 102 | 54
+#s src/main.rs | 102 | 20 | 102 | 54
+#s src/main.rs | 104 | 4 | 104 | 73
+#s src/main.rs | 104 | 24 | 104 | 71
+#s src/main.rs | 104 | 24 | 104 | 69
+#s src/main.rs | 104 | 24 | 104 | 69
+#s src/main.rs | 104 | 24 | 104 | 69
+#s src/main.rs | 104 | 24 | 104 | 71
+#s src/main.rs | 107 | 4 | 118 | 5
+#s src/main.rs | 107 | 4 | 118 | 5
+#s src/main.rs | 107 | 7 | 107 | 20
+#s src/main.rs | 107 | 7 | 107 | 20
+#s src/main.rs | 107 | 21 | 118 | 5
+#s src/main.rs | 111 | 8 | 114 | 11
+#s src/main.rs | 111 | 23 | 114 | 10
+#s src/main.rs | 111 | 23 | 114 | 10
+#m coap | src/main.rs | 111 | 23 | 114 | 10
 send_sensor_data: sensor_data has inferred type &SensorValue
 #i send_sensor_data | sensor_data | coap | singleton | &SensorValue
-#s src/main.rs | 110 | 23 | 113 | 10
-#s src/main.rs | 110 | 23 | 113 | 10
-#s src/main.rs | 116 | 8 | 116 | 44
-#s src/main.rs | 116 | 8 | 116 | 42
-#s src/main.rs | 116 | 8 | 116 | 40
-#s src/main.rs | 116 | 8 | 116 | 40
-#s src/main.rs | 116 | 8 | 116 | 40
-#s src/main.rs | 116 | 8 | 116 | 42
-#s src/main.rs | 106 | 21 | 117 | 5
-#s src/main.rs | 106 | 4 | 117 | 5
-#s src/main.rs | 118 | 4 | 118 | 10
-#s src/main.rs | 118 | 4 | 118 | 10
-#s src/main.rs | 118 | 4 | 118 | 10
-#s src/main.rs | 118 | 4 | 118 | 10
-#s src/main.rs | 98 | 56 | 119 | 1
+#s src/main.rs | 111 | 23 | 114 | 10
+#s src/main.rs | 111 | 23 | 114 | 10
+#s src/main.rs | 117 | 8 | 117 | 44
+#s src/main.rs | 117 | 8 | 117 | 42
+#s src/main.rs | 117 | 8 | 117 | 40
+#s src/main.rs | 117 | 8 | 117 | 40
+#s src/main.rs | 117 | 8 | 117 | 40
+#s src/main.rs | 117 | 8 | 117 | 42
+#s src/main.rs | 107 | 21 | 118 | 5
+#s src/main.rs | 107 | 4 | 118 | 5
+#s src/main.rs | 119 | 4 | 119 | 10
+#s src/main.rs | 119 | 4 | 119 | 10
+#s src/main.rs | 119 | 4 | 119 | 10
+#s src/main.rs | 119 | 4 | 119 | 10
+#s src/main.rs | 99 | 56 | 120 | 1
 send_sensor_data: updated infer.json
 #![feature(prelude_import)]
 #![no_std]
@@ -181,7 +181,7 @@ mod test_infer_type {
     use core::ptr::{
                     //null,
                     null_mut};
-    use mynewt::{result::*,
+    use mynewt::{result::*, sys::console,
                  hw::sensor::{self, sensor_type_t,
                               //sensor_data_func,
                               //sensor_data_func_untyped,
@@ -304,16 +304,14 @@ mod test_infer_type {
                 ///////////////////////////////////////////////////////////////////////////////
                 //  Testing
 
-                //#[proc_macros::safe_wrap(attr)] 
-                //#[proc_macros::safe_wrap(attr)] 
-                //#[proc_macros::safe_wrap(attr)] ////
-                //#[proc_macros::safe_wrap(attr)] ////
-                //#[proc_macros::safe_wrap(attr)] ////
-                //#[proc_macros::safe_wrap(attr)] ////
-                //#[proc_macros::safe_wrap(attr)] ////
-                //#[proc_macros::safe_wrap(attr)] ////
-                //#[proc_macros::safe_wrap(attr)] ////
-                //#[proc_macros::safe_wrap(attr)] ////
+                ////
+                ////
+                ////
+                ////
+                ////
+                ////
+                ////
+                ////
                 /*
                     type Out<T> = &'static mut T;
                     type Ptr = *mut ::cty::c_void;
@@ -633,5 +631,232 @@ mod test_infer_type {
     const _: &str =
         "-------------------------------------------------------------";
     const DEFAULT_URI: &Strn = &Strn{rep: mynewt::StrnRep::ByteStr(b"\x00"),};
+}
+/// Testing safe_wrap
+#[cfg(feature = "test_safe_wrap")]
+mod test_safe_wrap {
+    extern crate macros as proc_macros;
+    use proc_macros::{init_strn};
+    extern crate mynewt;
+    use mynewt::{result::*,
+                 kernel::os::{os_eventq, os_task, os_stack_t, os_task_func_t,
+                              os_time_t}, hw::sensor::{sensor},
+                 encoding::{coap_context::{}}, libs::{sensor_coap::{}}, NULL,
+                 Out, Ptr, Strn};
+    fn test_safe_wrap() -> MynewtResult<()> {
+        pub fn get_device_id() -> MynewtResult<Strn> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn get_device_id() -> *const ::cty::c_char;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = get_device_id();
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(Strn::from_cstr(result_value as *const u8))
+            }
+        }
+        extern "C" {
+            pub static mut os_main_task: os_task;
+        }
+        #[doc = ""]
+        pub fn start_server_transport() -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = ""]
+                pub fn start_server_transport() -> ::cty::c_int;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = start_server_transport();
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                if result_value == 0 {
+                    Ok(())
+                } else { Err(MynewtError::from(result_value)) }
+            }
+        }
+        pub fn init_server_post(uri: &Strn) -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn init_server_post(uri: *const ::cty::c_char) -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            uri.validate();
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    init_server_post(uri.as_ptr() as *const ::cty::c_char);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn do_server_post() -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn do_server_post() -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = do_server_post();
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Set the sensor poll rate"]
+        #[doc = ""]
+        #[doc = " - __`devname`__: Name of the sensor"]
+        #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
+        pub fn set_poll_rate_ms(devname: &Strn, poll_rate: u32)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set the sensor poll rate"]
+                #[doc = ""]
+                #[doc = " - __`devname`__: Name of the sensor"]
+                #[doc = " - __`poll_rate`__: The poll rate in milli seconds"]
+                pub fn sensor_set_poll_rate_ms(devname: *const ::cty::c_char,
+                                               poll_rate: u32)
+                 -> ::cty::c_int;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            devname.validate();
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    sensor_set_poll_rate_ms(devname.as_ptr() as
+                                                *const ::cty::c_char,
+                                            poll_rate as u32);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                if result_value == 0 {
+                    Ok(())
+                } else { Err(MynewtError::from(result_value)) }
+            }
+        }
+        #[doc =
+              " Search the sensor list and find the next sensor that corresponds"]
+        #[doc = " to a given device name."]
+        #[doc = ""]
+        #[doc = " - __`devname`__: The device name to search for"]
+        #[doc =
+              " - __`sensor`__: The previous sensor found with this device name"]
+        #[doc = ""]
+        #[doc = " Return: 0 on success, non-zero error code on failure"]
+        pub fn mgr_find_next_bydevname(devname: &Strn,
+                                       prev_cursor: *mut sensor)
+         -> MynewtResult<*mut sensor> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                      " Search the sensor list and find the next sensor that corresponds"]
+                #[doc = " to a given device name."]
+                #[doc = ""]
+                #[doc = " - __`devname`__: The device name to search for"]
+                #[doc =
+                      " - __`sensor`__: The previous sensor found with this device name"]
+                #[doc = ""]
+                #[doc =
+                      " Return: 0 on success, non-zero error code on failure"]
+                pub fn sensor_mgr_find_next_bydevname(devname:
+                                                          *const ::cty::c_char,
+                                                      prev_cursor:
+                                                          *mut sensor)
+                 -> *mut sensor;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            devname.validate();
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    sensor_mgr_find_next_bydevname(devname.as_ptr() as
+                                                       *const ::cty::c_char,
+                                                   prev_cursor as
+                                                       *mut sensor);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Pull a single item off the event queue and call it's event"]
+        #[doc = " callback."]
+        #[doc = ""]
+        #[doc = " - __`evq`__: The event queue to pull the item off."]
+        pub fn eventq_run(evq: *mut os_eventq) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                      " Pull a single item off the event queue and call it's event"]
+                #[doc = " callback."]
+                #[doc = ""]
+                #[doc = " - __`evq`__: The event queue to pull the item off."]
+                pub fn os_eventq_run(evq: *mut os_eventq);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                os_eventq_run(evq as *mut os_eventq);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+              " Retrieves the default event queue processed by OS main task."]
+        #[doc = ""]
+        #[doc = " Return:                      The default event queue."]
+        pub fn eventq_dflt_get() -> MynewtResult<*mut os_eventq> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                      " Retrieves the default event queue processed by OS main task."]
+                #[doc = ""]
+                #[doc =
+                      " Return:                      The default event queue."]
+                pub fn os_eventq_dflt_get() -> *mut os_eventq;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = os_eventq_dflt_get();
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn task_init(arg1: Out<os_task>, arg2: &Strn,
+                         arg3: os_task_func_t, arg4: Ptr, arg5: u8,
+                         arg6: os_time_t, arg7: Out<[os_stack_t]>, arg8: u16)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn os_task_init(arg1: *mut os_task,
+                                    arg2: *const ::cty::c_char,
+                                    arg3: os_task_func_t,
+                                    arg4: *mut ::cty::c_void, arg5: u8,
+                                    arg6: os_time_t, arg7: *mut os_stack_t,
+                                    arg8: u16) -> ::cty::c_int;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            arg2.validate();
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    os_task_init(arg1 as *mut os_task,
+                                 arg2.as_ptr() as *const ::cty::c_char,
+                                 arg3 as os_task_func_t,
+                                 arg4 as *mut ::cty::c_void, arg5 as u8,
+                                 arg6 as os_time_t,
+                                 arg7.as_ptr() as *mut os_stack_t,
+                                 arg8 as u16);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                if result_value == 0 {
+                    Ok(())
+                } else { Err(MynewtError::from(result_value)) }
+            }
+        }
+        let _test_local = Strn{rep: mynewt::StrnRep::ByteStr(b"hello\x00"),};
+        Ok(())
+    }
+    static _test_static: Strn =
+        Strn{rep: mynewt::StrnRep::ByteStr(b"hello\x00"),};
 }
 fn main() { }

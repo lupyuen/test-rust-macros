@@ -18,7 +18,7 @@ default =  [                    # Select the conditional compiled features
     # "test_cbor",              # Test CBOR encoding
     "test_infer_type",          # Test infer type
     # "test_macro_hygiene",     # Test macro hygiene
-    # "test_safe_wrap",         # Test safe wrap
+    "test_safe_wrap",         # Test safe wrap
 ]
 test_cbor                = []
 test_infer_type          = []
